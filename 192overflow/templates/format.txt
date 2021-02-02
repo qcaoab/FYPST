@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Style Transfer</title>
+</head>
+<style>
+body {background-color: powderblue;}
+h1   {color: blue;}
+p    {color: red;}
+</style>
+
+<body>
+<h1>What does this page do</h1>
+<p>description</p>
+
+</body>
+</html>
