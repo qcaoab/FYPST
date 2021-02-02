@@ -44,6 +44,35 @@ def render_answer():
 		return render_template("answer.html", question=question, answer=answers[question])
 	else:
 		return jsonify({"status": 404, "message": "No answer."})
-    
+
+@app.route('/')
+def form():
+    return """
+        <html>
+            <body>
+                <h1>Transform a png to jpg</h1>
+
+                <form action="/convert" method="post" enctype="multipart/form-data">
+                    <input type="file" name="img_file" />
+                    <input type="submit" />
+                </form>
+            </body>
+        </html>
+    """
+
+@app.route('/convert', methods=["POST"])
+def convert_view():
+    file = request.files['img_file']
+    if not file:
+        return "No file"
+
+    png = Image.open(file)
+
+    result = transform(png)
+
+    response = make_response(result)
+    response.headers["Content-Disposition"] = "attachment; filename=result_image.jpg"
+    return response
+
 if __name__ == "__main__":
 	app.run(port=5000, debug=True)
