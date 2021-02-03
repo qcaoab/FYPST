@@ -49,7 +49,7 @@
 
     // Set custom dropdown
     widgets.setCustomDropdown($("#custom-dropdown"), {
-      items: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"],
+      items: ["Van Gogh", "Monet", "Impressionism", "....", "Item 5"],
       //init_index: 0, // You can use this parameter to set the initial item for displaying
       init_text: "Dropdown Menu (With JavaScript)",
       on_item_click_callback: function ($ui) {
@@ -57,7 +57,7 @@
       }
     });
     widgets.setCustomDropdown($("#custom-dropdown-large"), {
-      items: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"],
+      items: ["Van Gogh", "Monet", "Impressionism", "....", "Item 5"],
       //init_index: 0, // You can use this parameter to set the initial item for displaying
       init_text: "Large Dropdown Menu (With JavaScript)",
       on_item_click_callback: function ($ui) {
