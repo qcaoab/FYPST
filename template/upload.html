@@ -68,45 +68,24 @@
                 <!---------dropdown----------------------------------------------------------------------------------->
                 <div class="flex-row">
                     <div class="flex-item flex-column">
-                        <h2 class="add-top-margin">Dropdown Menu</h2>
+                        <h2 class="add-top-margin">Transfer to our styles</h2>
                         <hr>
+                        <form method="post" action="/" enctype="multipart/form-data">
+                            
+                            <dl>
+                                <p>
+                                    <input type="file" name="file" autocomplete="off" required>
+                                </p>
+                            </dl>
+                            <p>
+                                <input type="submit" value="Submit">
+                            </p>
+                        </form>
                         <p class="text">
-                            Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica,
-                            sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e
-                            li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar
-                            custosi traductores. At solmen va esser.
+                            Select from our privided styles below
                         </p>
                         <div class="control-group">
-                            <div class="custom-dropdown stretch-on-mobile">
-                                <a tabindex="0" href="javascript:void(0)"><span>Dropdown Menu (No JavaScript)</span></a>
-                                <div>
-                                    <a href="javascript:void(0)">Item 1</a>
-                                    <a href="javascript:void(0)">Item 2</a>
-                                    <a href="javascript:void(0)">Item 3</a>
-                                    <a href="javascript:void(0)">Item 4</a>
-                                    <a href="javascript:void(0)">Item 5</a>
-                                </div>
-                            </div>
-                            <div class="custom-dropdown stretch-on-mobile large">
-                                <a tabindex="0" href="javascript:void(0)"><span>Large Dropdown Menu (No JavaScript)</span></a>
-                                <div>
-                                    <a href="javascript:void(0)">Item 1</a>
-                                    <a href="javascript:void(0)">Item 2</a>
-                                    <a href="javascript:void(0)">Item 3</a>
-                                    <a href="javascript:void(0)">Item 4</a>
-                                    <a href="javascript:void(0)">Item 5</a>
-                                </div>
-                            </div>
-                            <div class="custom-dropdown stretch-on-mobile" id="custom-dropdown">
-                                <a tabindex="0" href="javascript:void(0)"><span>Dropdown Menu (No JavaScript)</span></a>
-                                <div>
-                                    <a href="javascript:void(0)">Item 1</a>
-                                    <a href="javascript:void(0)">Item 2</a>
-                                    <a href="javascript:void(0)">Item 3</a>
-                                    <a href="javascript:void(0)">Item 4</a>
-                                    <a href="javascript:void(0)">Item 5</a>
-                                </div>
-                            </div>
+                            
                             <div class="custom-dropdown stretch-on-mobile large" id="custom-dropdown-large">
                                 <a tabindex="0" href="javascript:void(0)"><span></span></a>
                                 <div></div>
@@ -181,34 +160,8 @@
                 <!-------------------------------------------------------------------------------------------->
                 
           
-                    <div class="flex-item flex-column">
-                        <h2>Select an image to upload and display</h2>
-                            <p>
-                                {% with messages = get_flashed_messages() %}
-                                {% if messages %}
-                                    <ul class=flashes>
-                                    {% for message in messages %}
-                                    <li>{{ message }}</li>
-                                    {% endfor %}
-                                    </ul>
-                                {% endif %}
-                                {% endwith %}
-                            </p>
-                            {% if filename %}
-                                <div>
-                                    <img src="{{ url_for('display_image', filename=filename) }}">
-                                </div>
-                            {% endif %}
-                            <form method="post" action="/" enctype="multipart/form-data">
-                                <dl>
-                                    <p>
-                                        <input type="file" name="file" autocomplete="off" required>
-                                    </p>
-                                </dl>
-                                <p>
-                                    <input type="submit" value="Submit">
-                                </p>
-                            </form>
+                    <div>
+                            
                         <h2 class="add-top-margin">Images and Image Button</h2>
                         <hr>
                         <p class="text">
