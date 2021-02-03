@@ -1,6 +1,6 @@
-# FYPST
-## FYP in progress
-Style Transfer Web part
+# Style Transfer
+## Project in progress
+Style Transfer web part
 - flask 
 - web (adapted from https://github.com/yenchiah/project-website-template)
   - overview
