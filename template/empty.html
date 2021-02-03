@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Project Title</title>
+  <title>Style Transfer</title>
   <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
   <link href="css/frame.css" media="screen" rel="stylesheet" type="text/css" />
   <link href="css/controls.css" media="screen" rel="stylesheet" type="text/css" />
@@ -14,7 +14,7 @@
   <script src="js/menu.js"></script>
   <style>
     .menu-index {
-      color: rgb(255, 255, 255) !important;
+      color: rgb(225, 225, 225) !important;
       opacity: 1 !important;
       font-weight: 700 !important;
     }
@@ -22,20 +22,21 @@
 </head>
 
 <body>
-    <div class="menu-container"></div>
-    <div class="menu">
-        <div class="menu-table flex-row-space-between">
-            <div class="logo flex-row-center">
-                <a href="index.html">Project Title</a>
-            </div>
-            <a class="menu-button" tabindex="0" href="javascript:void(0)">
+    <div class="menu-container">
+        <div class="menu">
+            <div class="menu-table flex-row-space-between">
+                <div class="logo flex-row-center">
+                    <a href="index.html">Style Transfer</a>
+                </div>
+                <a class="menu-button" tabindex="0" href="javascript:void(0)">
                 <img src="img/menu.png">
-            </a>
-            <div class="menu-items flex-row-center flex-item">
-                <a href="index.html" class="menu-index">Overview</a>
-                <a href="widgets.html" class="menu-widget">Widgets</a>
-                <a href="embedding.html" class="menu-embedding">Embedding</a>
-                <a href="https://github.com/yenchiah/project-website-template">GitHub</a>
+                </a>
+                <div class="menu-items flex-row-center flex-item">
+                    <a href="index.html" class="menu-index">Overview</a>
+                    <a href="widgets.html" class="menu-widget">Widgets</a>
+                    
+                    <a href="https://github.com/yenchiah/project-website-template">GitHub</a>
+                </div>
             </div>
         </div>
     </div>
@@ -129,6 +130,51 @@
 
                     </div>
                 </div>
+                <div class="flex-row">
+                    <div class="flex-item flex-column">
+                        <p class="text add-top-margin">
+                            Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel
+                            augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget
+                            condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit
+                            vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae
+                            sapien ut libero venenatis faucibus. Nullam quis ante.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<head>
+    <title>Style Transfer</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="css/frame.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="css/controls.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="css/widgets.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="css/custom.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/widgets.js"></script>
+    <script src="js/custom.js"></script>
+    <style>
+        .menu-widget {
+        color: rgb(225, 225, 225) !important;
+        opacity: 1 !important;
+        font-weight: 700 !important;
+        }
+    </style>
+</head>
+    
+<body>
+    <div class="menu-container"></div>
+    <div class="content-container">
+        <div class="content">
+            <div class="content-table flex-column">
                 <div class="flex-row">
                     <div class="flex-item flex-column">
                         <p class="text add-top-margin">
@@ -279,6 +325,33 @@
                 </div>
           
                     <div class="flex-item flex-column">
+                        <h2>Select an image to upload and display</h2>
+                            <p>
+                                {% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                    <ul class=flashes>
+                                    {% for message in messages %}
+                                    <li>{{ message }}</li>
+                                    {% endfor %}
+                                    </ul>
+                                {% endif %}
+                                {% endwith %}
+                            </p>
+                            {% if filename %}
+                                <div>
+                                    <img src="{{ url_for('display_image', filename=filename) }}">
+                                </div>
+                            {% endif %}
+                            <form method="post" action="/" enctype="multipart/form-data">
+                                <dl>
+                                    <p>
+                                        <input type="file" name="file" autocomplete="off" required>
+                                    </p>
+                                </dl>
+                                <p>
+                                    <input type="submit" value="Submit">
+                                </p>
+                            </form>
                         <h2 class="add-top-margin">Images and Image Button</h2>
                         <hr>
                         <p class="text">
@@ -298,21 +371,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex-row-space-between">
-                    <div class="flex-item flex-column">
-                        <p class="text badge-text">Large Badge Caption!</p>
-                    </div>
-                    <div class="flex-item flex-column">
-                        <div class="control-group">
-                            <a href="javascript:void(0)" target="_blank" class="custom-image-button">
-                                <img src="img/app-store-badge.png" width="150">
-                            </a>
-                            <a href="javascript:void(0)" target="_blank" class="custom-image-button">
-                                <img src="img/google-play-badge.png" width="150">
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
