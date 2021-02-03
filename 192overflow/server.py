@@ -1,12 +1,16 @@
 from flask import Flask
 from flask import jsonify, request
+
+import csv
+from datetime import datetime
+from io import StringIO
+from werkzeug.wrappers import Response
 app = Flask(__name__)
 
+UPLOAD_FOLDER = 'pic/uploads/'
 answers = dict()
-@app.route("/")
-def hello():
-	return "Hello World!"
-
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 
 @app.route("/api/answers", methods=['GET'])
