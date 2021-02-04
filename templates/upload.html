@@ -48,10 +48,10 @@
         <div class="menu">
             <div class="menu-table flex-row-space-between">
                 <div class="logo flex-row-center">
-                    <a href="index.html">Style Transfer</a>
+                    <a href="{{url_for('static', filename = 'index.html')}}">Style Transfer</a>
                 </div>
                 <a class="menu-button" tabindex="0" href="javascript:void(0)">
-                <img src="img/menu.png">
+                <img src="{{url_for('static', filename = 'img/menu.png')}}">
                 </a>
                 <div class="menu-items flex-row-center flex-item">
                     <a href="empty.html" class="menu-overview">Overview</a>
@@ -134,11 +134,11 @@
                             simplificat Angles, quam un skeptic Cambridge amico dit me.
                         </p>
                         <div class="control-group">
-                            <button id="dialog-btn-1" class="custom-button-flat"><img src="img/setting.png"><span>Dialog 1</span></button>
-                            <button id="dialog-btn-2" class="custom-button-flat"><img src="img/setting.png"><span>Dialog 2</span></button>
-                            <button id="dialog-btn-3" class="custom-button-flat"><img src="img/setting.png"><span>Dialog 3</span></button>
-                            <button id="dialog-btn-4" class="custom-button-flat"><img src="img/setting.png"><span>Dialog 4</span></button>
-                            <button id="share-btn" title="Share" class="custom-button-flat"><img src="img/share.png"><span>Share</span></button>
+                            <button id="dialog-btn-1" class="custom-button-flat"><img src="{{url_for('static', filename = 'img/setting.png')}}"><span>Dialog 1</span></button>
+                            <button id="dialog-btn-2" class="custom-button-flat"><img src="{{url_for('static', filename = 'img/setting.png')}}"><span>Dialog 2</span></button>
+                            <button id="dialog-btn-3" class="custom-button-flat"><img src="{{url_for('static', filename = 'img/setting.png')}}"><span>Dialog 3</span></button>
+                            <button id="dialog-btn-4" class="custom-button-flat"><img src="{{url_for('static', filename = 'img/setting.png')}}"><span>Dialog 4</span></button>
+                            <button id="share-btn" title="Share" class="custom-button-flat"><img src="{{url_for('static', filename = 'img/setting.png')}}"><span>Share</span></button>
                         </div>
                         <div id="dialog-1" title="Dialog 1" data-role="none">
                             <p>No action, attached and centered to the window, full-width button.</p>
@@ -176,10 +176,10 @@
 
                     <div class="flex-item flex-column">
                         <div class="control-group">
-                            <button class="custom-button-flat"><img src="img/home.png"></button>
-                            <button class="custom-button-flat" disabled><img src="img/home.png"></button>
-                            <button class="custom-button-flat small"><img src="img/home.png"></button>
-                            <button class="custom-button-flat large"><img src="img/home.png"></button>
+                            <button class="custom-button-flat"><img src="{{url_for('static', filename = 'img/home.png')}}"></button>
+                            <button class="custom-button-flat" disabled><img src="{{url_for('static', filename = 'img/home.png')}}"></button>
+                            <button class="custom-button-flat small"><img src="{{url_for('static', filename = 'img/home.png')}}"></button>
+                            <button class="custom-button-flat large"><img src="{{url_for('static', filename = 'img/home.png')}}"></button>
                         </div>
                     </div>
                 </div>

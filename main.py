@@ -19,9 +19,9 @@ def home():
     return render_template('upload.html')
 
 
-@app.route('/upload', methods=['POST'])
+@app.route('/upload', methods=['GET','POST'])
 def upload_image():
-    method = request.form['method']
+
     if 'file' not in request.files:
         flash('No file part')
         return redirect(request.url)
@@ -31,7 +31,7 @@ def upload_image():
         return redirect(request.url)
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        file.save(os.path.join(app.config['pics/upload'], filename))
         print('upload_image filename: ' + filename)
         flash('Image successfully uploaded and displayed')
         return render_template('upload.html', filename=filename)
