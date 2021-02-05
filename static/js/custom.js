@@ -56,8 +56,8 @@
         console.log($ui.text());
       }
     });
-    widgets.setCustomDropdown($("#custom-dropdown-large"), {
-      items: ["Van Gogh", "Monet", "Impressionism", "....", "Item 5"],
+    widgets.setCustomDropdown($("dropdown-large"), {
+      items: ["Van Gogh", "Monet", "Impressionism", "blablabla", "Item 5"],
       //init_index: 0, // You can use this parameter to set the initial item for displaying
       init_text: "Large Dropdown Menu (With JavaScript)",
       on_item_click_callback: function ($ui) {
@@ -132,13 +132,13 @@
     // In practice, these images urls may come from your server via http ajax requests.
     for (var i = 0; i < 8; i++) {
       var item = "<a href=\"javascript:void(0)\" class=\"flex-column\">" +
-        "<img src=\"img/dummay-img.png\">" +
-        "<div>Image Caption</div>" +
+        "<img src=\"static\/img\/dummay-img.png\">" +
+        "<div>JS Image Caption</div>" +
         "</a>";
       $gallery.append($(item));
     }
 
-    // Create custom tabs
+    // Create custom tabss
     widgets.createCustomTab({
       selector: "#custom-tab"
     });

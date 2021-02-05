@@ -1,7 +1,7 @@
 import os
 from uuid import uuid4
 import urllib.request
-import smtplib
+
 from flask import Flask, flash, request, redirect, url_for, render_template,send_from_directory
 from werkzeug.utils import secure_filename
 
@@ -16,10 +16,25 @@ def allowed_file(filename):
 	
 @app.route('/')
 def home():
+    return render_template('empty.html')
+
+@app.route('/empty')
+def empty():
+    return render_template('empty.html')
+
+@app.route('/upload',methods=['GET','POST'])
+def upload():
     return render_template('upload.html')
 
+@app.route('/gallary',methods=['GET','POST'])
+def gallary():
+    return render_template('gallary.html')
 
-@app.route('/upload', methods=['GET','POST'])
+@app.route('/upload/<select>', methods=['GET','POST'])
+def select():
+    select = request.form.get("dropdown-large")
+    return render_template('upload.html', select=select)
+    
 def upload_image():
 
     if 'file' not in request.files:
