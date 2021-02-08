@@ -57,13 +57,13 @@
                     <a href="{{url_for('empty')}}" class="menu-overview">Overview</a>
                     <a href="{{url_for('gallary')}}" class="menu-gallary">Gallary</a>
                     <a href="{{url_for('upload')}}" class="menu-upload">Upload</a>
-                    
+
                     <a href="https://github.com/yenchiah/project-website-template">GitHub</a>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <div class="content-container">
         <div class="content">
             <div class="content-table flex-column"></div>
@@ -73,7 +73,7 @@
                         <h2 class="add-top-margin">Transfer to our styles</h2>
                         <hr>
                         <form method="post" action="/" enctype="multipart/form-data">
-                            
+
                             <dl>
                                 <p>
                                     <input type="file" name="file" autocomplete="off" required>
@@ -84,15 +84,54 @@
                             </p>
                         </form>
                         <p class="text">
-                            Select from our privided styles below
+                            Select from our privided styles below:
                         </p>
                         <div class="control-group">
-                            
+
                             <div class="custom-dropdown stretch-on-mobile large" id="custom-dropdown-large">
                                 <a tabindex="0" href="javascript:void(0)"><span></span></a>
                                 <div></div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <!------------------------------------------------------------------------------------->
+                <div class="flex-row">
+                    <div class="flex-item flex-column">
+                        <h2 class="add-top-margin">Transfer to your own uploaded style</h2>
+                        <hr>
+                        <p class="text">
+                            Please upload the photo or image whose style is to be transferred below:
+                        </p>
+
+                        <form method="post" action="/" enctype="multipart/form-data">
+
+                            <dl>
+                                <p>
+                                    <input type="file" name="file" autocomplete="off" required>
+                                </p>
+                            </dl>
+                            <p>
+                                <input type="submit" value="Submit">
+                            </p>
+                        </form>
+
+                        <p class="text">
+                            Please upload the your own style image below:
+                        </p>
+
+                        <form method="post" action="/" enctype="multipart/form-data">
+
+                            <dl>
+                                <p>
+                                    <input type="file" name="file" autocomplete="off" required>
+                                </p>
+                            </dl>
+                            <p>
+                                <input type="submit" value="Submit">
+                            </p>
+                        </form>
+
                     </div>
                 </div>
                 <!-------------------------------------------------------------------------------------------->
@@ -160,10 +199,10 @@
                     </div>
                 </div>
                 <!-------------------------------------------------------------------------------------------->
-                
-          
+
+
                     <div>
-                            
+
                         <h2 class="add-top-margin">Images and Image Button</h2>
                         <hr>
                         <p class="text">
@@ -183,7 +222,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
