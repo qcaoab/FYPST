@@ -57,7 +57,7 @@
       }
     });
     widgets.setCustomDropdown($("dropdown-large"), {
-      items: ["Van Gogh", "Monet", "Impressionism", "blablabla", "Item 5"],
+      items: ["select","Van Gogh", "Monet", "Impressionism", "blablabla", "Item 5"],
       //init_index: 0, // You can use this parameter to set the initial item for displaying
       init_text: "Large Dropdown Menu (With JavaScript)",
       on_item_click_callback: function ($ui) {

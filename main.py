@@ -1,4 +1,5 @@
 import os
+import string
 from uuid import uuid4
 import urllib.request
 
@@ -23,17 +24,17 @@ def empty():
     return render_template('empty.html')
 
 @app.route('/upload')
-def render():
+def upload():
     return render_template('upload.html')
 
 @app.route('/gallary',methods=['GET','POST'])
 def gallary():
     return render_template('gallary.html')
 
-@app.route('/upload/<select>', methods=['GET','POST'])
+@app.route('/upload/<item>', methods=['GET','POST'])
 def select():
-    select = request.form.get("dropdown-large")
-    return render_template('upload.html', select=select)
+    item = request.form.get("dropdown-large")
+    return render_template('upload.html', item = item)
 
 @app.route('/upload/<filename>', methods=['GET','POST'])
 def upload_image():
@@ -48,13 +49,13 @@ def upload_image():
         return redirect(request.url)
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config['pics/upload'], filename))
+        file.save(os.path.join(app.config['./pics/upload'], filename))
         print('upload_image filename: ' + filename)
         flash('Image successfully uploaded and displayed')
         return render_template('upload.html', filename=filename)
     else:
         flash('Allowed image types are -> png, jpg, jpeg, gif')
-        return redirect(request.url)
+        return render_template('upload.html')
 
 @app.route('/upload/<filename>')
 def send_file(filename):
