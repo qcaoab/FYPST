@@ -2,6 +2,6 @@
   "use strict";
 
   $(function () {
-    $(".menu-container").load("menu.html");
+    $(".menu-container").load(this.href+ "../../templates/menu.html");
   });
 })();

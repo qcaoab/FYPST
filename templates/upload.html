@@ -45,23 +45,7 @@
 
 <body>
     <div class="menu-container">
-        <div class="menu">
-            <div class="menu-table flex-row-space-between">
-                <div class="logo flex-row-center">
-                    <a href="{{url_for('empty')}}">Style Transfer</a>
-                </div>
-                <a class="menu-button" tabindex="0" href="javascript:void(0)">
-                <img src="{{url_for('static', filename = 'img/menu.png')}}">
-                </a>
-                <div class="menu-items flex-row-center flex-item">
-                    <a href="{{url_for('empty')}}" class="menu-overview">Overview</a>
-                    <a href="{{url_for('gallary')}}" class="menu-gallary">Gallary</a>
-                    <a href="{{url_for('upload')}}" class="menu-upload">Upload</a>
-                    
-                    <a href="https://github.com/qcaoab/FYPST">GitHub</a>
-                </div>
-            </div>
-        </div>
+        {% include "menu.html" %}
     </div>
 
     <div class="content-container">
