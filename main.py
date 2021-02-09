@@ -22,8 +22,8 @@ def home():
 def empty():
     return render_template('empty.html')
 
-@app.route('/upload',methods=['GET','POST'])
-def upload():
+@app.route('/upload')
+def render():
     return render_template('upload.html')
 
 @app.route('/gallary',methods=['GET','POST'])
@@ -34,13 +34,15 @@ def gallary():
 def select():
     select = request.form.get("dropdown-large")
     return render_template('upload.html', select=select)
-    
-def upload_image():
 
+@app.route('/upload/<filename>', methods=['GET','POST'])
+def upload_image():
+            
     if 'file' not in request.files:
         flash('No file part')
         return redirect(request.url)
     file = request.files['file']
+    
     if file.filename == '':
         flash('No image selected for uploading')
         return redirect(request.url)
