@@ -21,11 +21,11 @@ python main.py
 ## TODO
 - [x] html and css skeleton
 - [ ] text and pics editing
+- [x] nn ready to use
 - [x] open html in flask
 - [ ] handle selections in flask
 - [ ] upload and download pics
-- [ ] pass pic in nn via flask
-- [x] nn ready to use
+- [ ] pass pic through nn via flask
 - [ ] ......
 
 
