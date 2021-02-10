@@ -2,6 +2,6 @@
   "use strict";
 
   $(function () {
-    $(".menu-container").load(this.href+ "../../templates/menu.html");
+    $(".menu-container").load("{{url_for(filename = 'menu.html')}}");
   });
 })();

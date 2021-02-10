@@ -20,6 +20,7 @@
     <script src="{{url_for('static', filename = 'js/menu.js')}}"></script>
     <script src="{{url_for('static', filename = 'js/widgets.js')}}"></script>
     <script src="{{url_for('static', filename = 'js/custom.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/upload.js') }}"></script>
     <style>
         .menu-overview {
         color: rgb(255, 255, 255) !important;
@@ -56,13 +57,17 @@
                     <div class="flex-item flex-column">
                         <h2 class="add-top-margin">Transfer to our styles</h2>
                         <hr>
+                        
                         <form method="post" action="/" enctype="multipart/form-data">
 
                             <dl>
                                 <p>
-                                    <input type="file" name="file" autocomplete="off" required>
+                                    <input type="file" name="file" autocomplete="off" required onchange ="readURL(this);">
                                 </p>
                             </dl>
+                            {% if filename is defined %}
+                                <img id=1 src="{{url_for('static', filename='pics/' + filename)}}" alt="your image" />
+                            {%endif%}
                             <p>
                                 <input type="submit" value="Submit">
                             </p>
@@ -71,7 +76,7 @@
                             Select from our privided styles below:
                         </p>
                         <div class="control-group">
-
+                        <!-------------------------selector added here--------------------------->
                             <div class="custom-dropdown stretch-on-mobile large" id="custom-dropdown-large">
                                 <a tabindex="0" href="javascript:void(0)"><span></span></a>
                                 <div></div>
@@ -180,11 +185,7 @@
                             <p id="share-url-copy-prompt">The share link is copied.</p>
                         </div>
                     </div>
-                </div>
-                <!-------------------------------------------------------------------------------------------->
-
-
-                    <div>
+                    <div class="flex-item flex-column">
 
                         <h2 class="add-top-margin">Images and Image Button</h2>
                         <hr>
@@ -205,7 +206,10 @@
                         </div>
                     </div>
                 </div>
+                <!-------------------------------------------------------------------------------------------->
 
+
+                   
             </div>
         </div>
     </div>

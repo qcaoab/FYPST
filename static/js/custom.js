@@ -126,7 +126,7 @@
 
     // Create the share button and dialog
     createShareButtonAndDialog();
-
+    //-----------------put the example pictures here------------------------------//
     // Create the gallery
     var $gallery = $(".gallery");
     // In practice, these images urls may come from your server via http ajax requests.
