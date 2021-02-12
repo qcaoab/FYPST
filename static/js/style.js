@@ -1,21 +1,18 @@
-function getParameterByName(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
+function getUrlParameter(sParam)
+{
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('/');
+    for (var i = 0; i < sURLVariables.length; i++) 
+    {
+      
+        //var sParameterName = sURLVariables[i].split('/');
+        //for (var j = 0; j < sURLVariables.length; j++) 
+            if (sURLVariables[i] == sParam) 
+            {
+                return sURLVariables[i+1];
+            }
+           
+    }
+    return 'nothing'
 }
-// Give the parameter a variable name
-var stylename = getParameterByName('dc');
-
-document.getElementById("stylename").innerHTML = stylename
-    $(document).ready(function() {
-
-    // Check if the URL parameter is apples
-   
-    $('#stylename').show();
-    
-    
-});
+  

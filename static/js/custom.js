@@ -130,13 +130,13 @@
     // Create the gallery
     var $gallery = $(".gallery");
     // In practice, these images urls may come from your server via http ajax requests.
-    for (var i = 0; i < 8; i++) {
-      var item = "<a href=\"javascript:void(0)\" class=\"flex-column\">" +
-        "<img src=\"static\/pics\/1.jpg\">" +
-        "<div>JS Vangogh</div>" +
-        "</a>";
-      $gallery.append($(item));
-    }
+    //for (var i = 0; i < 8; i++) {
+     // var item = "<a href=\"javascript:void(0)\" class=\"flex-column\">" +
+       // "<img src=\"static\/img\/dummay-img.png\">" +
+       // "<div>JS caption</div>" +
+       // "</a>";
+     // $gallery.append($(item));
+    //}
 
     // Create custom tabss
     widgets.createCustomTab({

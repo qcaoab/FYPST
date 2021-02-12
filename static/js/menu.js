@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  $(function () {
-    $(".menu-container").load("menu.html");
+ $(function () {
+  //  $(".menu-container").load("menu.html");
   });
 })();
