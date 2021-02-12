@@ -130,13 +130,23 @@
     // Create the gallery
     var $gallery = $(".gallery");
     // In practice, these images urls may come from your server via http ajax requests.
-    for (var i = 0; i < 8; i++) {
+    for (var i = 1; i < 9; i++) {
+      var type = 'A'
+      var num = parseInt((i+1)/2)
+      if (i%2 ==1){
+          type = 'B'
+      }
+      var folder = "/satic/pics/gallery/"
+      var id = genre +'/' + num + type
+      var name = folder + id + ".png"
       var item = "<a href=\"javascript:void(0)\" class=\"flex-column\">" +
-        "<img src= \"static\/img\/dummay-img.png\">" 
-        "<div>JS caption</div>" +
+        "<img src=" + name +">"
+        "<div>"+ id + "</div>" +
         "</a>";
       $gallery.append($(item));
     }
+    window.location.href = url;
+    
 
     // Create custom tabss
     widgets.createCustomTab({
