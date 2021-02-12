@@ -16,6 +16,7 @@ Project in progress
 ### Dataset
 
 ## How to use
+at home directory
 python main.py
 
 ## TODO
