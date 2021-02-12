@@ -37,9 +37,9 @@ def home():
 def empty():
     return render_template('empty.html')
 
-@app.route('/gallary',methods=['GET','POST'])
-def gallary():
-    return render_template('gallary.html')
+@app.route('/gallery',methods=['GET','POST'])
+def gallery():
+    return render_template('gallery.html')
 '''
 @app.route('/upload')
 def upload():
