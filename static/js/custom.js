@@ -132,8 +132,8 @@
     // In practice, these images urls may come from your server via http ajax requests.
     for (var i = 0; i < 8; i++) {
       var item = "<a href=\"javascript:void(0)\" class=\"flex-column\">" +
-        "<img src=\"static\/img\/dummay-img.png\">" +
-        "<div>JS Image Caption</div>" +
+        "<img src=\"static\/img\/vangogh.jpg\">" +
+        "<div>JS Vangogh</div>" +
         "</a>";
       $gallery.append($(item));
     }
