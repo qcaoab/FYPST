@@ -7,10 +7,10 @@ function getUrlParameter(sParam)
       
         //var sParameterName = sURLVariables[i].split('/');
         //for (var j = 0; j < sURLVariables.length; j++) 
-            if (sURLVariables[i] == sParam) 
-            {
-                return sURLVariables[i+1];
-            }
+        if (sURLVariables[i] == sParam) 
+        {
+            return sURLVariables[i+1];
+        }
            
     }
     return 'nothing'
