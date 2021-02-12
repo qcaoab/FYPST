@@ -20,7 +20,8 @@
     <script src="{{url_for('static', filename = 'js/menu.js')}}"></script>
     <script src="{{url_for('static', filename = 'js/widgets.js')}}"></script>
     <script src="{{url_for('static', filename = 'js/custom.js')}}"></script>
-
+    <script src="{{url_for('static', filename = 'js/style.js')}}"></script>
+    
 </head>
 
 <body>
@@ -39,8 +40,8 @@
         </div>
     </div>
     <div class="gallery">
-
-        <a href="javascript:void(0)" class="flex-column"><img src="{{url_for('static', filename ='pics/vangogh.jpg')}}">
+        
+        <a href="{{url_for('style',stylename = 'vangogh')}}" class="flex-column"><img src="{{url_for('static', filename ='pics/vangogh.jpg')}}">
             <div>Vincent van Gogh's Collection</div>
         </a>
         <a href="javascript:void(0)" class="flex-column"><img src="{{url_for('static', filename ='pics/monet.jpg')}}">

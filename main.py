@@ -45,6 +45,9 @@ def gallery():
 def upload():
     return render_template('upload.html')
 '''
+@app.route('/style/<stylename>')
+def style(stylename):
+    return render_template('style.html', stylename = stylename)
 
 @app.route('/upload', methods=['GET','POST'])
 def upload():
