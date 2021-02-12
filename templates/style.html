@@ -19,7 +19,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="{{url_for('static', filename = 'js/menu.js')}}"></script>
     <script src="{{url_for('static', filename = 'js/widgets.js')}}"></script>
-    <script src="{{url_for('static', filename = 'js/custom.js')}}"></script>
+    
     <script src="{{url_for('static', filename = 'js/style.js')}}"></script>
     
 </head>
@@ -44,9 +44,25 @@
     <div class="gallery">
         <script type="text/javascript">
             var genre = '{{ genre }}'
+            var $gallery = $(".gallery");
+            for (var i = 1; i < 9; i++) {
+                var type = 'A'
+                var num = parseInt((i+1)/2)
+                if (i%2 ==1){
+                    type = 'B'
+                }
+                var folder = "/static/pics/gallery/"
+                var id = genre +'/' + num + type
+                var name = folder + id + ".png"
+                var item = "<a href=\"javascript:void(0)\" class=\"flex-column\">" +
+                    "<img src=" + name +">"
+                    "<div>"+ id + "</div>" +
+                    "</a>";
+                $gallery.append($(item));
+                }
             
         </script>
-        <script type="text/javascript" src="custom.js"></script>
+        
         
         
           
