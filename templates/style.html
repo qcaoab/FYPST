@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Style Transfer</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="{{url_for('static', filename ='css/frame.css')}}" media="screen" rel="stylesheet" type="text/css" />
+    <link href="{{url_for('static', filename ='css/controls.css')}}" media="screen" rel="stylesheet" type="text/css" />
+    <link href="{{url_for('static', filename ='css/frame.css')}}" media="screen" rel="stylesheet" type="text/css" />
+    <link href="{{url_for('static', filename ='css/custom.css')}}" media="screen" rel="stylesheet" type="text/css" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="{{url_for('static', filename = 'js/menu.js')}}"></script>
+    <script src="{{url_for('static', filename = 'js/widgets.js')}}"></script>
+    <script src="{{url_for('static', filename = 'js/custom.js')}}"></script>
+    
+</head>
+
+<body>
+    <div class="menu-container">
+        {% include "menu.html" %}
+    </div>
+    <div class="flex-row">
+        <div class="flex-item flex-column">
+            <h2 class="add-top-margin">Gallery (Generated Using JavaScript)</h2>
+            <hr>
+            <p class="text">
+                This site provides users with several pre-loaded style reference images, such as famous 
+                paintings created by Vincent Van Gogh and Claude Monet, from which users can choose with 
+                their own preferences.
+            </p>
+        </div>
+    </div>
+    <div class="gallery">
+        
+        <a href="javascript:void(0)" class="flex-column"><img src="{{url_for('static', filename ='pics/vangogh.jpg')}}">
+            <div>Vincent van Gogh's Collection</div>
+        </a>
+        <a href="javascript:void(0)" class="flex-column"><img src="{{url_for('static', filename ='pics/monet.jpg')}}">
+            <div>Claude Monet's Collection</div>
+        </a>
+        <a href="javascript:void(0)" class="flex-column"><img src="{{url_for('static', filename ='pics/cezanne.jpg')}}">
+            <div>Paul Cézanne's Collection</div>
+        </a>
+        <a href="javascript:void(0)" class="flex-column"><img src="{{url_for('static', filename ='pics/ukiyoe.jpg')}}">
+            <div>Ukiyoe's Collection</div>
+        </a>
+        <a href="javascript:void(0)" class="flex-column"><img src="{{url_for('static', filename ='pics/afremov.jpg')}}">
+            <div>Leonid Afremov's Collection</div>
+        </a>
+        <a href="javascript:void(0)" class="flex-column"><img src="{{url_for('static', filename ='pics/william.jpg')}}">
+            <div>William Truner's Collection</div>
+        </a>
+        <a href="javascript:void(0)" class="flex-column"><img src="{{url_for('static', filename ='pics/albrecht.jpg')}}">
+            <div>Albrecht Dürer's Collection</div>
+        </a>
+        <a href="javascript:void(0)" class="flex-column"><img src="{{url_for('static', filename ='pics/edgar.jpg')}}">
+            <div>Edgar Degas's Collection</div>
+        </a>
+          
+    </div>
+    <div class="flex-row">
+        <div class="flex-item flex-column">
+            <p class="text">
+                Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel
+                augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget
+                condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit
+                vel, luctus pulvinar, hendrerit id, lorem.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
