@@ -32,12 +32,13 @@
         <div class="flex-item flex-column">
             <h2 class="add-top-margin">
                 
-                The Style of {{genre}}
+                The Style of <span style="font-style: italic !important;">{{genre}}</span>
+           
                    
             </h2>
             <hr>
             <p class="text">
-                Here are some examples below with the style of {{genre}}
+                Here are some paired before & after examples below with the style of {{genre}} 
             </p>
         </div>
     </div>
@@ -46,10 +47,10 @@
             var genre = '{{ genre }}'
             var $gallery = $(".gallery");
             for (var i = 1; i < 9; i++) {
-                var type = 'A'
+                var type = 'B'
                 var num = parseInt((i+1)/2)
                 if (i%2 ==1){
-                    type = 'B'
+                    type = 'A'
                 }
                 var folder = "/static/pics/gallery/"
                 var id = genre +'/' + num + type

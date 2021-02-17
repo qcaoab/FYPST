@@ -1,3 +1,6 @@
+
+
+//select file to be uploaded
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -36,3 +39,9 @@ $('.fileImage').bind('change', handleFileSelect, false);
 
         return true;   
 }
+
+
+var test = document.getElementById("dropdown_selection");
+var testValue = test.options[test.selectedIndex].value;
+document.getElementById('message').innerHTML=testValue;
+

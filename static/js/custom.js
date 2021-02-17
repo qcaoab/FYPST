@@ -42,31 +42,23 @@
       $share_dialog.dialog("open");
     });
   }
-
+  
   function init() {
     // Create the widget object
     widgets = new edaplotjs.Widgets();
 
-    // Set custom dropdown
-    widgets.setCustomDropdown($("#custom-dropdown"), {
-      items: ["Van Gogh", "Monet", "Impressionism", "....", "Item 5"],
-      //init_index: 0, // You can use this parameter to set the initial item for displaying
-      init_text: "Dropdown Menu (With JavaScript)",
-      on_item_click_callback: function ($ui) {
-        console.log($ui.text());
-      }
-    });
+    
     widgets.setCustomDropdown($("dropdown-large"), {
-      items: ["select","Van Gogh", "Monet", "Impressionism", "blablabla", "Item 5"],
-      //init_index: 0, // You can use this parameter to set the initial item for displaying
-      init_text: "Large Dropdown Menu (With JavaScript)",
+      items: ["select","Van Gogh", "Monet", "Impressionism", "blablabla"],
+      init_index: 0, // You can use this parameter to set the initial item for displaying
+      init_text: "Genre Selector",
       on_item_click_callback: function ($ui) {
         console.log($ui.text());
       }
     });
 
-    // Set custom radio
-    $("input:radio[name='playback-speed']").on("change", function () {
+    // Set custom level
+    $("input:radio[name='transfer-level']").on("change", function () {
       console.log($(this).val());
     });
 
@@ -130,22 +122,7 @@
     // Create the gallery
     var $gallery = $(".gallery");
     // In practice, these images urls may come from your server via http ajax requests.
-    for (var i = 1; i < 9; i++) {
-      var type = 'A'
-      var num = parseInt((i+1)/2)
-      if (i%2 ==1){
-          type = 'B'
-      }
-      var folder = "/satic/pics/gallery/"
-      var id = genre +'/' + num + type
-      var name = folder + id + ".png"
-      var item = "<a href=\"javascript:void(0)\" class=\"flex-column\">" +
-        "<img src=" + name +">"
-        "<div>"+ id + "</div>" +
-        "</a>";
-      $gallery.append($(item));
-    }
-    window.location.href = url;
+    
     
 
     // Create custom tabss

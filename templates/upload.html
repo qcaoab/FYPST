@@ -58,9 +58,29 @@
                         </p>
                         <div class="control-group">
                         <!-------------------------selector added here--------------------------->
+                            <div class="custom-dropdown stretch-on-mobile">
+                                <a tabindex="0" href="javascript:void(0)"><span>Dropdown Menu (No JavaScript)</span></a>
+                                <select id = "dropdown_selection" name = "dropdown_selection">
+                                    
+                                    <option href="javascript:void(0)">Item 1</option>
+                                    <option href="javascript:void(0)">Item 2</option>
+                                    <option href="javascript:void(0)">Item 3</option>
+                                    <option href="javascript:void(0)">Item 4</option>
+                                    
+                                </select>
+                                <p id='message'></p>
+                            </div>
                             <div class="custom-dropdown stretch-on-mobile large" id="custom-dropdown-large">
-                                <a tabindex="0" href="{{url_for('style', genre = selected_item)}}"><span></span></a>
-                                <div></div>
+                                <a tabindex="0" href="javascript:void(0)"><span>Genre Selector</span></a>
+                                <div>
+                                    
+                                    <a href="javascript:void(0)">Item 1</a>
+                                    <a href="javascript:void(0)">Item 2</a>
+                                    <a href="javascript:void(0)">Item 3</a>
+                                    <a href="javascript:void(0)">Item 4</a>
+                                    <a href="javascript:void(0)">Item 5</a>
+                                  
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -100,13 +120,32 @@
                                 <input type="submit" value="Submit">
                             </p>
                         </form>
+                        <p class="text">
+                            Please select the level of preservation (0-100%)
+                        </p>
+                        <div class="slidecontainer">
+                            <input type="range" min="0" max="100" value="50" class="slider" id="myRange" >
+                            <p>Value: <span id="demo"></span></p>
+                        </div>
+                        <script>
+                           
+                            var slider = document.getElementById("myRange");
+                            var output = document.getElementById("demo");
+                            output.innerHTML = slider.value; // Display the default slider value
+
+                            // Update the current slider value (each time you drag the slider handle)
+                            slider.oninput = function() {
+                            output.innerHTML = this.value;
+
+                            }
+                        </script>
 
                     </div>
                 </div>
                 <!-------------------------------------------------------------------------------------------->
                 <div class="flex-row">
                     <div class="flex-item flex-column">
-                        <h2 class="add-top-margin">Radio Button</h2>
+                        <h2 class="add-top-margin">Level of Preservation</h2>
                         <hr>
                         <p class="text">
                             
@@ -160,23 +199,7 @@
                             <p id="share-url-copy-prompt">The share link is copied.</p>
                         </div>
                     </div>
-                    <div class="flex-item flex-column">
-
-                        <h2 class="add-top-margin">Images and Image Button</h2>
-                        <hr>
-                        <p class="text">
-                            
-                        </p>
-                    </div>
-
-                    <div class="flex-item flex-column">
-                        <div class="control-group">
-                            <button class="custom-button-flat"><img src="{{url_for('static', filename = 'img/home.png')}}"></button>
-                            <button class="custom-button-flat" disabled><img src="{{url_for('static', filename = 'img/home.png')}}"></button>
-                            <button class="custom-button-flat small"><img src="{{url_for('static', filename = 'img/home.png')}}"></button>
-                            <button class="custom-button-flat large"><img src="{{url_for('static', filename = 'img/home.png')}}"></button>
-                        </div>
-                    </div>
+                    
                 </div>
                 <!-------------------------------------------------------------------------------------------->
 
