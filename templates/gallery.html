@@ -19,9 +19,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="{{url_for('static', filename = 'js/menu.js')}}"></script>
     <script src="{{url_for('static', filename = 'js/widgets.js')}}"></script>
-    
+
     <script src="{{url_for('static', filename = 'js/style.js')}}"></script>
-    
+
 </head>
 
 <body>
@@ -33,14 +33,20 @@
             <h2 class="add-top-margin">Gallery</h2>
             <hr>
             <p class="text">
-                This site provides users with several pre-loaded style reference images, such as famous
-                paintings created by Vincent Van Gogh and Claude Monet, from which users can choose with
-                their own preferences.
+                To provide users with flexible and convenient experiences, we designed this site to
+                present users with several pre-loaded style reference images, such as famous
+                paintings created by Vincent Van Gogh and Claude Monet.
             </p>
+            <p class="text">
+                After clicking into one of those collections, a detailed page with sample works of
+                this collection will be shown. There will also be some demo results of style
+                transfer for this collection. The original image and transferred image will appear in pairs.
+            </p>
+
         </div>
     </div>
     <div class="gallery">
-        
+
         <a href="{{url_for('style',genre = 'vangogh')}}" class="flex-column"><img src="{{url_for('static', filename ='pics/vangogh.jpg')}}">
             <div>Vincent van Gogh's Collection</div>
         </a>
