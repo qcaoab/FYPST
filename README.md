@@ -12,8 +12,9 @@ Project in progress
 - css, js and img(logos) in static
 - put other images in static/pics
 ### ML part
-- arbitrary by cnn (adapted from https://github.com/naoto0804/pytorch-AdaIN)
-- fixed by cycleGAN ( adapted from https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix)
+- AdaIN-Style (adapted from https://github.com/naoto0804/pytorch-AdaIN)
+  (original implentation and explanation https://github.com/xunhuang1995/AdaIN-style) 
+- CycleGAN ( adapted from https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix)
 ### Dataset
 
 ## How to use
