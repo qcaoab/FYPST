@@ -33,55 +33,88 @@
     <div class="content-container">
         <div class="content">
             <div class="content-table flex-column"></div>
-                <!---------dropdown----------------------------------------------------------------------------------->
+               
+                <!------------------------------------------------------------------------------------->
                 <div class="flex-row">
                     <div class="flex-item flex-column">
-                        <h2 class="add-top-margin">Transfer to our styles</h2>
+                        <h2 class="add-top-margin">Transfer to your own uploaded style</h2>
                         <hr>
-                        
+                        <p class="text">
+                            Please upload the photo or image whose style is to be transferred below:
+                        </p>
                         <form method="post" action="/" enctype="multipart/form-data">
 
                             <dl>
                                 <p>
-                                    <input type="file" name="file" autocomplete="off" required onchange ="readURL(this);">
+                                    <input type="file" name="file" autocomplete="off" required>
                                 </p>
                             </dl>
-                            {% if filename is defined %}
-                                <img id=1 src="{{url_for('static', filename='pics/' + filename)}}" alt="your image" />
-                            {%endif%}
+                            <p>
+                                <input type="submit" value="Submit">
+                            </p>
+                        </form>
+
+                        <p class="text">
+                            Please upload the your own style image below:
+                        </p>
+
+                        <form method="post" action="/" enctype="multipart/form-data">
+
+                            <dl>
+                                <p>
+                                    <input type="file" name="file" autocomplete="off" required>
+                                </p>
+                            </dl>
                             <p>
                                 <input type="submit" value="Submit">
                             </p>
                         </form>
                         <p class="text">
-                            Select from our privided styles below:
+                            Please select the level of preservation (0-100%)
                         </p>
+                        <div class="slidecontainer">
+                            <input type="range" min="0" max="100" value="50" class="slider" id="myRange" >
+                            <p>Value: <span id="demo"></span></p>
+                        </div>
+                        <script>
+                           
+                            var slider = document.getElementById("myRange");
+                            var output = document.getElementById("demo");
+                            output.innerHTML = slider.value; // Display the default slider value
+
+                            // Update the current slider value (each time you drag the slider handle)
+                            slider.oninput = function() {
+                            output.innerHTML = this.value;
+
+                            }
+                        </script>
+
                     </div>
-                    <div class="flex-item flex-column"> 
+                </div>
+                <!-------------------------------------------------------------------------------------------->
+                <div class="flex-row">
+                    <div class="flex-item flex-column">
+                        <h2 class="add-top-margin">Level of Preservation</h2>
+                        <hr>
+                        <p class="text">
+                            
+                        </p>
                         <div class="control-group">
-                        <!-------------------------selector added here--------------------------->
-                            <div class="custom-dropdown stretch-on-mobile">
-                                <a tabindex="0" href="javascript:void(0)"><span>Dropdown Menu</span></a>
-                                <select id = "dropdown_selection" name = "dropdown_selection">
-                                    <option> ---Choose style--- </option>  
-                                    <option href="javascript:void(0)">Item 1</option>
-                                    <option href="javascript:void(0)">Item 2</option>
-                                    <option href="javascript:void(0)">Item 3</option>
-                                    <option href="javascript:void(0)">Item 4</option>
-                                    
-                                </select>
-                                <p id='message'></p>
+                            <div class="custom-radio custom-radio-left">
+                                <input type="radio" name="playback-speed" value="slow" id="speed-slow">
+                                <label for="speed-slow">Slow</label>
                             </div>
-                            <div class="custom-dropdown stretch-on-mobile large" id="custom-dropdown-large">
-                                <a tabindex="0" href="javascript:void(0)"><span></span></a>
-                                <div>
-                                  
-                                </div>
+                            <div class="custom-radio custom-radio-middle">
+                                <input type="radio" name="playback-speed" value="medium" id="speed-medium" checked>
+                                <label for="speed-medium">Medium</label>
+                            </div>
+                            <div class="custom-radio custom-radio-right">
+                                <input type="radio" name="playback-speed" value="fast" id="speed-fast">
+                                <label for="speed-fast">Fast</label>
                             </div>
                         </div>
                     </div>
                 </div>
-               
                 <!-------------------------------------------------------------------------------------------->
                 <div class="flex-row">
                     <div class="flex-item flex-column">

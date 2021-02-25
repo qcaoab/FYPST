@@ -28,51 +28,58 @@
     <div class="menu-container">
         {% include "menu.html" %}
     </div>
-    <div class="flex-row">
-        <div class="flex-item flex-column">
-            <h2 class="add-top-margin">Gallery</h2>
-            <hr>
-            <p class="text">
-                To provide users with flexible and convenient experiences, we designed this site to
-                present users with several pre-loaded style reference images, such as famous
-                paintings created by Vincent Van Gogh and Claude Monet.
-            </p>
-            <p class="text">
-                After clicking into one of those collections, a detailed page with sample works of
-                this collection will be shown. There will also be some demo results of style
-                transfer for this collection. The original image and transferred image will appear in pairs.
-            </p>
+    <div class="content-container">
+        <div class="content">
+            <div class="content-table flex-column"></div>
+                <div class="flex-row">
+                    <div class="flex-item flex-column">
+                        <h2 class="add-top-margin">Gallery</h2>
+                        <hr>
+                        <p class="text">
+                            To provide users with flexible and convenient experiences, we designed this site to
+                            present users with several pre-loaded style reference images, such as famous
+                            paintings created by Vincent Van Gogh and Claude Monet.
+                        </p>
+                        <p class="text">
+                            After clicking into one of those collections, a detailed page with sample works of
+                            this collection will be shown. There will also be some demo results of style
+                            transfer for this collection. The original image and transferred image will appear in pairs.
+                        </p>
 
+                    </div>
+                </div>
+                <div class="gallery">
+
+                    <a href="{{url_for('style',genre = 'vangogh')}}" class="flex-column"><img src="{{url_for('static', filename ='pics/vangogh.jpg')}}">
+                        <div>Vincent van Gogh's Collection</div>
+                    </a>
+                    <a href="{{url_for('style',genre = 'monet')}}" class="flex-column"><img src="{{url_for('static', filename ='pics/monet.jpg')}}">
+                        <div>Claude Monet's Collection</div>
+                    </a>
+                    <a href="{{url_for('style',genre = 'cezanne')}}" class="flex-column"><img src="{{url_for('static', filename ='pics/cezanne.jpg')}}">
+                        <div>Paul Cézanne's Collection</div>
+                    </a>
+                    <a href="{{url_for('style',genre = 'ukiyoe')}}" class="flex-column"><img src="{{url_for('static', filename ='pics/ukiyoe.jpg')}}">
+                        <div>Ukiyoe's Collection</div>
+                    </a>
+                    <a href="{{url_for('style',genre = 'afremov')}}" class="flex-column"><img src="{{url_for('static', filename ='pics/afremov.jpg')}}">
+                        <div>Leonid Afremov's Collection</div>
+                    </a>
+                    <a href="{{url_for('style',genre = 'william')}}" class="flex-column"><img src="{{url_for('static', filename ='pics/william.jpg')}}">
+                        <div>William Truner's Collection</div>
+                    </a>
+                    <a href="{{url_for('style',genre = 'akbrecht')}}"class="flex-column"><img src="{{url_for('static', filename ='pics/albrecht.jpg')}}">
+                        <div>Albrecht Dürer's Collection</div>
+                    </a>
+                    <a href="{{url_for('style',genre = 'edgar')}}" class="flex-column"><img src="{{url_for('static', filename ='pics/edgar.jpg')}}">
+                        <div>Edgar Degas's Collection</div>
+                    </a>
+
+                </div>
+            </div>
         </div>
     </div>
-    <div class="gallery">
-
-        <a href="{{url_for('style',genre = 'vangogh')}}" class="flex-column"><img src="{{url_for('static', filename ='pics/vangogh.jpg')}}">
-            <div>Vincent van Gogh's Collection</div>
-        </a>
-        <a href="{{url_for('style',genre = 'monet')}}" class="flex-column"><img src="{{url_for('static', filename ='pics/monet.jpg')}}">
-            <div>Claude Monet's Collection</div>
-        </a>
-        <a href="{{url_for('style',genre = 'cezanne')}}" class="flex-column"><img src="{{url_for('static', filename ='pics/cezanne.jpg')}}">
-            <div>Paul Cézanne's Collection</div>
-        </a>
-        <a href="{{url_for('style',genre = 'ukiyoe')}}" class="flex-column"><img src="{{url_for('static', filename ='pics/ukiyoe.jpg')}}">
-            <div>Ukiyoe's Collection</div>
-        </a>
-        <a href="{{url_for('style',genre = 'afremov')}}" class="flex-column"><img src="{{url_for('static', filename ='pics/afremov.jpg')}}">
-            <div>Leonid Afremov's Collection</div>
-        </a>
-        <a href="{{url_for('style',genre = 'william')}}" class="flex-column"><img src="{{url_for('static', filename ='pics/william.jpg')}}">
-            <div>William Truner's Collection</div>
-        </a>
-        <a href="{{url_for('style',genre = 'akbrecht')}}"class="flex-column"><img src="{{url_for('static', filename ='pics/albrecht.jpg')}}">
-            <div>Albrecht Dürer's Collection</div>
-        </a>
-        <a href="{{url_for('style',genre = 'edgar')}}" class="flex-column"><img src="{{url_for('static', filename ='pics/edgar.jpg')}}">
-            <div>Edgar Degas's Collection</div>
-        </a>
-
-    </div>
-
+  
+    
 </body>
 </html>

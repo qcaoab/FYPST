@@ -52,8 +52,8 @@ def style(genre):
 @app.route('/upload', methods=['GET','POST'])
 def upload():
     if request.method == 'POST':
-        item = request.form.get("dropdown-large")
-             
+        
+        
         if 'file' not in request.files:
             flash('No file part')
             return redirect(request.url)
@@ -64,11 +64,11 @@ def upload():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['./pics/upload/'], filename))
+            file.save(os.path.join(app.config['pics/upload/'], filename))
             print('upload_image filename: ' + filename)
             flash('Image successfully uploaded and displayed')
             #nn(item, filename)
-            return render_template('upload.html', filename) 
+            return file
         else:
             flash('Allowed image types are -> png, jpg, jpeg, gif')
     else:
@@ -78,6 +78,33 @@ def upload():
 def uploadpic(filename):
     return render_template('upload.html', pics=get_last_pics(), filename = pics.filename)
 '''
+@app.route('/upload2', methods=['GET','POST'])
+def upload2():
+    if request.method == 'POST':
+        
+        
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        
+        if file.filename == '':
+            flash('No image selected for uploading')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['pics/upload/'], filename))
+            print('upload_image filename: ' + filename)
+            flash('Image successfully uploaded and displayed')
+            #nn(item, filename)
+            return file
+        else:
+            flash('Allowed image types are -> png, jpg, jpeg, gif')
+    else:
+        return render_template('upload2.html')
+    
+    
+
 @app.route('/upload/show')
 def show_pic():
     filename = request.args.get('filename', '')
