@@ -51,6 +51,9 @@ def style(genre):
 
 @app.route('/upload', methods=['GET','POST'])
 def upload():
+    return render_template("upload.html")
+
+def create_upload():
     if request.method == 'POST':
         
         
@@ -68,7 +71,7 @@ def upload():
             print('upload_image filename: ' + filename)
             flash('Image successfully uploaded and displayed')
             #nn(item, filename)
-            return file
+            return render_template('upload.html', file = file)
         else:
             flash('Allowed image types are -> png, jpg, jpeg, gif')
     else:
@@ -80,26 +83,33 @@ def uploadpic(filename):
 '''
 @app.route('/upload2', methods=['GET','POST'])
 def upload2():
+    return render_template("upload2.html")
+def create2_upload():
     if request.method == 'POST':
-        
-        
+        print("start uploading ...")
+        '''
         if 'file' not in request.files:
             flash('No file part')
             return redirect(request.url)
-        file = request.files['file']
-        
+        '''
+        file = request.files['file1']
+        '''
         if file.filename == '':
             flash('No image selected for uploading')
             return redirect(request.url)
         if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['pics/upload/'], filename))
-            print('upload_image filename: ' + filename)
-            flash('Image successfully uploaded and displayed')
+        '''
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['static/pics/upload/'], filename))
+        print('upload_image filename: ' + filename)
+        flash('Image successfully uploaded and displayed')
             #nn(item, filename)
-            return file
+        
+        return render_template('upload.html', file = file)
+        '''
         else:
             flash('Allowed image types are -> png, jpg, jpeg, gif')
+        '''
     else:
         return render_template('upload2.html')
     
