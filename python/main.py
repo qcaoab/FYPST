@@ -48,6 +48,12 @@ def display_image(filename):
     print('display_image filename: ' + filename)
     return redirect(url_for('static', filename='../pic/uploads/' + filename), code=301)
 
+###################for testing
+@app.route('/upload-image', method=['GET','POST'])
+def upload_image():
+    return render_template("templates/upload_image.html")
+##########################
+
 if __name__ == "__main__":
     app.jinja_env.auto_reload = True
     app.config['TEMPLATES_AUTO_RELOAD'] = True

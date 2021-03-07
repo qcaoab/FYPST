@@ -129,6 +129,21 @@ def display_image(filename):
     print('display_image filename: ' + filename)
     return redirect(url_for('static', filename='../pic/uploads/' + filename), code=301)
 
+###################for testing
+
+@app.route('/upload-image', methods=['GET','POST'])
+def upload_image():
+    if request.method == "POST":
+
+        if request.files:
+            image = request.files["image"]
+            image.save(os.path.join(app.config['static/pics/upload/'], image.filename))
+            print("image saved")
+            return redirect(request.url)
+    return render_template("upload_image.html")
+
+##########################
+
 if __name__ == "__main__":
     app.jinja_env.auto_reload = True
     app.config['TEMPLATES_AUTO_RELOAD'] = True
