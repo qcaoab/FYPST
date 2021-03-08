@@ -131,7 +131,7 @@ def display_image(filename):
 
 ###################for testing
 
-app.config["IMAGE_UPLOADS"] = "/FYPST/static/pics/upload"
+app.config["IMAGE_UPLOADS"] = "/FYPST/static/img/uploads"
 
 @app.route('/upload-image', methods=['GET','POST'])
 def upload_image():
