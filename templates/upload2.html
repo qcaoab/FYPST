@@ -21,7 +21,7 @@
     <script src="{{url_for('static', filename = 'js/widgets.js')}}"></script>
     <script src="{{url_for('static', filename = 'js/custom.js')}}"></script>
     <script src="{{ url_for('static', filename='js/upload.js') }}"></script>
-    
+  
     
 </head>
 
@@ -42,12 +42,22 @@
                         <p class="text">
                             Please upload the photo or image whose style is to be transferred below:
                         </p>
-                        <form method="post" action="/" enctype="multipart/form-data">
-
+                        <form method="post" action="/upload2" enctype="multipart/form-data">
+                            
                             <dl>
-                                <p>
-                                    <input type="file"  class="custom-file-input" name="file1" id="file1" >
-                                </p>
+                                
+                                <input type="file" accept="image/*" onchange="loadFile(event);" class="custom-file-input" name="file1" id="imgInp"  />
+                                
+                                <img id = "imgInp" width="100px" height="100px"/>
+                                <script>
+                                    var loadFile = function(event) {
+                                      var imgInp = document.getElementById('imgInp');
+                                      imgInp.src = URL.createObjectURL(event.target.files[0]);
+                                      imgInp.onload = function() {
+                                        URL.revokeObjectURL(imgInp.src) // free memory
+                                      }
+                                    };
+                                  </script>
                             </dl>
                             <p>
                                 <input type="submit" value="Submit1">

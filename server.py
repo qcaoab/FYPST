@@ -94,21 +94,21 @@ def upload2():
             flash('No file part')
             return redirect(request.url)
         '''
-        if request.files:
-            file = request.files['file1']
-            '''
-            if file.filename == '':
-                flash('No image selected for uploading')
-                return redirect(request.url)
-            if file and allowed_file(file.filename):
-            '''
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config["IMAGE_UPLOADS"], filename))
-            print('upload_image filename: ' + filename)
-            flash('Image successfully uploaded and displayed')
-                #nn(item, filename)
+        
+        file = request.files['file1']
+        '''
+        if file.filename == '':
+            flash('No image selected for uploading')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+        '''
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config["IMAGE_UPLOADS"], filename))
+        print('upload_image filename: ' + filename)
+        
+            #nn(item, filename)
 
-        return redirect(request.url)
+        return render_template('upload2.html', file1 = file)
         '''
         else:
             flash('Allowed image types are -> png, jpg, jpeg, gif')
