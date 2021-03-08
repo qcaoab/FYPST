@@ -27,7 +27,7 @@ def get_last_pics():
     except:
         return []
 
-	
+
 @app.route('/')
 def home():
     return render_template('empty.html')
@@ -55,13 +55,13 @@ def upload():
 
 def create_upload():
     if request.method == 'POST':
-        
-        
+
+
         if 'file' not in request.files:
             flash('No file part')
             return redirect(request.url)
         file = request.files['file']
-        
+
         if file.filename == '':
             flash('No image selected for uploading')
             return redirect(request.url)
@@ -104,7 +104,7 @@ def create2_upload():
         print('upload_image filename: ' + filename)
         flash('Image successfully uploaded and displayed')
             #nn(item, filename)
-        
+
         return render_template('upload.html', file = file)
         '''
         else:
@@ -112,8 +112,8 @@ def create2_upload():
         '''
     else:
         return render_template('upload2.html')
-    
-    
+
+
 
 @app.route('/upload/show')
 def show_pic():
@@ -121,7 +121,7 @@ def show_pic():
     t = (filename,)
     cur = g.db.execute('select label from pics where filename=?', t)
     label = cur.fetchone()[0]
-    
+
     return render_template('upload.html', filename=filename, label=label)
 
 @app.route('/display/<filename>')
@@ -131,7 +131,8 @@ def display_image(filename):
 
 ###################for testing
 
-app.config["IMAGE_UPLOADS"] = "/FYPST/static/img/uploads"
+#app.config["IMAGE_UPLOADS"] = "/FYPST/static/img/uploads"
+app.config["IMAGE_UPLOADS"] = "static/img/uploads"
 
 @app.route('/upload-image', methods=['GET','POST'])
 def upload_image():
@@ -150,4 +151,3 @@ if __name__ == "__main__":
     app.jinja_env.auto_reload = True
     app.config['TEMPLATES_AUTO_RELOAD'] = True
     app.run(debug=True)
-    
