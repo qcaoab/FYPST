@@ -12,8 +12,11 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 #location = 'C:/Users/qlcql/Documents/GitHub/FYPST'
 
 app = Flask(__name__,template_folder='templates')
+#app.config["IMAGE_UPLOADS"] = "/FYPST/static/img/uploads"
+app.config["IMAGE_UPLOADS"] = "static/pics/uploads"
 
 app.static_folder = 'static'
+
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
@@ -67,7 +70,7 @@ def create_upload():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['pics/upload/'], filename))
+            file.save(os.path.join(app.config['pics/uploads/'], filename))
             print('upload_image filename: ' + filename)
             flash('Image successfully uploaded and displayed')
             #nn(item, filename)
@@ -83,8 +86,7 @@ def uploadpic(filename):
 '''
 @app.route('/upload2', methods=['GET','POST'])
 def upload2():
-    return render_template("upload2.html")
-def create2_upload():
+
     if request.method == 'POST':
         print("start uploading ...")
         '''
@@ -92,20 +94,21 @@ def create2_upload():
             flash('No file part')
             return redirect(request.url)
         '''
-        file = request.files['file1']
-        '''
-        if file.filename == '':
-            flash('No image selected for uploading')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-        '''
-        filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config['static/pics/upload/'], filename))
-        print('upload_image filename: ' + filename)
-        flash('Image successfully uploaded and displayed')
-            #nn(item, filename)
+        if request.files:
+            file = request.files['file1']
+            '''
+            if file.filename == '':
+                flash('No image selected for uploading')
+                return redirect(request.url)
+            if file and allowed_file(file.filename):
+            '''
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config["IMAGE_UPLOADS"], filename))
+            print('upload_image filename: ' + filename)
+            flash('Image successfully uploaded and displayed')
+                #nn(item, filename)
 
-        return render_template('upload.html', file = file)
+        return redirect(request.url)
         '''
         else:
             flash('Allowed image types are -> png, jpg, jpeg, gif')
@@ -127,12 +130,11 @@ def show_pic():
 @app.route('/display/<filename>')
 def display_image(filename):
     print('display_image filename: ' + filename)
-    return redirect(url_for('static', filename='../pic/uploads/' + filename), code=301)
+    return redirect(url_for('static', filename='../pics/uploads/' + filename), code=301)
 
 ###################for testing
 
-#app.config["IMAGE_UPLOADS"] = "/FYPST/static/img/uploads"
-app.config["IMAGE_UPLOADS"] = "static/img/uploads"
+#put the constant directory to the beginning
 
 @app.route('/upload-image', methods=['GET','POST'])
 def upload_image():
