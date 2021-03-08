@@ -131,13 +131,15 @@ def display_image(filename):
 
 ###################for testing
 
+app.config["IMAGE_UPLOADS"] = "D:/FYPST/static/pics/upload"
+
 @app.route('/upload-image', methods=['GET','POST'])
 def upload_image():
     if request.method == "POST":
 
         if request.files:
             image = request.files["image"]
-            image.save(os.path.join(app.config['static/pics/upload/'], image.filename))
+            image.save(os.path.join(app.config["IMAGE_UPLOADS"], image.filename))
             print("image saved")
             return redirect(request.url)
     return render_template("upload_image.html")
