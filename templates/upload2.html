@@ -20,7 +20,7 @@
     <script src="{{url_for('static', filename = 'js/menu.js')}}"></script>
     <script src="{{url_for('static', filename = 'js/widgets.js')}}"></script>
     <script src="{{url_for('static', filename = 'js/custom.js')}}"></script>
-    <script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+    
   
     
 </head>
@@ -42,41 +42,48 @@
                         <p class="text">
                             Please upload the photo or image whose style is to be transferred below:
                         </p>
-                        <form method="post" action="/upload2" enctype="multipart/form-data">
+                        <form method="Post" action="/upload2" enctype="multipart/form-data">
                             
-                            <dl>
-                                
-                                <input type="file" accept="image/*" onchange="loadFile(event);" class="custom-file-input" name="file1" id="imgInp"  />
-                                
-                                <img id = "imgInp" width="100px" height="100px"/>
-                                <script>
-                                    var loadFile = function(event) {
-                                      var imgInp = document.getElementById('imgInp');
-                                      imgInp.src = URL.createObjectURL(event.target.files[0]);
-                                      imgInp.onload = function() {
-                                        URL.revokeObjectURL(imgInp.src) // free memory
-                                      }
-                                    };
-                                  </script>
-                            </dl>
-                            <p>
-                                <input type="submit" value="Submit1">
-                            </p>
+                        <div class="custom-file">
+                            <input type="file" accept="image/*" onchange="loadFile(event)" name="file1"/>
+                            
+                            <img id = "imgInp1"  width="200px" height="200px"/>
+                            <script>
+                                var loadFile = function(event) {
+                                    var imgInp1 = document.getElementById('imgInp1');
+                                    imgInp1.src = URL.createObjectURL(event.target.files[0]);
+                                    imgInp1.onload = function() {
+                                    URL.revokeObjectURL(imgInp1.src) // free memory
+                                    }
+                                };
+                            </script>
+                        </div>
+        
+                           
                         </form>
 
                         <p class="text">
                             Please upload the your own style image below:
                         </p>
 
-                        <form method="post" action="/" enctype="multipart/form-data">
+                        <form method="post" action="/upload2" enctype="multipart/form-data">
 
-                            <dl>
-                                <p>
-                                    <input type="file"  name="file2" id = "file2" autocomplete="off" required>
-                                </p>
-                            </dl>
+                            <div class="custom-file">
+                                <input type="file" accept="image/*" onchange="loadFile2(event)" name="file2"/>
+                                
+                                <img id = "imgInp2"  width="200px" height="200px"/>
+                                <script>
+                                    var loadFile2 = function(event) {
+                                        var imgInp2 = document.getElementById('imgInp2');
+                                        imgInp2.src = URL.createObjectURL(event.target.files[0]);
+                                        imgInp2.onload = function() {
+                                        URL.revokeObjectURL(imgInp2.src) // free memory
+                                        }
+                                    };
+                                </script>
+                            </div>
                             <p>
-                                <input type="submit" value="Submit2">
+                                <input type="submit" value="Submit 2 pictures">
                             </p>
                         </form>
                         <p class="text">

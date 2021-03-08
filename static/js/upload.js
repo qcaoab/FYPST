@@ -41,9 +41,9 @@ $('.fileImage').bind('change', handleFileSelect, false);
 }
 
 
-function preview() {
-    imgInp.src=URL.createObjectURL(event.target.files[0]);
-}
+//function preview() {
+   // imgInp.src=URL.createObjectURL(event.target.files[0]);
+//}
 
 var test = document.getElementById("dropdown_selection");
 var testValue = test.options[test.selectedIndex].value;

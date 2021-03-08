@@ -4,7 +4,7 @@ from uuid import uuid4
 import urllib.request
 
 
-from flask import Flask, flash, request, redirect, url_for, render_template,send_from_directory
+from flask import Flask, flash, request, redirect, url_for, render_template,send_from_directory, session
 from werkzeug.utils import secure_filename
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
@@ -95,20 +95,23 @@ def upload2():
             return redirect(request.url)
         '''
         
-        file = request.files['file1']
-        '''
-        if file.filename == '':
-            flash('No image selected for uploading')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-        '''
-        filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config["IMAGE_UPLOADS"], filename))
-        print('upload_image filename: ' + filename)
+        print ('file1')
+        file1 = request.files['file1']
+     
+        filename1 = secure_filename(file1.filename)
+        file1.save(os.path.join(app.config["IMAGE_UPLOADS"], filename1))
+        print('upload_image filename: ' + filename1)
         
-            #nn(item, filename)
-
-        return render_template('upload2.html', file1 = file)
+    #nn(item, filename)
+    
+        print('file2')
+        file2 = request.files['file2']
+      
+        filename2 = secure_filename(file2.filename)
+        file2.save(os.path.join(app.config["IMAGE_UPLOADS"], filename2))
+        print('upload_image filename: ' + filename2)
+    
+        return render_template('upload2.html', file1 = file1, file2=file2)
         '''
         else:
             flash('Allowed image types are -> png, jpg, jpeg, gif')
