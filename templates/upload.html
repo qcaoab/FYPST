@@ -38,21 +38,37 @@
                     <div class="flex-item flex-column">
                         <h2 class="add-top-margin">Transfer to our styles</h2>
                         <hr>
-                        
-                        <form method="post" action="/" enctype="multipart/form-data">
-
-                            <dl>
-                                <p>
-                                    <input type="file" name="file" autocomplete="off" required onchange ="readURL(this);">
-                                </p>
-                            </dl>
-                            {% if filename is defined %}
-                                <img id=1 src="{{url_for('static', filename='pics/' + filename)}}" alt="your image" />
-                            {%endif%}
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                                {% for category, message in messages %}
+                                <div class="alert alert-{{ category }}" role="alert"> {{ message }}</div>
+                                {% endfor %}
+                            {% endif %}
+                            {% endwith %}
+                        <form method="Post" action="/upload" enctype="multipart/form-data">
+                            
+                            <div class="custom-file">
+                                <input type="file" accept="image/*" onchange="loadFile(event)" name="file"/>
+                                
+                                <img id = "imgInp"  width="200px" height="200px"/>
+                                <script>
+                                    var loadFile = function(event) {
+                                        var imgInp = document.getElementById('imgInp');
+                                        imgInp.src = URL.createObjectURL(event.target.files[0]);
+                                        imgInp.onload = function() {
+                                        URL.revokeObjectURL(imgInp.src) 
+                                        }
+                                    };
+                                </script>
+                            </div>
                             <p>
                                 <input type="submit" value="Submit">
                             </p>
+                      
+                               
                         </form>
+                            
+                      
                         <p class="text">
                             Select from our privided styles below:
                         </p>

@@ -42,12 +42,19 @@
                         <p class="text">
                             Please upload the photo or image whose style is to be transferred below:
                         </p>
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                                {% for category, message in messages %}
+                                <div class="alert alert-{{ category }}" role="alert"> {{ message }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
                         <form method="Post" action="/upload2" enctype="multipart/form-data">
                             
                         <div class="custom-file">
                             <input type="file" accept="image/*" onchange="loadFile(event)" name="file1"/>
                             
-                            <img id = "imgInp1"  width="200px" height="200px"/>
+                            <img id = "imgInp1"  width="150px" height="150px"/>
                             <script>
                                 var loadFile = function(event) {
                                     var imgInp1 = document.getElementById('imgInp1');
@@ -58,20 +65,17 @@
                                 };
                             </script>
                         </div>
-        
-                           
-                        </form>
+ 
 
                         <p class="text">
                             Please upload the your own style image below:
                         </p>
 
-                        <form method="post" action="/upload2" enctype="multipart/form-data">
 
                             <div class="custom-file">
                                 <input type="file" accept="image/*" onchange="loadFile2(event)" name="file2"/>
                                 
-                                <img id = "imgInp2"  width="200px" height="200px"/>
+                                <img id = "imgInp2"  width="150px" height="150px"/>
                                 <script>
                                     var loadFile2 = function(event) {
                                         var imgInp2 = document.getElementById('imgInp2');
