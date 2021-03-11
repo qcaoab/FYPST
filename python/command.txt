@@ -1,1 +1,0 @@
-curl.exe --header "Content-Type: application/json"  --request POST --data  "{\"question\":\"what_is_love\", \"answer\":\"dont_hurt_me\"}"  http://localhost:5000/api/answers
