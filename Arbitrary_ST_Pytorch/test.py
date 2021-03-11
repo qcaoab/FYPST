@@ -7,8 +7,8 @@ from PIL import Image
 from torchvision import transforms
 from torchvision.utils import save_image
 
-import net
-from function import adaptive_instance_normalization, coral
+import Arbitrary_ST_Pytorch.net as net
+from Arbitrary_ST_Pytorch.function import adaptive_instance_normalization, coral
 
 
 def test_transform(size, crop):
@@ -78,7 +78,7 @@ parser.add_argument('--alpha', type=float, default=1.0,
 parser.add_argument(
     '--style_interpolation_weights', type=str, default='',
     help='The weight for blending the style of multiple style images')
-
+'''
 args = parser.parse_args()
 
 do_interpolation = False
@@ -159,3 +159,45 @@ for content_path in content_paths:
             output_name = output_dir / '{:s}_stylized_{:s}{:s}'.format(
                 content_path.stem, style_path.stem, args.save_ext)
             save_image(output, str(output_name))
+'''        
+def arbi_trans(content_imgs, style_imgs, name1, name2, a_vgg= 'Arbitrary_ST_Pytorch/models/vgg_normalised.pth', a_decoder ='Arbitrary_ST_Pytorch/models/decoder.pth', 
+               content_size = 512, style_size = 512, crop = False, save_ext = '.jpg', output = 'static/pics/output',
+               preserve_color = False, alpha = 1.0 ):
+    
+    do_interpolation = False
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    output_dir = Path(output)
+    output_dir.mkdir(exist_ok=True, parents=True)
+    decoder = net.decoder
+    vgg = net.vgg
+    
+    decoder.eval()
+    vgg.eval()
+    
+    decoder.load_state_dict(torch.load(a_decoder))
+    vgg.load_state_dict(torch.load(a_vgg))
+    vgg = nn.Sequential(*list(vgg.children())[:31])
+    
+    vgg.to(device)
+    decoder.to(device)
+    content_imgs = list(content_imgs)
+    style_imgs = list(style_imgs)
+    for content_img in content_imgs:
+        for style_img in style_imgs:
+            content_tf = test_transform(content_size, crop)
+            style_tf = test_transform(style_size, crop)
+            content = content_tf(Image.open(content_img))
+            style = style_tf(Image.open(style_img))
+            if preserve_color:
+                style = coral(style, content)
+                style = style.to(device).unsqueeze(0)
+                content = content.to(device).unsqueeze(0)
+            with torch.no_grad():
+                output = style_transfer(vgg, decoder, content, style, alpha)
+            output = output.cpu()
+            print(output)
+            output_name = output_dir / '{:s}_stylized_{:s}{:s}'.format(
+                    name1, name2, save_ext)
+   
+            save_image(output, str(output_name))
+    return output

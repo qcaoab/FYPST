@@ -7,6 +7,8 @@ import urllib.request
 from flask import Flask, flash, request, redirect, url_for, render_template,send_from_directory, session
 from werkzeug.utils import secure_filename
 
+import Arbitrary_ST_Pytorch
+from Arbitrary_ST_Pytorch.test import arbi_trans
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -47,11 +49,7 @@ def empty():
 @app.route('/gallery',methods=['GET','POST'])
 def gallery():
     return render_template('gallery.html')
-'''
-@app.route('/upload')
-def upload():
-    return render_template('upload.html')
-'''
+
 @app.route('/style/genre/'+'<genre>')
 def style(genre):
     return render_template('style.html', genre = genre)
@@ -117,27 +115,17 @@ def upload2():
             filename2 = secure_filename(file2.filename)
             file2.save(os.path.join(app.config["IMAGE_UPLOADS_S"], filename2))
             flash('Uploaded style image: ' + filename2)
-        
+            print('transfer starts')
+            result= arbi_trans(file1, file2, filename1, filename2)
+            print('function called')
+            
+            #result.save(os.path.join(app.config["static/pics/uploads"], 'transfer_result.jpg'))
         return render_template('upload2.html', file1 = file1, file2=file2)
        
     else:
         return render_template('upload2.html')
 
 
-
-@app.route('/upload/show')
-def show_pic():
-    filename = request.args.get('filename', '')
-    t = (filename,)
-    cur = g.db.execute('select label from pics where filename=?', t)
-    label = cur.fetchone()[0]
-
-    return render_template('upload.html', filename=filename, label=label)
-
-@app.route('/display/<filename>')
-def display_image(filename):
-    print('display_image filename: ' + filename)
-    return redirect(url_for('static', filename='../pics/uploads/' + filename), code=301)
 
 ###################for testing
 

@@ -10,8 +10,8 @@ from tensorboardX import SummaryWriter
 from torchvision import transforms
 from tqdm import tqdm
 
-import net
-from sampler import InfiniteSamplerWrapper
+import Arbitrary_ST_Pytorch.net
+from Arbitrary_ST_Pytorch.sampler import InfiniteSamplerWrapper
 
 cudnn.benchmark = True
 Image.MAX_IMAGE_PIXELS = None  # Disable DecompressionBombError
