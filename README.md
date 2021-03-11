@@ -27,7 +27,7 @@ python main.py
 - [x] nn ready to use
 - [x] open html in flask
 - [ ] handle selections in flask
-- [ ] upload and download pics
+- [x] upload and display pics
 - [ ] pass pic through nn via flask
 - [ ] interactive web features
 - [ ] migrate selection of existing genres
