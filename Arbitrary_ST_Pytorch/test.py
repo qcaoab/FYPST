@@ -1,6 +1,6 @@
 import argparse
 from pathlib import Path
-
+import os
 import torch
 import torch.nn as nn
 from PIL import Image
@@ -199,7 +199,8 @@ def arbi_trans(content_imgs, style_imgs, name1, name2, a_vgg= 'Arbitrary_ST_Pyto
             output = output.cpu()
             
             output_name = output_dir / '{:s}_stylized_{:s}{:s}'.format(
-                    name1, name2, save_ext)
+                    content_img.stem, style_img.stem, save_ext)
    
             save_image(output, str(output_name))
-    return output_name
+            
+    return str(output_name)
