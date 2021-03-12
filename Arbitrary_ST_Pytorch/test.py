@@ -78,6 +78,9 @@ parser.add_argument('--alpha', type=float, default=1.0,
 parser.add_argument(
     '--style_interpolation_weights', type=str, default='',
     help='The weight for blending the style of multiple style images')
+
+do_interpolation = False
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 '''
 args = parser.parse_args()
 
@@ -164,8 +167,7 @@ def arbi_trans(content_imgs, style_imgs, name1, name2, a_vgg= 'Arbitrary_ST_Pyto
                content_size = 512, style_size = 512, crop = False, save_ext = '.jpg', output = 'static/pics/output',
                preserve_color = False, alpha = 1.0 ):
     
-    do_interpolation = False
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    
     output_dir = Path(output)
     output_dir.mkdir(exist_ok=True, parents=True)
     decoder = net.decoder
@@ -190,14 +192,14 @@ def arbi_trans(content_imgs, style_imgs, name1, name2, a_vgg= 'Arbitrary_ST_Pyto
             style = style_tf(Image.open(str(style_img)))
             if preserve_color:
                 style = coral(style, content)
-                style = style.to(device).unsqueeze(0)
-                content = content.to(device).unsqueeze(0)
+            style = style.to(device).unsqueeze(0)
+            content = content.to(device).unsqueeze(0)
             with torch.no_grad():
                 output = style_transfer(vgg, decoder, content, style, alpha)
             output = output.cpu()
-            print(output)
+            
             output_name = output_dir / '{:s}_stylized_{:s}{:s}'.format(
                     name1, name2, save_ext)
    
             save_image(output, str(output_name))
-    return output
+    return output_name
