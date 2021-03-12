@@ -108,15 +108,20 @@ def upload2():
         else:
       
             filename1 = secure_filename(file1.filename)
-            file1.save(os.path.join(app.config["IMAGE_UPLOADS_C"], filename1))
+            path1 = os.path.join(app.config["IMAGE_UPLOADS_C"], filename1)
+            file1.save(path1)
             flash('Uploaded content image: ' + filename1)
       
           
             filename2 = secure_filename(file2.filename)
-            file2.save(os.path.join(app.config["IMAGE_UPLOADS_S"], filename2))
+            path2=os.path.join(app.config["IMAGE_UPLOADS_S"], filename2)
+            print('----------------------')
+            print(path1)
+            print(path2)
+            file2.save(path2)
             flash('Uploaded style image: ' + filename2)
             print('transfer starts')
-            result= arbi_trans(file1, file2, filename1, filename2)
+            result= arbi_trans(path1, path2, filename1, filename2)
             print('function called')
             
             #result.save(os.path.join(app.config["static/pics/uploads"], 'transfer_result.jpg'))

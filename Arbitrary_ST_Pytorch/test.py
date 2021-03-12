@@ -180,14 +180,14 @@ def arbi_trans(content_imgs, style_imgs, name1, name2, a_vgg= 'Arbitrary_ST_Pyto
     
     vgg.to(device)
     decoder.to(device)
-    content_imgs = list(content_imgs)
-    style_imgs = list(style_imgs)
+    content_imgs = [Path(content_imgs)]
+    style_imgs = [Path(style_imgs)]
     for content_img in content_imgs:
         for style_img in style_imgs:
             content_tf = test_transform(content_size, crop)
             style_tf = test_transform(style_size, crop)
-            content = content_tf(Image.open(content_img))
-            style = style_tf(Image.open(style_img))
+            content = content_tf(Image.open(str(content_img)))
+            style = style_tf(Image.open(str(style_img)))
             if preserve_color:
                 style = coral(style, content)
                 style = style.to(device).unsqueeze(0)
