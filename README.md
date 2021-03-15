@@ -1,16 +1,17 @@
 # Style Transfer
 Project in progress
-
+c'est de l'art
 ## Components
 ### Web part
 - flask (main.py)
 - html (adapted from https://github.com/yenchiah/project-website-template)
   - overview
   - gallary
-  - upload
+  - create1
+  - create2
   - style page for each genre
 - css, js and img(logos) in static
-- put other images in static/pics
+- put other images in static/pics, including output, uploads, gallery
 ### ML part
 - AdaIN-Style (adapted from https://github.com/naoto0804/pytorch-AdaIN)  
   (original implentation and explanation https://github.com/xunhuang1995/AdaIN-style) 
@@ -18,7 +19,7 @@ Project in progress
 ### Dataset
 
 ## How to use
-at home directory enter  
+At home directory, enter  
 python main.py
 
 ## TODO
@@ -26,9 +27,10 @@ python main.py
 - [x] text and pics editing
 - [x] nn ready to use
 - [x] open html in flask
-- [ ] handle selections in flask
+- [x] handle selections in flask
 - [x] upload and display pics
-- [ ] pass pic through nn via flask
+- [x] pass pic through nn via flask
+- [ ] cycleGan issues
 - [ ] interactive web features
 - [ ] migrate selection of existing genres
 - [ ] additional features realized by nn
