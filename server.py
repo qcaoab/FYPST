@@ -3,7 +3,7 @@ import os
 from uuid import uuid4
 import urllib.request
 from pathlib import Path
-
+import ntpath
 from flask import Flask, flash, request, redirect, url_for, render_template,send_from_directory, session
 from werkzeug.utils import secure_filename
 
@@ -121,8 +121,9 @@ def upload2():
             file2.save(path2)
             flash('Uploaded style image: ' + filename2)
             print('transfer starts')
-            resultname = arbi_trans(path1, path2, filename1, filename2)
-            resultpath = Path(resultname)
+            resultname = arbi_trans(path1, path2)
+            resultpath=resultname.replace(os.sep, ntpath.sep)
+            
             print('function called')
             print(resultname)
             #result.save(os.path.join(app.config["static/pics/uploads"], 'transfer_result.jpg'))

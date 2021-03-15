@@ -163,7 +163,7 @@ for content_path in content_paths:
                 content_path.stem, style_path.stem, args.save_ext)
             save_image(output, str(output_name))
 '''        
-def arbi_trans(content_imgs, style_imgs, name1, name2, a_vgg= 'Arbitrary_ST_Pytorch/models/vgg_normalised.pth', a_decoder ='Arbitrary_ST_Pytorch/models/decoder.pth', 
+def arbi_trans(content_imgs, style_imgs, a_vgg= 'Arbitrary_ST_Pytorch/models/vgg_normalised.pth', a_decoder ='Arbitrary_ST_Pytorch/models/decoder.pth', 
                content_size = 512, style_size = 512, crop = False, save_ext = '.jpg', output = 'static/pics/output',
                preserve_color = False, alpha = 1.0 ):
     

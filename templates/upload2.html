@@ -114,10 +114,14 @@
                             <div>Transform Result</div>
 
                              <script type="text/javascript">
-                                var resultsrc = "/"+ "{{resultpath}}"
+                                //var baseUrl = '<%= Page.ResolveClientUrl("~/") %>';
+                                function ResolveUrl(url) {
+                                    return url.replace("\\", '/');
+                                }
+                                var resultsrc = "{{resultpath}}"
                             
                                 const image = document.getElementById("result");
-                                image.src = resultsrc;
+                                image.src = ResolveUrl(resultsrc);
                             </script>
                         </div>
                     </div>   
