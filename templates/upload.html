@@ -1,4 +1,6 @@
 <!doctype html>
+
+
 <html>
 
 <head>
@@ -61,6 +63,28 @@
                                     };
                                 </script>
                             </div>
+
+                            <p class="text">
+                                Select from our privided styles below:
+                            </p>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Please select</span>
+                                        <select name="style_select" class="selectpicker form-control">
+                                            <!-- {% for o in data %}
+                                            <option value="{{ o.name }}">{{ o.name }}</option>
+                                            {% endfor %} -->
+                                            <option value="monet">monet</option>
+                                            <option value="vangogh">vangogh</option>
+                                            <option value="ukiyoe">ukiyoe</option>
+                                            <option value="afremov">afremov</option>
+                                            <option value="edgar">edgar</option>
+                                            <option value="chineseink">chineseink</option>
+                                            <option value="...">...</option>
+                                        </select>
+                                </div>
+                                </div>
                             <p>
                                 <input type="submit" value="Submit">
                             </p>
@@ -69,31 +93,11 @@
                         </form>
                             
                       
-                        <p class="text">
-                            Select from our privided styles below:
-                        </p>
+                    
                     </div>
                     <div class="flex-item flex-column"> 
                         <div class="control-group">
-                        <!-------------------------selector added here--------------------------->
-                            <div class="custom-dropdown stretch-on-mobile">
-                                <a tabindex="0" href="javascript:void(0)"><span>Dropdown Menu</span></a>
-                                <select id = "dropdown_selection" name = "dropdown_selection">
-                                    <option> ---Choose style--- </option>  
-                                    <option href="javascript:void(0)">Item 1</option>
-                                    <option href="javascript:void(0)">Item 2</option>
-                                    <option href="javascript:void(0)">Item 3</option>
-                                    <option href="javascript:void(0)">Item 4</option>
-                                    
-                                </select>
-                                <p id='message'></p>
-                            </div>
-                            <div class="custom-dropdown stretch-on-mobile large" id="custom-dropdown-large">
-                                <a tabindex="0" href="javascript:void(0)"><span></span></a>
-                                <div>
-                                  
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
