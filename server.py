@@ -173,10 +173,11 @@ def upload2():
             file2.save(path2)
             flash('Uploaded style image: ' + filename2)
             print('transfer starts')
-            resultname = arbi_trans(path1, path2)
+            degree = float(degree)/100
+            resultname = arbi_trans(path1, path2,preserve_color=preserve, alpha = float(degree))
             resultpath=resultname.replace(os.sep, ntpath.sep)
-            print('select degree = ' + str(degree))
-            print('preserve color = ' + str(preserve))
+            flash('select degree = ' + str(degree))
+            flash('preserve color = ' + str(preserve))
 
             print(resultname)
             #result.save(os.path.join(app.config["static/pics/uploads"], 'transfer_result.jpg'))
