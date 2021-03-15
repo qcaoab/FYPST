@@ -18,7 +18,6 @@ app = Flask(__name__,template_folder='templates')
 #app.config["IMAGE_UPLOADS"] = "/FYPST/static/img/uploads"
 app.config["IMAGE_UPLOADS_C"] = "static/pics/uploads/content"
 app.config["IMAGE_UPLOADS_S"] = "static/pics/uploads/style"
-app.config["IMAGE_UPLOADS_G"] = "static/pics/uploads/gan"
 
 app.static_folder = 'static'
 
@@ -72,7 +71,7 @@ def upload():
         if file and allowed_file(file.filename):
             print('----------------------------allowed')
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config["IMAGE_UPLOADS_G"], filename))
+            file.save(os.path.join(app.config["IMAGE_UPLOADS_C"], filename))
             flash('Successfully uploaded', 'info')
             #nn(item, filename)
             return render_template('upload.html', file = file)
@@ -81,21 +80,6 @@ def upload():
             return redirect(request.url)
     else:
         return render_template('upload.html')
-
-################### select testing
-@app.route('/test', methods=['GET', 'POST'])
-
-def select_style():
-    if request.method == 'POST':
-        select = request.form.get('style_select')
-        return(str(select)) # just to see what select is
-    else:
-        return render_template(
-        'select.html',
-        data=[{'name':'monet'}, {'name':'vangogh'}, {'name':'ukiyoe'}, {'name':'edgar'}])
-
-###################################
-
 
 
 @app.route('/upload2', methods=['GET','POST'])
