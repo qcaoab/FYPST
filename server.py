@@ -60,8 +60,6 @@ def upload():
     if request.method == 'POST':
 
         style = request.form.get('style_select')
-        print(style)
-        
 
         if 'file' not in request.files:
             flash('Attention: No file part','danger')
@@ -89,48 +87,6 @@ def upload():
             return redirect(request.url)
     else:
         return render_template('upload.html')
-
-###########
-    # if request.method == 'POST':
-        
-
-    #     if 'file' not in request.files:
-    #         flash('Attention: No file part','danger')
-    #         return redirect(request.url)
-    #     file = request.files['file']
-
-    #     if file.filename == '':
-    #         flash('Attention: No image selected for uploading', 'danger')
-    #         return redirect(request.url)
-    #     if file and allowed_file(file.filename):
-    #         print('----------------------------allowed')
-    #         filename = secure_filename(file.filename)
-    #         file.save(os.path.join(app.config["IMAGE_UPLOADS_C"], filename))
-    #         flash('Successfully uploaded', 'info')
-    #         #nn(item, filename)
-    #         return render_template('upload.html', file = file)
-    #     else:
-    #         flash('Attention: Allowed image types are -> png, jpg, jpeg, gif', 'danger')
-    #         return redirect(request.url)
-    # else:
-    #     return render_template('upload.html')
-
-
-
-################### select testing
-@app.route('/test', methods=['GET', 'POST'])
-
-def select_style():
-    if request.method == 'POST':
-        select = request.form.get('style_select')
-        return(str(select)) # just to see what select is
-    else:
-        return render_template(
-        'select.html',
-        data=[{'name':'monet'}, {'name':'vangogh'}, {'name':'ukiyoe'}, {'name':'edgar'}])
-
-###################################
-
 
 
 @app.route('/upload2', methods=['GET','POST'])
