@@ -143,7 +143,7 @@ def upload2():
         preserve = request.form.get('preserve')
         
         if 'file1' not in request.files or 'file2' not in request.files:
-            flash('Attention: No file part')
+            flash('Attention: No file part', 'danger')
             return redirect(request.url)
         
         file1 = request.files['file1']
@@ -154,7 +154,7 @@ def upload2():
             return redirect(request.url)
         
         if allowed_file(file1.filename)==False or allowed_file(file2.filename)==False:
-            flash('Error: Allowed image types are -> png, jpg, jpeg, gif')
+            flash('Error: Allowed image types are -> png, jpg, jpeg, gif', 'danger')
             return redirect(request.url)
         
         else:
@@ -162,7 +162,7 @@ def upload2():
             filename1 = secure_filename(file1.filename)
             path1 = os.path.join(app.config["IMAGE_UPLOADS_C"], filename1)
             file1.save(path1)
-            flash('Uploaded content image: ' + filename1)
+            flash('Uploaded content image: ' + filename1, 'info')
       
           
             filename2 = secure_filename(file2.filename)
@@ -171,7 +171,7 @@ def upload2():
             print(path1)
             print(path2)
             file2.save(path2)
-            flash('Uploaded style image: ' + filename2)
+            flash('Uploaded style image: ' + filename2, 'info')
             print('transfer starts')
             degree = float(degree)/100
             resultname = arbi_trans(path1, path2,preserve_color=preserve, alpha = float(degree))
@@ -179,8 +179,8 @@ def upload2():
             #resultpath=os.path.abspath(resultname)
             resultpath = str(resultname).replace('\\','/')
             
-            flash('select degree = ' + str(degree))
-            flash('preserve color = ' + str(preserve))
+            flash('select degree = ' + str(degree), 'info')
+            flash('preserve color = ' + str(preserve), 'info')
 
             print(resultpath)
             #result.save(os.path.join(app.config["static/pics/uploads"], 'transfer_result.jpg'))

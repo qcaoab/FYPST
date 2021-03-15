@@ -73,6 +73,36 @@ hr {
   margin: 0 0 10px 0;
 }
 
+.alert {
+  font-size: 18 px;
+  margin: 10px 0 0 0;
+  padding: 0;
+  color: rgb(0,0,0);
+  font-weight: bold;
+  font-family:  'Cinzel', serif;
+
+}
+
+.alert-danger {
+  font-size: 18 px;
+  margin: 10px 0 0 0;
+  padding: 0;
+  color: rgb(150, 35, 35);
+  font-weight: bold;
+  font-family:  'Cinzel', serif;
+
+}
+
+.alert-info {
+  font-size: 18 px;
+  margin: 10px 0 0 0;
+  padding: 0;
+  color: rgb(38, 155, 67);
+  font-weight: bold;
+  font-family:  'Cinzel', serif;
+
+}
+
 .menu-container {
   z-index: 2;
   position: relative;
