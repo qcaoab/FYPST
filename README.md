@@ -1,6 +1,6 @@
 # Style Transfer
-Project in progress   
-C'est de l'art!
+Project in progress.   
+Ça c'est de l'art!
 ## Components
 ### Web part
 - flask (main.py)
