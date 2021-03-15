@@ -86,29 +86,59 @@
                                     };
                                 </script>
                             </div>
+                            <!----------------slider--------------------->
+                            
+
+                            <p class="text">
+                                Please select the degree of transfer (0-100%)
+                            </p>
+                            <div class="slidecontainer">
+                                <input type="range"  min="0" max="100" value="100" class="slider" id="myRange" name = "degree" >
+                                <p>Value: <span id="demo" ></span></p>
+                            </div>
+
+                            <script>
+                           
+                                var slider = document.getElementById("myRange");
+                                var output = document.getElementById("demo");
+                                output.innerHTML = slider.value; // Display the default slider value
+    
+                                // Update the current slider value (each time you drag the slider handle)
+                                slider.oninput = function() {
+                                output.innerHTML = this.value;
+    
+                                }
+                            </script>
+
+                            <!---------------------color preservation?----------------->
+         
+                            <p class="text">
+                                Do you want to preserve color?
+                            </p>
+                            <div class="control-group">
+                                <div class="custom-radio custom-radio-left">
+                                    <input type="radio" name="preserve" value=1 id="preserve-yes">
+                                    <label for="preserve-yes">Yes</label>
+                                </div>
+                                <div class="custom-radio custom-radio-middle">
+                                    <input type="radio" name="preserve" value=0 id="preserve-no" checked>
+                                    <label for="preserve-no">No</label>
+                                </div>
+                                
+                            </div>
+                               
+                            <!-----------------------submit-------------------->
+
                             <p>
                                 <input type="submit" value="Submit 2 pictures">
                             </p>
                         </form>
-                        <p class="text">
-                            Please select the level of preservation (0-100%)
-                        </p>
-                        <div class="slidecontainer">
-                            <input type="range" min="0" max="100" value="50" class="slider" id="myRange" >
-                            <p>Value: <span id="demo"></span></p>
-                        </div>
-                        <script>
-                           
-                            var slider = document.getElementById("myRange");
-                            var output = document.getElementById("demo");
-                            output.innerHTML = slider.value; // Display the default slider value
+                       
 
-                            // Update the current slider value (each time you drag the slider handle)
-                            slider.oninput = function() {
-                            output.innerHTML = this.value;
+                        
 
-                            }
-                        </script>
+                        <h3 class="add-top-margin">Result of Transformation</h2>
+                        
                         <div class="custom-file">
                             <img src="" id= "result" height="300px" width ="300px">
                             <div>Transform Result</div>
@@ -127,29 +157,7 @@
                     </div>   
                 </div>
                 <!-------------------------------------------------------------------------------------------->
-                <div class="flex-row">
-                    <div class="flex-item flex-column">
-                        <h2 class="add-top-margin">Level of Preservation</h2>
-                        <hr>
-                        <p class="text">
-                            
-                        </p>
-                        <div class="control-group">
-                            <div class="custom-radio custom-radio-left">
-                                <input type="radio" name="playback-speed" value="slow" id="speed-slow">
-                                <label for="speed-slow">Slow</label>
-                            </div>
-                            <div class="custom-radio custom-radio-middle">
-                                <input type="radio" name="playback-speed" value="medium" id="speed-medium" checked>
-                                <label for="speed-medium">Medium</label>
-                            </div>
-                            <div class="custom-radio custom-radio-right">
-                                <input type="radio" name="playback-speed" value="fast" id="speed-fast">
-                                <label for="speed-fast">Fast</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
                 <!-------------------------------------------------------------------------------------------->
                 <div class="flex-row">
                     <div class="flex-item flex-column">

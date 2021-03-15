@@ -133,7 +133,8 @@ def upload2():
     if request.method == 'POST':
         print("start uploading ...")
     
-        
+        degree = request.form.get('degree')
+        preserve = request.form.get('preserve')
         
         if 'file1' not in request.files or 'file2' not in request.files:
             flash('Attention: No file part')
@@ -168,8 +169,9 @@ def upload2():
             print('transfer starts')
             resultname = arbi_trans(path1, path2)
             resultpath=resultname.replace(os.sep, ntpath.sep)
-            
-            print('function called')
+            print('select degree = ' + str(degree))
+            print('preserve color = ' + str(preserve))
+
             print(resultname)
             #result.save(os.path.join(app.config["static/pics/uploads"], 'transfer_result.jpg'))
         return render_template('upload2.html', file1 = file1, file2=file2, resultpath = resultpath)
