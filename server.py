@@ -60,12 +60,18 @@ def upload():
     if request.method == 'POST':
 
         style = request.form.get('style_select')
+        print(style)
         
 
         if 'file' not in request.files:
             flash('Attention: No file part','danger')
             return redirect(request.url)
         file = request.files['file']
+
+        if str(style) == 'blank':
+            flash('Please choose a valid style reference from the drop-down list', 'danger')
+            print("invalid")
+            return redirect(request.url)
 
         if file.filename == '':
             flash('Attention: No image selected for uploading', 'danger')
