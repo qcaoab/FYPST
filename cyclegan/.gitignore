@@ -1,12 +1,8 @@
 .DS_Store
 debug*
-datasets/
-checkpoints/
-results/
 build/
 dist/
-*.png
-torch.egg-info/
+torch.egg-inio/
 */**/__pycache__
 torch/version.py
 torch/csrc/generic/TensorMethods.cpp
