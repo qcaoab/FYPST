@@ -20,7 +20,7 @@ Project in progress.
 
 ## How to use
 At home directory, enter  
-python main.py
+python server.py
 
 ## TODO
 - [x] html and css skeleton
