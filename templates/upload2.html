@@ -120,7 +120,7 @@
                                     <input type="radio" name="preserve" value=1 id="preserve-yes">
                                     <label for="preserve-yes">Yes</label>
                                 </div>
-                                <div class="custom-radio custom-radio-middle">
+                                <div class="custom-radio custom-radio-right">
                                     <input type="radio" name="preserve" value=0 id="preserve-no" checked>
                                     <label for="preserve-no">No</label>
                                 </div>
@@ -133,25 +133,25 @@
                                 <input type="submit" value="Submit 2 pictures">
                             </p>
                         </form>
-                       
+                    </div>
 
-                        
-
-                        <h3 class="add-top-margin">Result of Transformation</h2>
-                        
+                
+                    <div class="flex-item flex-column">
+                        <h2 class="add-top-margin">Result of Transformation</h2>
+                        <hr>
                         <div class="custom-file">
-                            <img src="" id= "result" height="300px" width ="300px">
-                            <div>Transform Result</div>
+                            <img src="{{resultpath}}" id= "result" >
+                            
 
                              <script type="text/javascript">
-                                //var baseUrl = '<%= Page.ResolveClientUrl("~/") %>';
-                                function ResolveUrl(url) {
-                                    return url.replace("\\", '/');
+                                
+                                var resultsrc = "{{resultpath}}";
+                                if (resultsrc == ""){
+                                    document.getElementById("result").src = "{{url_for('static', filename ='img/dummay-img.png')}}";
                                 }
-                                var resultsrc = "{{resultpath}}"
-                            
-                                const image = document.getElementById("result");
-                                image.src = ResolveUrl(resultsrc);
+                                else{
+                                    document.getElementById("result").src = resultsrc;
+                                }
                             </script>
                         </div>
                     </div>   
