@@ -1,14 +1,14 @@
 # Style Transfer
-Project in progress   
-C'est de l'art!
+Project in progress.   
+Ça c'est de l'art!
 ## Components
 ### Web part
 - flask (main.py)
 - html (adapted from https://github.com/yenchiah/project-website-template)
   - overview
   - gallary
-  - create1
-  - create2
+  - create1 with given styles
+  - create2 with with customized style images
   - style page for each genre
 - css, js and img(logos) in static
 - put other images in static/pics, including output, uploads, gallery
