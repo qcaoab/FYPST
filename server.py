@@ -130,7 +130,7 @@ def upload2():
             flash('Uploaded style image: ' + filename2, 'info')
             print('transfer starts')
             degree = float(degree)/100
-            resultname = arbi_trans(path1, path2,preserve_color=preserve, alpha = float(degree))
+            resultname = arbi_trans(path1, path2,preserve_color= bool(preserve), alpha = float(degree))
             
             #resultpath=os.path.abspath(resultname)
             resultpath = str(resultname).replace('\\','/')
