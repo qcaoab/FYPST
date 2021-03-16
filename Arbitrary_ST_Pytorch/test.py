@@ -17,6 +17,8 @@ def test_transform(size, crop):
         transform_list.append(transforms.Resize(size))
     if crop:
         transform_list.append(transforms.CenterCrop(size))
+        
+    #transform_list.append(transforms.ToPILImage())
     transform_list.append(transforms.ToTensor())
     transform = transforms.Compose(transform_list)
     return transform
@@ -162,7 +164,20 @@ for content_path in content_paths:
             output_name = output_dir / '{:s}_stylized_{:s}{:s}'.format(
                 content_path.stem, style_path.stem, args.save_ext)
             save_image(output, str(output_name))
-'''        
+            
+''' 
+def process_img(path, size, crop):
+    
+    img_tf = test_transform(size, crop)
+    img = Image.open(str(path))
+    if img.mode == 'CMYK':
+        img= img.convert('RGB')
+    img_tensor = img_tf(img)
+    if img_tensor.size()[0] >3:
+        img_tensor = img_tensor[ :3, :, : ]
+        
+    return img_tensor
+
 def arbi_trans(content_imgs, style_imgs, preserve_color = False, alpha = 1.0, 
                a_vgg= 'Arbitrary_ST_Pytorch/models/vgg_normalised.pth', a_decoder ='Arbitrary_ST_Pytorch/models/decoder.pth', 
                content_size = 512, style_size = 512, crop = False, save_ext = '.jpg', output = 'static/pics/output'):
@@ -186,10 +201,15 @@ def arbi_trans(content_imgs, style_imgs, preserve_color = False, alpha = 1.0,
     style_imgs = [Path(style_imgs)]
     for content_img in content_imgs:
         for style_img in style_imgs:
+            '''
             content_tf = test_transform(content_size, crop)
             style_tf = test_transform(style_size, crop)
             content = content_tf(Image.open(str(content_img)))
+            
             style = style_tf(Image.open(str(style_img)))
+            '''
+            content = process_img(content_img, content_size, crop)
+            style = process_img(style_img, style_size, crop)
             if preserve_color:
                 style = coral(style, content)
             style = style.to(device).unsqueeze(0)
@@ -198,8 +218,8 @@ def arbi_trans(content_imgs, style_imgs, preserve_color = False, alpha = 1.0,
                 output = style_transfer(vgg, decoder, content, style, alpha)
             output = output.cpu()
             
-            output_name = output_dir / '{:s}_stylized_{:s}{:s}'.format(
-                    content_img.stem, style_img.stem, save_ext)
+            output_name = output_dir / '{:s}_stylized_{:s}_{:s}_{:s}{:s}'.format(
+                    content_img.stem, style_img.stem,  str(alpha), str(int(preserve_color)),save_ext)
    
             save_image(output, str(output_name))
             
