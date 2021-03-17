@@ -106,9 +106,9 @@ def upload():
             print(os.getcwd())
             os.chdir(os.getcwd()+"/cyclegan")
             print(os.getcwd())
-            print("python test.py --dataroot "+test_path+" --name "+gan_style[style]+" --model test --no_dropout")
+            print("python test.py --dataroot "+test_path+" --name "+gan_style[style]+" --gpu_ids -1 --model test --no_dropout")
             os.popen(f"python test.py --dataroot {test_path} \
-            --name {gan_style[style]} --model test --no_dropout")
+            --name {gan_style[style]} --gpu_ids -1 --model test --no_dropout")
 
             return render_template('upload.html', file = file)
         else:

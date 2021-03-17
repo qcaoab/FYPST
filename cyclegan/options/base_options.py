@@ -99,6 +99,7 @@ class BaseOptions():
             if v != default:
                 comment = '\t[default: %s]' % str(default)
             message += '{:>25}: {:<30}{}\n'.format(str(k), str(v), comment)
+
         message += '----------------- End -------------------'
         print(message)
 
