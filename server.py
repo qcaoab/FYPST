@@ -1,4 +1,5 @@
 import os
+import subprocess
 
 from uuid import uuid4
 import urllib.request
@@ -57,6 +58,7 @@ def gallery():
 def style(genre):
     return render_template('style.html', genre = genre)
 
+
 @app.route('/upload', methods=['GET','POST'])
 
 def upload():
@@ -105,12 +107,14 @@ def upload():
             # run test.py
             print(os.getcwd())
             os.chdir(os.getcwd()+"/cyclegan")
-            print(os.getcwd())
-            print("python test.py --dataroot "+test_path+" --name "+gan_style[style]+" --gpu_ids -1 --model test --no_dropout")
-            os.popen(f"python test.py --dataroot {test_path} \
-            --name {gan_style[style]} --gpu_ids -1 --model test --no_dropout")
+            cmd = "python test.py --dataroot "+test_path+" --name "+gan_style[style]+" --gpu_ids -1 --results_dir ../static/results --model test --no_dropout"
+            subprocess.check_call(cmd)
+            os.chdir(os.path.split(os.getcwd())[0])
 
-            return render_template('upload.html', file = file)
+            resultpath = 'static/results/'+gan_style[style]+'/test_latest/images/'+filename.rsplit('.', 1)[0]+'_fake.png'
+            print(resultpath)
+
+            return render_template('upload.html', file = file, resultpath = resultpath)
         else:
             flash('Attention: Allowed image types are -> png, jpg, jpeg, gif', 'danger')
             return redirect(request.url)
