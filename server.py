@@ -15,9 +15,12 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 #location = 'C:/Users/qlcql/Documents/GitHub/FYPST'
 
 app = Flask(__name__,template_folder='templates')
-#app.config["IMAGE_UPLOADS"] = "/FYPST/static/img/uploads"
+# the directory for cnn
 app.config["IMAGE_UPLOADS_C"] = "static/pics/uploads/content"
 app.config["IMAGE_UPLOADS_S"] = "static/pics/uploads/style"
+
+# the directory for cyclegan
+app.config["IMAGE_UPLOADS_G"] = "cyclegan/uploads"
 
 app.static_folder = 'static'
 
@@ -57,6 +60,13 @@ def style(genre):
 @app.route('/upload', methods=['GET','POST'])
 
 def upload():
+    
+    gan_style = {
+        "monet": "monet_cyclegan",
+        "vangogh": "vangogh_cyclegan"
+        # add more later
+    }
+
     if request.method == 'POST':
 
         style = request.form.get('style_select')
@@ -77,10 +87,29 @@ def upload():
         if file and allowed_file(file.filename):
             print('----------------------------allowed')
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config["IMAGE_UPLOADS_C"], filename))
+            folder = '/' + filename.rsplit('.', 1)[0]
+            
+            # create a folder with the same name as the uploaded image, and save the image in that folder
+            if not os.path.exists(app.config["IMAGE_UPLOADS_G"]+folder):
+                os.makedirs(app.config["IMAGE_UPLOADS_G"]+folder)
+
+            # path of test folder
+            file.save(os.path.join(app.config["IMAGE_UPLOADS_G"]+folder, filename))
+
+            test_path = 'uploads'+folder
+
             flash('Successfully uploaded', 'info')
             print('using style: '+str(style))
-            #nn(item, filename)
+            print('using model: '+gan_style[style])
+
+            # run test.py
+            print(os.getcwd())
+            os.chdir(os.getcwd()+"/cyclegan")
+            print(os.getcwd())
+            print("python test.py --dataroot "+test_path+" --name "+gan_style[style]+" --model test --no_dropout")
+            os.popen(f"python test.py --dataroot {test_path} \
+            --name {gan_style[style]} --model test --no_dropout")
+
             return render_template('upload.html', file = file)
         else:
             flash('Attention: Allowed image types are -> png, jpg, jpeg, gif', 'danger')

@@ -96,9 +96,23 @@
                       
                     
                     </div>
-                    <div class="flex-item flex-column"> 
-                        <div class="control-group">
+                    <div class="flex-item flex-column">
+                        <h2 class="add-top-margin">Result of Transformation</h2>
+                        <hr>
+                        <div class="custom-file">
+                            <img src="{{resultpath}}" id= "result" >
+                            
 
+                             <script type="text/javascript">
+                                
+                                var resultsrc = "{{resultpath}}";
+                                if (resultsrc == ""){
+                                    document.getElementById("result").src = "{{url_for('static', filename ='img/dummay-img.png')}}";
+                                }
+                                else{
+                                    document.getElementById("result").src = resultsrc;
+                                }
+                            </script>
                         </div>
                     </div>
                 </div>
