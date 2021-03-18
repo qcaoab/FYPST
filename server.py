@@ -65,7 +65,13 @@ def upload():
     
     gan_style = {
         "monet": "monet_cyclegan",
-        "vangogh": "vangogh_cyclegan"
+        "vangogh": "vangogh_cyclegan",
+        "afremov": "afremov_cyclegan",
+        "albrecht": "albrecht_cyclegan",
+        "chinese": "chinese_cyclegan",
+        "cezanne": "cezanne_cyclegan",
+        "edgar": "edgar_cyclegan",
+        "ukiyoe": "ukiyoe_cyclegan"
         # add more later
     }
 
