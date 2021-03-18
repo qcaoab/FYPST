@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Pacifico|Tajawal" rel="stylesheet">
+		<link href="{{url_for('static', filename ='css/homepage.css')}}" rel="stylesheet" type="text/css" />
+		<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+	</head>
+	<head>
+		<title>Style Transfer</title>
+		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" />
+		<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" media="screen" rel="stylesheet" type="text/css" />
+		<link href="{{url_for('static', filename ='css/frame.css')}}" media="screen" rel="stylesheet" type="text/css" />
+		<link href="{{url_for('static', filename ='css/controls.css')}}" media="screen" rel="stylesheet" type="text/css" />
+		<link href="{{url_for('static', filename ='css/frame.css')}}" media="screen" rel="stylesheet" type="text/css" />
+		<link href="{{url_for('static', filename ='css/custom.css')}}" media="screen" rel="stylesheet" type="text/css" />
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+		<!---<script src="{{url_for('static', filename = 'js/menu.js')}}"></script>--->
+		<script src="{{url_for('static', filename = 'js/widgets.js')}}"></script>
+		<script src="{{url_for('static', filename = 'js/custom.js')}}"></script>
+	
+	</head>
+
+	<body>
+		<div class="menu-container">
+			{% include "menu.html" %}
+		</div>
+		
+		<header class="v-header container">
+
+			<div class="fullscreen-video-wrap">
+				<video autoplay muted loop>
+				    <source src="{{url_for('static', filename ='img/vangogh.mp4')}}" type="video/mp4">
+			    </video>
+			</div>
+			<div class="header-overlay"></div>
+			<div class="header-content">
+
+				<h1>
+					Style Transfer
+				</h1>
+				<p>
+					By using the Neural Style Transfer technique provided on this website, everyone can create their
+                    own masterpieces in just a few seconds without special skills requirements. And this is totally free
+                    of charge. So, feel free to play around with all of the functionalities and enjoy yourselves.
+				</p>
+				<a href="#" class="btn">Read More</a>
+			</div>
+		</header>
+
+		<section class="section section-a">
+			<h1>Introduction</h1>
+			<p>
+				Since the dawn of human history, human beings have formed the tendency to appreciate beauty.
+                The aesthetic pursuit of human nature inspires the development of art. As a result, innumerable
+                masterpieces of artwork were born in history and were admired by people until now. Nevertheless,
+                the creation of such artworks can never be easy, as it requires not only the professional skills of
+                the artists but also a large amount of time. Therefore, how to create artworks in a more efficient
+                way has aroused the interest of modern researchers. Fortunately, as deep learning techniques
+                developed, a solution with Neural Style Transfer (NST) was provided.
+			</p>
+		</section>
+		<section class="section section-b">
+			<h2>What we can do</h2>
+
+			<p class="text">
+				In this project, we are implementing a Neural Style Transfer system that can generate new images
+				of artworks in two ways.
+			</p>
+			<u1>
+				<li>
+					For the first one, you can upload two images, namely, a photo-like content image and a painting-like
+					style reference image. By performing deep learning algorithms, the system will extract the artistic
+					style from the style reference image and apply it to the content image, so that the output image will
+					have the same content as the content image but painted in the style as the style reference image.
+					To explore more details about this functionality, navigate through the top menu bar and click
+					the “UPLOAD” button.
+				</li>
+
+				<li>
+
+					For the second one, we have built a template art gallery from which you can view some pre-defined
+					artistic styles, such as Van Gogh’s style, Monet’s style, Japanese ukiyoe style, and so on. To
+					explore more details about this functionality, navigate through the top menu bar and click
+					the “GALLERY” button. You may also find some interesting demos of style transfer in that section.
+					To transfer your image into one of these pre-defined styles is really simple. What you need to do
+					is uploading your own content image and freely choose from one of these popular styles
+					to generate your transferred image as desired. To explore more details about this uploading process,
+					please also navigate through the top menu bar and click the “UPLOAD” button.
+				</li>
+
+			</u1>
+			</p>
+		</section>
+
+	</body>
+</html>

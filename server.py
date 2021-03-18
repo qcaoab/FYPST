@@ -43,12 +43,12 @@ def get_last_pics():
 
 @app.route('/')
 def home():
-    return render_template('empty.html')
+    return render_template('home.html')
 
 
 @app.route('/empty')
 def empty():
-    return render_template('empty.html')
+    return render_template('home.html')
 
 @app.route('/gallery',methods=['GET','POST'])
 def gallery():
