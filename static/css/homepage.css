@@ -54,12 +54,14 @@ body{
 }
 
 .header-content h1{
-	font-size: 50px;
+	font-size: 40px;
 	margin-bottom: 0;
+	font-family: 'Pacifico', cursive;
+	letter-spacing: 0.2em;
 }
 
 .header-content p{
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	display: block;
 	padding-bottom: 2rem;
 }
