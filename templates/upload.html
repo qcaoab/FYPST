@@ -35,7 +35,7 @@
     <div class="content-container">
         <div class="content">
             <div class="content-table flex-column"></div>
-                <!---------dropdown----------------------------------------------------------------------------------->
+
                 <div class="flex-row">
                     <div class="flex-item flex-column">
                         <h2 class="add-top-margin">How to use</h2>
@@ -46,7 +46,7 @@
                             guidance as follows:
                         </p>
 
-                        <u1>
+                        <ul>
                   				<li>
                   					Browse the GALLER section carefully and decide your favorite style
                   				</li>
@@ -59,10 +59,13 @@
                   				</li>
                           <li>
                   					Click the “Submit” button to start the transfer process
-                  				</li>
-                  			</u1>
+                  			  </li>
+                  			</ul>
                     </div>
-                    
+                </div>
+
+                <!---------dropdown----------------------------------------------------------------------------------->
+                <div class="flex-row">
                     <div class="flex-item flex-column">
                         <h2 class="add-top-margin">Transfer to our styles</h2>
                         <hr>
@@ -121,27 +124,28 @@
                         </form>
 
                     </div>
+                </div>
 
-                    <div class="flex-item flex-column">
-                        <h2 class="add-top-margin">Result of Transformation</h2>
-                        <hr>
-                        <div class="custom-file">
-                            <img src="{{resultpath}}" id= "result" >
+                <div class="flex-row">
+                  <div class="flex-item flex-column">
+                      <h2 class="add-top-margin">Result of Transformation</h2>
+                      <hr>
+                      <div class="custom-file">
+                          <img src="{{resultpath}}" id= "result" >
 
 
-                             <script type="text/javascript">
+                           <script type="text/javascript">
 
-                                var resultsrc = "{{resultpath}}";
-                                if (resultsrc == ""){
-                                    document.getElementById("result").src = "{{url_for('static', filename ='img/dummay-img.png')}}";
-                                }
-                                else{
-                                    document.getElementById("result").src = resultsrc;
-                                }
-                            </script>
-                        </div>
-                    </div>
-
+                              var resultsrc = "{{resultpath}}";
+                              if (resultsrc == ""){
+                                  document.getElementById("result").src = "{{url_for('static', filename ='img/dummay-img.png')}}";
+                              }
+                              else{
+                                  document.getElementById("result").src = resultsrc;
+                              }
+                          </script>
+                      </div>
+                  </div>
                 </div>
 
                 <!-------------------------------------------------------------------------------------------->

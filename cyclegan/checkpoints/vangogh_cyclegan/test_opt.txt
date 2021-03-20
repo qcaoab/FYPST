@@ -3,7 +3,7 @@
                batch_size: 1                             
           checkpoints_dir: ./checkpoints                 
                 crop_size: 256                           
-                 dataroot: uploads/755816                	[default: None]
+                 dataroot: uploads/golden_gate           	[default: None]
              dataset_mode: single                        
                 direction: AtoB                          
           display_winsize: 256                           
