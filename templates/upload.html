@@ -23,8 +23,8 @@
     <script src="{{url_for('static', filename = 'js/widgets.js')}}"></script>
     <script src="{{url_for('static', filename = 'js/custom.js')}}"></script>
     <script src="{{ url_for('static', filename='js/upload.js') }}"></script>
-    
-    
+
+
 </head>
 
 <body>
@@ -38,6 +38,32 @@
                 <!---------dropdown----------------------------------------------------------------------------------->
                 <div class="flex-row">
                     <div class="flex-item flex-column">
+                        <h2 class="add-top-margin">How to use</h2>
+                        <hr>
+
+                        <p class="text">
+                            Transferring your image to one of the fascinating pre-defined styles is very simple, follow the
+                            guidance as follows:
+                        </p>
+
+                        <u1>
+                  				<li>
+                  					Browse the GALLER section carefully and decide your favorite style
+                  				</li>
+                          <li>
+                  					Click on the grey “Choose File” button to open your file explorer.
+                            And select the image that you want to transfer from your local disks
+                  				</li>
+                          <li>
+                  					Select the desired style type from the dropdown
+                  				</li>
+                          <li>
+                  					Click the “Submit” button to start the transfer process
+                  				</li>
+                  			</u1>
+                    </div>
+                    
+                    <div class="flex-item flex-column">
                         <h2 class="add-top-margin">Transfer to our styles</h2>
                         <hr>
                         {% with messages = get_flashed_messages(with_categories=true) %}
@@ -48,17 +74,17 @@
                             {% endif %}
                             {% endwith %}
                         <form method="Post" action="/upload" enctype="multipart/form-data">
-                            
+
                             <div class="custom-file">
                                 <input type="file" accept="image/*" onchange="loadFile(event)" name="file"/>
-                                
+
                                 <img id = "imgInp"  width="200px" height="200px"/>
                                 <script>
                                     var loadFile = function(event) {
                                         var imgInp = document.getElementById('imgInp');
                                         imgInp.src = URL.createObjectURL(event.target.files[0]);
                                         imgInp.onload = function() {
-                                        URL.revokeObjectURL(imgInp.src) 
+                                        URL.revokeObjectURL(imgInp.src)
                                         }
                                     };
                                 </script>
@@ -90,22 +116,21 @@
                             <p>
                                 <input type="submit" value="Submit">
                             </p>
-                      
-                               
+
+
                         </form>
-                            
-                      
-                    
+
                     </div>
+
                     <div class="flex-item flex-column">
                         <h2 class="add-top-margin">Result of Transformation</h2>
                         <hr>
                         <div class="custom-file">
                             <img src="{{resultpath}}" id= "result" >
-                            
+
 
                              <script type="text/javascript">
-                                
+
                                 var resultsrc = "{{resultpath}}";
                                 if (resultsrc == ""){
                                     document.getElementById("result").src = "{{url_for('static', filename ='img/dummay-img.png')}}";
@@ -116,15 +141,16 @@
                             </script>
                         </div>
                     </div>
+
                 </div>
-               
+
                 <!-------------------------------------------------------------------------------------------->
                 <div class="flex-row">
                     <div class="flex-item flex-column">
                         <h2 class="add-top-margin">Dialog Button and Box</h2>
                         <hr>
                         <p class="text">
-                            
+
                         </p>
                         <div class="control-group">
                             <button id="dialog-btn-1" class="custom-button-flat"><img src="{{url_for('static', filename = 'img/setting.png')}}"><span>Dialog 1</span></button>
@@ -151,14 +177,13 @@
                             <p id="share-url-copy-prompt">The share link is copied.</p>
                         </div>
                     </div>
-                    
+
                 </div>
                 <!-------------------------------------------------------------------------------------------->
 
 
-                   
+
             </div>
         </div>
-    </div>
 </body>
 </html>

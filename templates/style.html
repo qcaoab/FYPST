@@ -19,9 +19,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="{{url_for('static', filename = 'js/menu.js')}}"></script>
     <script src="{{url_for('static', filename = 'js/widgets.js')}}"></script>
-    
+
     <script src="{{url_for('static', filename = 'js/style.js')}}"></script>
-    
+
 </head>
 
 <body>
@@ -34,14 +34,14 @@
                 <div class="flex-row">
                     <div class="flex-item flex-column">
                         <h2 class="add-top-margin">
-                            
+
                             The Style of <span style="font-style: italic !important;">{{genre}}</span>
-                    
-                            
+
+
                         </h2>
                         <hr>
                         <p class="text">
-                            Here are some paired before & after examples below with the style of {{genre}} 
+                            Below are some paired examples before & after transfer with the style of {{genre}} from left to right.
                         </p>
                     </div>
                 </div>
@@ -64,13 +64,13 @@
                                 "</a>";
                             $gallery.append($(item));
                             }
-                        
+
                     </script>
                 </div>
             </div>
         </div>
-                    
-                           
+
+
     </div>
 
 </body>

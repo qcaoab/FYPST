@@ -73,33 +73,34 @@
 			<h2>What we can do</h2>
 
 			<p class="text">
-				In this project, we are implementing a Neural Style Transfer system that can generate new images
+				In this project, we have implemented a Neural Style Transfer system that can generate new images
 				of artworks in two ways.
 			</p>
 			<u1>
 				<li>
-					For the first one, you can upload two images, namely, a photo-like content image and a painting-like
-					style reference image. By performing deep learning algorithms, the system will extract the artistic
-					style from the style reference image and apply it to the content image, so that the output image will
-					have the same content as the content image but painted in the style as the style reference image.
-					To explore more details about this functionality, navigate through the top menu bar and click
-					the “UPLOAD” button.
+					For the first one, we have built a template art gallery from which you can view some pre-defined
+					artistic styles can be transferred to, such as Van Gogh’s style, Monet’s style, Japanese ukiyoe style, and so on. To
+					explore more details about this, navigate through the top menu bar and click
+					the “GALLERY” button or <a href="{{url_for('gallery')}}">here</a>.
+					You may also find some interesting demos of style transfer in that section.
+					To transfer your image into one of these pre-defined styles is really simple. What you need to do
+					is uploading your own content image and freely choose from one of these popular styles
+					to generate your transferred image as desired. To explore more details and experience this functionality,
+					please also navigate through the top menu bar and click the “CREATE1” button or <a href="{{url_for('upload')}}">here</a>.
 				</li>
 
 				<li>
 
-					For the second one, we have built a template art gallery from which you can view some pre-defined
-					artistic styles, such as Van Gogh’s style, Monet’s style, Japanese ukiyoe style, and so on. To
-					explore more details about this functionality, navigate through the top menu bar and click
-					the “GALLERY” button. You may also find some interesting demos of style transfer in that section.
-					To transfer your image into one of these pre-defined styles is really simple. What you need to do
-					is uploading your own content image and freely choose from one of these popular styles
-					to generate your transferred image as desired. To explore more details about this uploading process,
-					please also navigate through the top menu bar and click the “UPLOAD” button.
+					For the second one, you can upload two images, namely, a photo-like content image and a painting-like
+					style reference image. By performing the learning algorithm, the output image will
+					have the same content as the content image but painted in the style as the style reference image.
+					To explore more details and have a taste of this functionality, navigate through the top menu bar and click
+					the “CREATE2” button or <a href="{{url_for('upload2')}}">here</a>. You can also view some sample demonstration
+					results in the “GALLERY” section appeared in the menu bar or <a href="{{url_for('gallery')}}">here</a>.
 				</li>
 
 			</u1>
-			</p>
+
 		</section>
 
 	</body>
