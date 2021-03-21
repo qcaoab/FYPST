@@ -52,7 +52,7 @@ def empty():
 
 @app.route('/gallery',methods=['GET','POST'])
 def gallery():
-    return render_template('gallery.html')
+    return render_template('demo.html')
 
 @app.route('/style/genre/'+'<genre>')
 def style(genre):
