@@ -66,7 +66,8 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #3f51b5;
+    /* background-color: #3f51b5; */
+    background-color: #2196f3;
     content: '';
     opacity: 0;
     transition: opacity 0.1s;
@@ -94,7 +95,7 @@ body {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #673ab7;
+    color: #1ba1df;
   }
   .Card-button {
     position: absolute;
@@ -103,7 +104,7 @@ body {
     padding: 0.5rem 1rem;
     background-color: #fff;
     border-radius: 2rem;
-    border: 2px solid #3f51b5;
+    border: 2px solid #1ba1df;
     color: #fff;
     font-size: 0.75rem;
     font-weight: 600;
@@ -156,13 +157,13 @@ body {
   .Card:hover .Card-button,
   .Card--active .Card-button {
     opacity: 1;
-    color: #3f51b5;
+    color: #1ba1df;
     transform: translate(-50%, 0);
   }
   .Card:hover .Card-button:hover,
   .Card--active .Card-button:hover {
     color: #fff;
-    background-color: #3f51b5;
+    background-color: #1ba1df;
   }
   .Card--active,
   .Card--active:hover {
@@ -405,7 +406,7 @@ body {
   .Gallery-image--primary {
     width: 31rem;
     height: 20rem;
-    background-color: #673ab7;
+    background-color: white;
   }
   .Gallery--active {
     z-index: 100;
