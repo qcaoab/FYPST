@@ -43,7 +43,7 @@
 
                         <p class="text">
                             Transferring your image to one of the fascinating pre-defined styles is very simple, follow the
-                            guidance as follows:
+                            instructions as follows:
                         </p>
 
                         <ul>
@@ -51,8 +51,8 @@
                   					Browse the GALLERY section carefully and decide your favorite style
                   				</li>
                           <li>
-                  					Click on the grey “Choose File” button to open your file explorer.
-                            And select the image that you want to transfer from your local disks
+                  					Click on the grey “Choose File” button to open your file explorer,
+                            and select the image that you want to transfer from your local disks
                   				</li>
                           <li>
                   					Select the desired style type from the dropdown
@@ -146,6 +146,34 @@
                           </script>
                       </div>
                   </div>
+                </div>
+
+
+                <div class="flex-row">
+                    <div class="flex-item flex-column">
+                        <h2 class="add-top-margin">The principles behind this functionality (for your interest)</h2>
+                        <hr>
+
+                        <p class="text">
+                            This functionality is implemented according to the CycleGAN model, which was proposed by
+                            Jun-Yan Zhu and his colleagues [1]. It trains on unpaired images from two source domains.
+                            Not like some other inconvenient neural style transfer algorithm, the advantage is that it is
+                            very flexible and avoids the requirement of paired images as training data.
+                        </p>
+                        <img class="image no-top-margin center add-top-margin-small"
+                                                   src="{{url_for('static', filename ='pics/cnn_sample/cycgan_img.jpg')}}">
+                        <p class="text">
+                            As illustrated in the above figure [1], X and Y are two domains, with two mapping G: from X to Y
+                            and F: from Y to X. Dx and Dy are two adversarial discriminators, where Dx can discriminate
+                            image x from translated image F(y) and Dy can do the inverse. Two directions of mapping can be
+                            trained at the same time. The final trained model can then be used to generate the style
+                            transferred image by passing the original image through the network.
+                        </p>
+
+                        <small class="text">
+                            [1] is referenced from https://arxiv.org/abs/1703.10593.
+                        </small>
+                    </div>
                 </div>
 
                 <!-------------------------------------------------------------------------------------------->
