@@ -34,13 +34,48 @@
         <div class="content">
             <div class="content-table flex-column"></div>
 
+                <div class="flex-row">
+                    <div class="flex-item flex-column">
+                        <h2 class="add-top-margin">How to use</h2>
+                        <hr>
+
+                        <p class="text">
+                            You can upload your own style image and transfer your photo to that style by
+                            following the instructions below:
+                        </p>
+
+                        <ul>
+                          <li>
+                            Click on the first grey “Choose File” button to open your file explorer,
+                            and select your content image whose style is to be transferred from your local disks
+                          </li>
+                          <li>
+                            Click on the second grey “Choose File” button to upload your style image
+                            whose style will be transferred to your content image
+                          </li>
+                          <li>
+                            Then slide through the slide bar to select the desired extent of stylization
+                            (If the value is closer to 0, the image will be more similar to the original
+                            one and vice versa.)
+                          </li>
+                          <li>
+                            Next, indicate whether you want to preserve the color of the original content
+                            image during the transfer process
+                          </li>
+                          <li>
+                            Finally, click the “Submit” button to start the transfer process
+                          </li>
+                        </ul>
+                    </div>
+                </div>
+
                 <!------------------------------------------------------------------------------------->
                 <div class="flex-row">
                     <div class="flex-item flex-column">
                         <h2 class="add-top-margin">Transfer to your own uploaded style</h2>
                         <hr>
                         <p class="text">
-                            Please upload the photo or image whose style is to be transferred below:
+                            Please upload the photo or image to be transferred below:
                         </p>
 
                         {% with messages = get_flashed_messages(with_categories=true) %}
