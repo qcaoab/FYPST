@@ -61,9 +61,10 @@ body{
 }
 
 .header-content p{
-	font-size: 1.2rem;
+	font-size: 1.8rem;
 	display: block;
 	padding-bottom: 2rem;
+	padding-top: 2rem;
 }
 
 /* .btn{
