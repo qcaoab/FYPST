@@ -4,6 +4,7 @@ import os
 import torch
 import torch.nn as nn
 from PIL import Image
+import numpy as np
 from torchvision import transforms
 from torchvision.utils import save_image
 
@@ -29,7 +30,7 @@ def style_transfer(vgg, decoder, content, style, alpha=1.0,
     assert (0.0 <= alpha <= 1.0)
     content_f = vgg(content)
     style_f = vgg(style)
-    if interpolation_weights:
+    if interpolation_weights is not None:
         _, C, H, W = content_f.size()
         feat = torch.FloatTensor(1, C, H, W).zero_().to(device)
         base_feat = adaptive_instance_normalization(content_f, style_f)
@@ -81,12 +82,11 @@ parser.add_argument(
     '--style_interpolation_weights', type=str, default='',
     help='The weight for blending the style of multiple style images')
 
-do_interpolation = False
+
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
 '''
 args = parser.parse_args()
-
-do_interpolation = False
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -181,8 +181,19 @@ def process_img(path, size, crop):
 def arbi_trans(content_imgs, style_imgs, preserve_color = False, alpha = 1.0, 
                a_vgg= 'Arbitrary_ST_Pytorch/models/vgg_normalised.pth', a_decoder ='Arbitrary_ST_Pytorch/models/decoder.pth', 
                content_size = 512, style_size = 512, crop = False, save_ext = '.jpg', output = 'static/pics/output'):
-    
-    
+    do_interpolation = False
+    style_length = len(style_imgs)
+    if style_length > 1:
+        do_interpolation = True
+    for style_img in style_imgs:
+        style_img=Path(style_img)
+            #flash (args.style_interpolation_weights != ''), \
+            #    'Please specify interpolation weights'
+            #weights = [int(i) for i in style_interpolation_weights
+        #interpolation_weights = [w / sum(weights) for w in weights]
+        interpolation_weights = np.full(style_length,1/style_length, dtype = float)
+       
+   
     output_dir = Path(output)
     output_dir.mkdir(exist_ok=True, parents=True)
     decoder = net.decoder
@@ -198,29 +209,38 @@ def arbi_trans(content_imgs, style_imgs, preserve_color = False, alpha = 1.0,
     vgg.to(device)
     decoder.to(device)
     content_imgs = [Path(content_imgs)]
-    style_imgs = [Path(style_imgs)]
+    
     for content_img in content_imgs:
-        for style_img in style_imgs:
-            '''
-            content_tf = test_transform(content_size, crop)
-            style_tf = test_transform(style_size, crop)
-            content = content_tf(Image.open(str(content_img)))
-            
-            style = style_tf(Image.open(str(style_img)))
-            '''
-            content = process_img(content_img, content_size, crop)
-            style = process_img(style_img, style_size, crop)
-            if preserve_color:
-                style = coral(style, content)
-            style = style.to(device).unsqueeze(0)
-            content = content.to(device).unsqueeze(0)
+        if do_interpolation:  # one content image, N style image
+            style = torch.stack([process_img(p,style_size, True) for p in style_imgs])
+            content = process_img(content_img, content_size, crop).unsqueeze(0).expand_as(style)
+            style = style.to(device)
+            content = content.to(device)
             with torch.no_grad():
-                output = style_transfer(vgg, decoder, content, style, alpha)
-            output = output.cpu()
-            
-            output_name = output_dir / '{:s}_stylized_{:s}_{:s}_{:s}{:s}'.format(
-                    content_img.stem, style_img.stem,  str(alpha), str(int(preserve_color)),save_ext)
+                output = style_transfer(vgg, decoder, content, style, alpha, interpolation_weights)
+           
+        else:
+            for style_img in style_imgs:
+                '''
+                content_tf = test_transform(content_size, crop)
+                style_tf = test_transform(style_size, crop)
+                content = content_tf(Image.open(str(content_img)))
+                
+                style = style_tf(Image.open(str(style_img)))
+                '''
+                content = process_img(content_img, content_size, crop)
+                style = process_img(style_img, style_size, crop)
+                if preserve_color:
+                    style = coral(style, content)
+                style = style.to(device).unsqueeze(0)
+                content = content.to(device).unsqueeze(0)
+                with torch.no_grad():
+                    output = style_transfer(vgg, decoder, content, style, alpha)
+       
+        output = output.cpu()
+        output_name = output_dir / '{:s}_stylized_{:s}_{:s}{:s}'.format(
+                content_img.stem,   str(alpha), str(int(preserve_color)),save_ext)
    
-            save_image(output, str(output_name))
+        save_image(output, str(output_name))
             
     return str(output_name)

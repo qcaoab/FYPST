@@ -137,47 +137,51 @@ def upload2():
         degree = request.form.get('degree')
         preserve = request.form.get('preserve')
         
-        if 'file1' not in request.files or 'file2' not in request.files:
+        if 'file1' not in request.files or 'file2_styles' not in request.files:
             flash('Attention: No file part', 'danger')
             return redirect(request.url)
         
+        file2=[]
         file1 = request.files['file1']
-        file2 = request.files['file2']
+        file2 = request.files.getlist('file2_styles')
         
-        if file1.filename == '' or file2.filename == '':
-            flash('Attention: Need to select two pictures', 'danger')
+        if file1.filename == '' or allowed_file(file1.filename)==False:
+            flash('Error: Invalid style image selected, allowed image types are -> png, jpg, jpeg, gif', 'danger')
             return redirect(request.url)
         
-        if allowed_file(file1.filename)==False or allowed_file(file2.filename)==False:
-            flash('Error: Allowed image types are -> png, jpg, jpeg, gif', 'danger')
-            return redirect(request.url)
+        for file in file2:   
+            if file.filename == '' or allowed_file(file.filename) ==False:
+                flash('Error: Invalid style image selected, allowed image types are -> png, jpg, jpeg, gif', 'danger')
+                return redirect(request.url)
         
-        else:
+        
       
-            filename1 = secure_filename(file1.filename)
-            path1 = os.path.join(app.config["IMAGE_UPLOADS_C"], filename1)
-            file1.save(path1)
-            flash('Uploaded content image: ' + filename1, 'info')
-      
-          
-            filename2 = secure_filename(file2.filename)
-            path2=os.path.join(app.config["IMAGE_UPLOADS_S"], filename2)
-            print('----------------------')
-            print(path1)
-            print(path2)
-            file2.save(path2)
-            flash('Uploaded style image: ' + filename2, 'info')
-            print('transfer starts')
-            degree = float(degree)/100
-            resultname = arbi_trans(path1, path2,preserve_color= bool(int(preserve)), alpha = float(degree))
+        filename1 = secure_filename(file1.filename)
+        path1 = os.path.join(app.config["IMAGE_UPLOADS_C"], filename1)
+        file1.save(path1)
+        flash('Uploaded content image: ' + filename1, 'info')
+        filename2 =[]
+        path2 = []
+        for file in file2:
             
-            #resultpath=os.path.abspath(resultname)
-            resultpath = str(resultname).replace('\\','/')
-            
-            flash('select degree = ' + str(degree), 'info')
-            flash('preserve color = ' + str(preserve), 'info')
+            filename = secure_filename(file.filename)
+            path=os.path.join(app.config["IMAGE_UPLOADS_S"], filename)
+   
+            file.save(path)
+            path2.append(path)
+            filename2.append(filename)
+        flash('Uploaded style image: ' + str(filename2), 'info')
+        print('transfer starts')
+        degree = float(degree)/100
+        resultname = arbi_trans(path1, path2,preserve_color= bool(int(preserve)), alpha = float(degree))
+        
+        #resultpath=os.path.abspath(resultname)
+        resultpath = str(resultname).replace('\\','/')
+        
+        flash('select degree = ' + str(degree), 'info')
+        flash('preserve color = ' + str(preserve), 'info')
 
-            print(resultpath)
+        print(resultpath)
             #result.save(os.path.join(app.config["static/pics/uploads"], 'transfer_result.jpg'))
         return render_template('upload2.html', file1 = file1, file2=file2, resultpath = resultpath)
        

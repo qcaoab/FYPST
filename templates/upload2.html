@@ -88,7 +88,7 @@
                         <form method="Post" action="/upload2" enctype="multipart/form-data">
 
                         <div class="custom-file">
-                            <input type="file" accept="image/*" onchange="loadFile(event)" name="file1"/>
+                            <input type="file" accept="image/*" onchange="loadFile(event)" name="file1" />
 
                             <img id = "imgInp1"  width="150px" height="150px"/>
                             <script>
@@ -109,10 +109,33 @@
 
 
                             <div class="custom-file">
-                                <input type="file" accept="image/*" onchange="loadFile2(event)" name="file2"/>
+                                <input type="file" accept="image/*" name="file2_styles" id = "imgInp2" multiple/>
 
-                                <img id = "imgInp2"  width="150px" height="150px"/>
                                 <script>
+                                    function previewImages() {
+                                        var preview = document.querySelector('#preview');
+
+                                        if (this.files) {
+                                            [].forEach.call(this.files, readAndPreview);
+                                        }
+                                        function readAndPreview(file) {    
+                                        var reader = new FileReader();
+                                        
+                                        reader.addEventListener("load", function() {
+                                            var image = new Image();
+                                            image.height = 150;
+                                            image.title  = file.name;
+                                            image.src    = this.result;
+                                            preview.appendChild(image);
+                                        });
+
+                                        reader.readAsDataURL(file);
+    
+                                        }
+                                    }
+
+                                    document.querySelector('#imgInp2').addEventListener("change", previewImages);
+                                    /*
                                     var loadFile2 = function(event) {
                                         var imgInp2 = document.getElementById('imgInp2');
                                         imgInp2.src = URL.createObjectURL(event.target.files[0]);
@@ -120,7 +143,9 @@
                                         URL.revokeObjectURL(imgInp2.src) // free memory
                                         }
                                     };
+                                    */
                                 </script>
+                                <div id="preview"></div>
                             </div>
                             <!----------------slider--------------------->
 
