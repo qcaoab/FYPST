@@ -2,13 +2,14 @@
 <html>
 
 	<head>
+		<title>Style Transfer</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="https://fonts.googleapis.com/css?family=Pacifico|Tajawal" rel="stylesheet">
 		<link href="{{url_for('static', filename ='css/homepage.css')}}" rel="stylesheet" type="text/css" />
 		<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
 	
-		<title>Style Transfer</title>
+		
 		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" />
 		
@@ -65,76 +66,79 @@
 			</div>
 		</header>
 	<div class="content-container">
-		<section class="section section-a">
-			<div class="flex-row">
+		<div class="content">
+			<div class="flex-item flex-column">
 			
-			<u1>
-				<p>
-					
-					How can the never-ceased pursuit of artistry and beauty survive the era of computer? 
-				</p>
-				<p>
-					How can the innumerable masterpieces of artwork born in history gain their new life in this century?
-				</p>
-				<p>
-					How can people with zero knowledge of art realize the image from their minds with a click of their mouse?
-				</p>
-				<p>
-					Now, with the development of deep learning, Neural Style Transfer (NST) makes it possible 
-					for everyone to generate their unique artworks like a master artist on their computer!
-				</p>
-		</u1>
-	</div>
-		</section>
-
-		
-		<section class="section section-b">
 			
-			<h2>What you can do</h2>
-			<p>
-				On this website, you can explore the magic of Neural Style Transfer, view and generate your own artworks in the following pages:
-				
-				</p>
-
-			<ul>
-				
-				<li>
-					<h3>Gallery</h3>
-					<p>In page "Gallery", there are two sections of artwork samples. 
-					<p>In section one, you can view some pre-defined artistic styles to which user inputs can be transferred, 
-						such the style of Van Gogh, Monet, Japanese ukiyoe, and so on.</p>
-					<p>In section two, there are three kinds of pictures in each row: 
-						the input content, the input style, and the output result. </p>
-					<p> To explore more details about the gallery, nevigate to "Gallery" from menu or click <a href="{{url_for('gallery')}}">here</a>. </p>
-					
-				</li>
-				<li>
-					<h3>Create-1</h3>
-					<p> It's easy to transfer your own picture to one of our provided styles. What you need to do
-					is to choose your photo and select one of the style names from the dropdown. 
-					Click the upload button and you can find the result below. </p>
-					<p> To try it yourself, nevigate to "Create1" from menu or click <a href="{{url_for('upload')}}">here</a>.
+				<u1>
+					<p>
+						
+						How can the never-ceased pursuit of artistry and beauty survive the era of computer? 
 					</p>
-				</li>
-
-				<li>
-					<h3>Create-2</h3>
-					<p>You can also transfer your picture to arbitrary styles of your choice! </p>
-					By uploading a photo-like content picture and a painting-like style reference picture, 
-					you can get an output picture with the same content painted in the style you uploaded.
-					<p> To try it yourself, nevigate to "Create2" from menu or click <a href="{{url_for('upload2')}}">here</a>.</p>
-				</li>
-
-			</ul>
-		</div>
-		</section>
+					<p>
+						How can the innumerable masterpieces of artwork born in history gain their new life in this century?
+					</p>
+					<p>
+						How can people with zero knowledge of art realize the image from their minds with a click of their mouse?
+					</p>
+					<p>
+						Now, with the development of deep learning, Neural Style Transfer (NST) makes it possible 
+						for everyone to generate their unique artworks like a master artist on their computer!
+					</p>
+				</u1>
+			
 		
+
+			
+			
+				
+				<h2 class="add-top-margin">What you can do</h2>
+				<p>
+					On this website, you can explore the magic of Neural Style Transfer, view and generate your own artworks in the following pages:
+				
+				</p>
+
+				<ul>
+					
+					<li>
+						<h3>Gallery</h3>
+						<p>In page "Gallery", there are two sections of artwork samples. 
+						<p>In section one, you can view some pre-defined artistic styles to which user inputs can be transferred, 
+							such the style of Van Gogh, Monet, Japanese ukiyoe, and so on.</p>
+						<p>In section two, there are three kinds of pictures in each row: 
+							the input content, the input style, and the output result. </p>
+						<p> To explore more details about the gallery, nevigate to "Gallery" from menu or click <a href="{{url_for('gallery')}}">here</a>. </p>
+						
+					</li>
+					<li>
+						<h3>Create-1</h3>
+						<p> It's easy to transfer your own picture to one of our provided styles. What you need to do
+						is to choose your photo and select one of the style names from the dropdown. 
+						Click the upload button and you can find the result below. </p>
+						<p> To try it yourself, nevigate to "Create1" from menu or click <a href="{{url_for('upload')}}">here</a>.
+						</p>
+					</li>
+
+					<li>
+						<h3>Create-2</h3>
+						<p>You can also transfer your picture to arbitrary styles of your choice! </p>
+						By uploading a photo-like content picture and a painting-like style reference picture, 
+						you can get an output picture with the same content painted in the style you uploaded.
+						<p> To try it yourself, nevigate to "Create2" from menu or click <a href="{{url_for('upload2')}}">here</a>.</p>
+					</li>
+
+				</ul>
+			</div>
+	
+		
+		
+
 		<hr>
 		
            
 		<div class="flex-item flex-column">
 			<div class="flex-row">
-				<div class="content">
+				
 					<div id="myCarousel" class="carousel slide" data-ride="carousel">
 						<!-- Indicators -->
 						<ol class="carousel-indicators">
@@ -184,6 +188,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 </div>
 			<script>
 				$(document).ready(function(){
