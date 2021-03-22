@@ -8,17 +8,17 @@
     <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="{{url_for('static', filename ='css/frame.css')}}" media="screen" rel="stylesheet" type="text/css" />
     <link href="{{url_for('static', filename ='css/controls.css')}}" media="screen" rel="stylesheet" type="text/css" />
-    
+
     <link href="{{url_for('static', filename ='css/custom.css')}}" media="screen" rel="stylesheet" type="text/css" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap" rel="stylesheet">
-   
+
 
     <link href = "{{url_for('static', filename = 'css/bootstrap.css')}}" media="screen" rel="stylesheet" type="text/css" />
-		
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{url_for('static', filename = 'js/bootstrap.js')}}"></script>
 
@@ -118,9 +118,9 @@
                                         if (this.files) {
                                             [].forEach.call(this.files, readAndPreview);
                                         }
-                                        function readAndPreview(file) {    
+                                        function readAndPreview(file) {
                                         var reader = new FileReader();
-                                        
+
                                         reader.addEventListener("load", function() {
                                             var image = new Image();
                                             image.height = 150;
@@ -130,7 +130,7 @@
                                         });
 
                                         reader.readAsDataURL(file);
-    
+
                                         }
                                     }
 
@@ -220,7 +220,37 @@
                       </div>
                   </div>
                 </div>
+
+                <div class="flex-row">
+                    <div class="flex-item flex-column">
+                        <h2 class="add-top-margin">The principles behind this functionality (for your interest)</h2>
+                        <hr>
+
+                        <p class="text">
+                            This functionality is implemented according to the CNN-based AdaIN model, which was proposed by
+                            Xun Huang and Serge Belongieand [1]. Because it includes manipulations on the VGG-19 convolutional
+                            network when transferring styles, it is regarded as a CNN-based algorithm here. As illustrated in
+                            the following figure [1], the input content and style images are encoded by the pre-trained VGG network
+                            into abstract features. In this process, only up to several ReLU layers in the VGG are used. Then the
+                            AdaIN layer transfers the style of the content features by aligning their mean and variance with
+                            those of the style features. The decoder, which is an inverted version of the encoder, can be
+                            trained to decode the features into the resulting image.
+                        </p>
+                        <img class="image no-top-margin center add-top-margin-small"
+                                                   src="{{url_for('static', filename ='pics/cnn_sample/cnn_img.jpg')}}">
+                        <p class="text">
+                            The advantage of this algorithm is that it enables very fast style transfer of arbitrary content
+                            and style image pairs. The computational cost of testing is extremely low, and also, there is no
+                            need to train separate models for different styles.
+                        </p>
+
+                        <small class="text">
+                            [1] is referenced from https://arxiv.org/abs/1703.06868.
+                        </small>
+                    </div>
+                </div>
                 <!-------------------------------------------------------------------------------------------->
+
 
             </div>
         </div>
