@@ -1047,7 +1047,8 @@ img {
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
   display: block;
-  max-width: 100%;
+  width: 100%;
+  
   height: auto;
 }
 .img-rounded {
@@ -6035,7 +6036,10 @@ button.close {
 }
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
+  width:430px;
+  height:270px;
   line-height: 1;
+  width: 100% !important;
 }
 @media all and (transform-3d), (-webkit-transform-3d) {
   .carousel-inner > .item {
