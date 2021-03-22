@@ -6026,6 +6026,7 @@ button.close {
 .carousel-inner {
   position: relative;
   width: 100%;
+  
   overflow: hidden;
 }
 .carousel-inner > .item {
@@ -6040,6 +6041,7 @@ button.close {
  
   line-height: 1;
   width: 100% !important;
+  height: 500px !important;
 }
 @media all and (transform-3d), (-webkit-transform-3d) {
   .carousel-inner > .item {

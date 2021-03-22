@@ -12,7 +12,7 @@
 		<title>Style Transfer</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" />
-    <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" media="screen" rel="stylesheet" type="text/css" />
+    
     <link href="{{url_for('static', filename ='css/frame.css')}}" media="screen" rel="stylesheet" type="text/css" />
     <link href="{{url_for('static', filename ='css/controls.css')}}" media="screen" rel="stylesheet" type="text/css" />
     <link href="{{url_for('static', filename ='css/frame.css')}}" media="screen" rel="stylesheet" type="text/css" />
@@ -47,8 +47,9 @@
 				    <source src="{{url_for('static', filename ='img/vangogh.mp4')}}" type="video/mp4">
 			    </video>
 			</div>
-			<div class="header-overlay"></div>
+		<div class="header-overlay"></div>
 			<div class="header-content">
+				<div class="flex-item flex-column"></div>
 
 				<h1>
 					Style Transfer
@@ -66,50 +67,70 @@
 		</header>
 	<div class="content-container">
 		<section class="section section-a">
+			<div class="flex-row">
 			<h2>Introduction</h2>
-			<p>
-				Since the dawn of human history, human beings have formed the tendency to appreciate beauty.
-                The aesthetic pursuit of human nature inspires the development of art. As a result, innumerable
-                masterpieces of artwork were born in history and were admired by people until now. Nevertheless,
-                the creation of such artworks can never be easy, as it requires not only the professional skills of
-                the artists but also a large amount of time. Therefore, how to create artworks in a more efficient
-                way has aroused the interest of modern researchers. Fortunately, as deep learning techniques
-                developed, a solution with Neural Style Transfer (NST) was provided.
-			</p>
+			<u1>
+				<p>
+					
+					How can the never-ceased pursuit of artistry and beauty survive the era of computer? 
+				</p>
+				<p>
+					How can the innumerable masterpieces of artwork born in history gain their new life in this century?
+				</p>
+				<p>
+					How can people with zero knowledge of art realize the image from their minds with a click of their mouse?
+				</p>
+				<p>
+					Now, with the development of deep learning, Neural Style Transfer (NST) makes it possible 
+					for everyone to generate their unique artworks like a master artist on their computer!
+				</p>
+		</u1>
+	</div>
 		</section>
-		<section class="section section-b">
-			<h2>What we can do</h2>
 
-			<p class="text">
-				In this project, we have implemented a Neural Style Transfer system that can generate new images
-				of artworks in two ways.
-			</p>
+		
+		<section class="section section-b">
+			
+			<h2>What you can do</h2>
+			<p>
+				On this website, you can explore the magic of Neural Style Transfer, view and generate your own artworks in the following pages:
+				
+				</p>
+
 			<ul>
+				
 				<li>
-					For the first one, we have built a template art gallery from which you can view some pre-defined
-					artistic styles can be transferred to, such as Van Gogh’s style, Monet’s style, Japanese ukiyoe style, and so on. To
-					explore more details about this, navigate through the top menu bar and click
-					the “GALLERY” button or <a href="{{url_for('gallery')}}">here</a>.
-					You may also find some interesting demos of style transfer in that section.
-					To transfer your image into one of these pre-defined styles is really simple. What you need to do
-					is uploading your own content image and freely choose from one of these popular styles
-					to generate your transferred image as desired. To explore more details and experience this functionality,
-					please also navigate through the top menu bar and click the “CREATE1” button or <a href="{{url_for('upload')}}">here</a>.
+					<h3>Gallery</h3>
+					<p>In page "Gallery", there are two sections of artwork samples. 
+					<p>In section one, you can view some pre-defined artistic styles to which user inputs can be transferred, 
+						such the style of Van Gogh, Monet, Japanese ukiyoe, and so on.</p>
+					<p>In section two, there are three kinds of pictures in each row: 
+						the input content, the input style, and the output result. </p>
+					<p> To explore more details about the gallery, nevigate to "Gallery" from menu or click <a href="{{url_for('gallery')}}">here</a>. </p>
+					
+				</li>
+				<li>
+					<h3>Create-1</h3>
+					<p> It's easy to transfer your own picture to one of our provided styles. What you need to do
+					is to choose your photo and select one of the style names from the dropdown. 
+					Click the upload button and you can find the result below. </p>
+					<p> To try it yourself, nevigate to "Create1" from menu or click <a href="{{url_for('upload')}}">here</a>.
+					</p>
 				</li>
 
 				<li>
-
-					For the second one, you can upload two images, namely, a photo-like content image and a painting-like
-					style reference image. By performing the learning algorithm, the output image will
-					have the same content as the content image but painted in the style as the style reference image.
-					To explore more details and have a taste of this functionality, navigate through the top menu bar and click
-					the “CREATE2” button or <a href="{{url_for('upload2')}}">here</a>. You can also view some sample demonstration
-					results in the “GALLERY” section appeared in the menu bar or <a href="{{url_for('gallery')}}">here</a>.
+					<h3>Create-2</h3>
+					<p>You can also transfer your picture to arbitrary styles of your choice! </p>
+					By uploading a photo-like content picture and a painting-like style reference picture, 
+					you can get an output picture with the same content painted in the style you uploaded.
+					<p> To try it yourself, nevigate to "Create2" from menu or click <a href="{{url_for('upload2')}}">here</a>.</p>
 				</li>
 
 			</ul>
-
+		</div>
 		</section>
+		
+		<hr>
 		
            
 		<div class="flex-item flex-column">
@@ -126,7 +147,7 @@
 						<!-- Wrapper for slides -->
 						<div class="carousel-inner" role="listbox">
 						<div class="item active">
-							<img src="{{url_for('static', filename ='pics/cnn_sample/2a.jpg')}}" alt="2a" style="height:540 px; width:860px;">
+							<img src="{{url_for('static', filename ='pics/output/2.jpg')}}" alt="3a" style="height:540 px; width:860px;">
 							<div class="carousel-caption">
 							<h3>New York</h3>
 							<p>The atmosphere in New York is lorem ipsum.</p>
@@ -134,7 +155,7 @@
 						</div>
 					
 						<div class="item">
-							<img src="{{url_for('static', filename ='pics/cnn_sample/2s.jpg')}}" alt="2s" style="height:540 px; width:860px;">
+							<img src="{{url_for('static', filename ='pics/output/1.jpg')}}" alt="3s" style="height:540 px; width:860px;">
 							<div class="carousel-caption">
 							<h3>Chicago</h3>
 							<p>Thank you, Chicago - A night we won't forget.</p>
@@ -142,7 +163,7 @@
 						</div>
 					
 						<div class="item">
-							<img src="{{url_for('static', filename ='pics/cnn_sample/2c.jpg')}}" alt="2c" style="height:540 px; width:860px;">
+							<img src="{{url_for('static', filename ='pics/output/3.jpg')}}" alt="3c" style="height:540 px; width:860px;">
 							<div class="carousel-caption">
 							<h3>LA</h3>
 							<p>Even though the traffic was a mess, we had the best time.</p>
