@@ -6022,6 +6022,7 @@ button.close {
 .carousel {
   position: relative;
 }
+
 .carousel-inner {
   position: relative;
   width: 100%;
@@ -6036,8 +6037,7 @@ button.close {
 }
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
-  width:430px;
-  height:270px;
+ 
   line-height: 1;
   width: 100% !important;
 }

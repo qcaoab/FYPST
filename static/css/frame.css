@@ -11,7 +11,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: white;
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   left: 0;
   right: 0;
   width: auto;
@@ -207,7 +207,7 @@ hr {
   position: relative;
   margin: 0 auto;
   font-size: 16px;
-  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
   line-height: 1.5;
   max-width: 900px;
