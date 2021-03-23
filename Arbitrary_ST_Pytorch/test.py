@@ -83,7 +83,8 @@ parser.add_argument(
     help='The weight for blending the style of multiple style images')
 
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+#device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = "cpu"
 
 '''
 args = parser.parse_args()
