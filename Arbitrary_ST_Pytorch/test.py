@@ -185,8 +185,12 @@ def arbi_trans(content_imgs, style_imgs, preserve_color = False, alpha = 1.0,
     style_length = len(style_imgs)
     if style_length > 1:
         do_interpolation = True
+        
+    style_name = ''
     for style_img in style_imgs:
+        
         style_img=Path(style_img)
+        style_name = style_name + '-'+ str(style_img.stem)[0:3]
             #flash (args.style_interpolation_weights != ''), \
             #    'Please specify interpolation weights'
             #weights = [int(i) for i in style_interpolation_weights
@@ -215,7 +219,7 @@ def arbi_trans(content_imgs, style_imgs, preserve_color = False, alpha = 1.0,
             
         if do_interpolation:  # one content image, N style image
             style = torch.stack([process_img(p,style_size, True) for p in style_imgs])
-            content = process_img(content_img, content_size, crop).unsqueeze(0).expand_as(style)
+            content = process_img(content_img, content_size, True).unsqueeze(0).expand_as(style)
             style = style.to(device)
             content = content.to(device)
             with torch.no_grad():
@@ -239,10 +243,8 @@ def arbi_trans(content_imgs, style_imgs, preserve_color = False, alpha = 1.0,
                 with torch.no_grad():
                     output = style_transfer(vgg, decoder, content, style, alpha)
                
-        style_name = ''
-        for style_img in style_imgs:
-            style_name = style_name + '-'+ str(style_img)[:3]
-            
+        
+     
         output = output.cpu()
         output_name = output_dir / '{:s}-{:s}_{:s}_{:s}{:s}'.format(
                 content_img.stem, style_name,  str(alpha), str(int(preserve_color)),save_ext)
