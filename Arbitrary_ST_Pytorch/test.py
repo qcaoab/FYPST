@@ -240,7 +240,7 @@ def arbi_trans(content_imgs, style_imgs, preserve_color = False, alpha = 1.0,
                     output = style_transfer(vgg, decoder, content, style, alpha)
                
         style_name = ''
-        for style in style_imgs:
+        for style_img in style_imgs:
             style_name = style_name + '-'+ str(style_img)[:3]
             
         output = output.cpu()
