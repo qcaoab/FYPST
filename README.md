@@ -30,9 +30,9 @@ python server.py
 - [x] handle selections in flask
 - [x] upload and display pics
 - [x] pass pic through nn via flask
-- [ ] cycleGan issues
-- [ ] interactive web features
-- [ ] migrate selection of existing genres
+- [x] cycleGan issues
+- [x] interactive web features
+- [ ] video transfer
 - [ ] additional features realized by nn
 - [ ] tbc...
 
