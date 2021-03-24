@@ -50,6 +50,10 @@ def home():
 def empty():
     return render_template('home.html')
 
+@app.route('/intro')
+def intro():
+    return render_template('intro.html')
+
 @app.route('/gallery',methods=['GET','POST'])
 def gallery():
     return render_template('demo.html')

@@ -40,31 +40,7 @@
 			{% include "menu.html" %}
 		</div>
 
-		<header class="v-header container">
 
-			<div class="fullscreen-video-wrap">
-				<video autoplay muted loop>
-				    <source src="{{url_for('static', filename ='img/vangogh.mp4')}}" type="video/mp4">
-			    </video>
-			</div>
-		<div class="header-overlay"></div>
-			<div class="header-content">
-				<div class="flex-item flex-column"></div>
-
-				<h1>
-					Style Transfer
-				</h1>
-				<p>
-					By using the Neural Style Transfer technique provided on this website, everyone can create their
-                    own masterpieces in just a few seconds without special skills requirements. And this is totally free
-                    of charge. So, feel free to play around with all of the functionalities and enjoy yourselves.
-				</p>
-				<!-- <a href="{{url_for('gallery')}}" class="btn">Explore</a> -->
-				<div class="box">
-					<a href="{{url_for('gallery')}}" class="btn btn-white btn-animation-1">Learn More</a> 
-				</div>
-			</div>
-		</header>
 	<div class="content-container">
 		<div class="content">
 			<div class="flex-item flex-column">
@@ -124,6 +100,61 @@
 					</li>
 
 				</ul>
+			</div>
+
+			<div class="flex-row">
+				<div class="flex-item flex-column">
+					<h2 class="add-top-margin">The principles behind this functionality (for your interest)</h2>
+					<hr>
+
+					<p class="text">
+						This functionality is implemented according to the CycleGAN model, which was proposed by
+						Jun-Yan Zhu and his colleagues [1]. It trains on unpaired images from two source domains.
+						Not like some other inconvenient neural style transfer algorithm, the advantage is that it is
+						very flexible and avoids the requirement of paired images as training data.
+					</p>
+					<img class="image no-top-margin center add-top-margin-small"
+											   src="{{url_for('static', filename ='pics/cnn_sample/cycgan_img.jpg')}}">
+					<p class="text">
+						As illustrated in the above figure [1], X and Y are two domains, with two mapping G: from X to Y
+						and F: from Y to X. Dx and Dy are two adversarial discriminators, where Dx can discriminate
+						image x from translated image F(y) and Dy can do the inverse. Two directions of mapping can be
+						trained at the same time. The final trained model can then be used to generate the style
+						transferred image by passing the original image through the network.
+					</p>
+
+					<small class="text">
+						[1] is referenced from https://arxiv.org/abs/1703.10593.
+					</small>
+				</div>
+			</div>
+			<div class="flex-row">
+				<div class="flex-item flex-column">
+					<h2 class="add-top-margin">The principles behind this functionality (for your interest)</h2>
+					<hr>
+
+					<p class="text">
+						This functionality is implemented according to the CNN-based AdaIN model, which was proposed by
+						Xun Huang and Serge Belongieand [1]. Because it includes manipulations on the VGG-19 convolutional
+						network when transferring styles, it is regarded as a CNN-based algorithm here. As illustrated in
+						the following figure [1], the input content and style images are encoded by the pre-trained VGG network
+						into abstract features. In this process, only up to several ReLU layers in the VGG are used. Then the
+						AdaIN layer transfers the style of the content features by aligning their mean and variance with
+						those of the style features. The decoder, which is an inverted version of the encoder, can be
+						trained to decode the features into the resulting image.
+					</p>
+					<img class="image no-top-margin center add-top-margin-small"
+											   src="{{url_for('static', filename ='pics/cnn_sample/cnn_img.jpg')}}">
+					<p class="text">
+						The advantage of this algorithm is that it enables very fast style transfer of arbitrary content
+						and style image pairs. The computational cost of testing is extremely low, and also, there is no
+						need to train separate models for different styles.
+					</p>
+
+					<small class="text">
+						[1] is referenced from https://arxiv.org/abs/1703.06868.
+					</small>
+				</div>
 			</div>
 	
 		
