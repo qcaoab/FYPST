@@ -7,20 +7,21 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="https://fonts.googleapis.com/css?family=Pacifico|Tajawal" rel="stylesheet">
 		<link href="{{url_for('static', filename ='css/homepage.css')}}" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="{{url_for('static', filename ='css/main.css')}}" />
 		<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
 	
 		
 		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-		<link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" />
+		<!-- <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" /> -->
 		
-		<link href="{{url_for('static', filename ='css/frame.css')}}" media="screen" rel="stylesheet" type="text/css" />
-		<link href="{{url_for('static', filename ='css/controls.css')}}" media="screen" rel="stylesheet" type="text/css" />
-		<link href="{{url_for('static', filename ='css/frame.css')}}" media="screen" rel="stylesheet" type="text/css" />
-		<link href="{{url_for('static', filename ='css/custom.css')}}" media="screen" rel="stylesheet" type="text/css" />
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
-		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
-		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<!-- <link href="{{url_for('static', filename ='css/frame.css')}}" media="screen" rel="stylesheet" type="text/css" /> -->
+		<!-- <link href="{{url_for('static', filename ='css/controls.css')}}" media="screen" rel="stylesheet" type="text/css" /> -->
+		<link href="{{url_for('static', filename ='css/frame_home.css')}}" media="screen" rel="stylesheet" type="text/css" />
+		<!-- <link href="{{url_for('static', filename ='css/custom.css')}}" media="screen" rel="stylesheet" type="text/css" /> -->
+		<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'> -->
+		<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'> -->
+		<!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> -->
+		<!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
 
 		<link href = "{{url_for('static', filename = 'css/bootstrap.css')}}" media="screen" rel="stylesheet" type="text/css" />
 			
@@ -65,156 +66,105 @@
 				</div>
 			</div>
 		</header>
-	<div class="content-container">
-		<div class="content">
-			<div class="flex-item flex-column">
-			
-			
-				<u1>
-					<p>
-						
-						How can the never-ceased pursuit of artistry and beauty survive the era of computer? 
-					</p>
-					<p>
-						How can the innumerable masterpieces of artwork born in history gain their new life in this century?
-					</p>
-					<p>
-						How can people with zero knowledge of art realize the image from their minds with a click of their mouse?
-					</p>
-					<p>
-						Now, with the development of deep learning, Neural Style Transfer (NST) makes it possible 
-						for everyone to generate their unique artworks like a master artist on their computer!
-					</p>
-				</u1>
-
-				
-				<h2 class="add-top-margin">What you can do</h2>
-				<p>
-					On this website, you can explore the magic of Neural Style Transfer, view and generate your own artworks in the following pages:
-				
-				</p>
-
-				<ul>
-					
-					<li>
-						<h3>Gallery</h3>
-						<p>In page "Gallery", there are two sections of artwork samples. 
-						<p>In section one, you can view some pre-defined artistic styles to which user inputs can be transferred, 
-							such the style of Van Gogh, Monet, Japanese ukiyoe, and so on.</p>
-						<p>In section two, there are three kinds of pictures in each row: 
-							the input content, the input style, and the output result. </p>
-						<p> To explore more details about the gallery, nevigate to "Gallery" from menu or click <a href="{{url_for('gallery')}}">here</a>. </p>
-						
-					</li>
-					<li>
-						<h3>Create-1</h3>
-						<p> It's easy to transfer your own picture to one of our provided styles. What you need to do
-						is to choose your photo and select one of the style names from the dropdown. 
-						Click the upload button and you can find the result below. </p>
-						<p> To try it yourself, nevigate to "Create1" from menu or click <a href="{{url_for('upload')}}">here</a>.
-						</p>
-					</li>
-
-					<li>
-						<h3>Create-2</h3>
-						<p>You can also transfer your picture to arbitrary styles of your choice! </p>
-						By uploading a photo-like content picture and a painting-like style reference picture, 
-						you can get an output picture with the same content painted in the style you uploaded.
-						<p> To try it yourself, nevigate to "Create2" from menu or click <a href="{{url_for('upload2')}}">here</a>.</p>
-					</li>
-
-				</ul>
-			</div>
 	
-		
-		
-
-			<hr>
-		
-           
-			
-				
-				
-					<div id="myCarousel" class="carousel slide" data-ride="carousel">
-						<!-- Indicators -->
-						<ol class="carousel-indicators">
-						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-						<li data-target="#myCarousel" data-slide-to="1"></li>
-						<li data-target="#myCarousel" data-slide-to="2"></li>
-						</ol>
-					
-						<!-- Wrapper for slides -->
-						<div class="carousel-inner" role="listbox">
-						<div class="item active">
-							<img src="{{url_for('static', filename ='pics/cnn_sample/2a.jpg')}}" alt="3a" >
-							<div class="carousel-caption">
-							<h3>New York</h3>
-							<p>The atmosphere in New York is lorem ipsum.</p>
-							</div>
-						</div>
-					
-						<div class="item">
-							<img src="{{url_for('static', filename ='pics/cnn_sample/2c.jpg')}}" alt="3s" >
-							<div class="carousel-caption">
-							<h3>Chicago</h3>
-							<p>Thank you, Chicago - A night we won't forget.</p>
-							</div>
-						</div>
-					
-						<div class="item">
-							<img src="{{url_for('static', filename ='pics/cnn_sample/2s.jpg')}}" alt="3c" >
-							<div class="carousel-caption">
-							<h3>LA</h3>
-							<p>Even though the traffic was a mess, we had the best time.</p>
-						</div>
-					
-					</div>
-			
-		
-			
-					<!-- Left and right controls -->
-					<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-					<span class="sr-only">Previous</span>
-					</a>
-					<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-					<span class="sr-only">Next</span>
-					</a>
-				</div>
-			
+	<div>
 		
 	</div>
 
-			<script>
-				$(document).ready(function(){
-				  // Activate Carousel
-				  $("#myCarousel").carousel();
-					
-				  // Enable Carousel Indicators
-				  $(".item1").click(function(){
-					$("#myCarousel").carousel(0);
-				  });
-				  $(".item2").click(function(){
-					$("#myCarousel").carousel(1);
-				  });
-				  $(".item3").click(function(){
-					$("#myCarousel").carousel(2);
-				  });
-				  $(".item4").click(function(){
-					$("#myCarousel").carousel(3);
-				  });
-					
-				  // Enable Carousel Controls
-				  $(".left").click(function(){
-					$("#myCarousel").carousel("prev");
-				  });
-				  $(".right").click(function(){
-					$("#myCarousel").carousel("next");
-				  });
-				});
+	<!-- Main -->
+	<div id="main">
+
+		<!-- Section -->
+			<section class="wrapper style1">
+				<div class="inner">
+					<!-- 2 Columns -->
+						<div class="flex flex-2">
+							<div class="col col1">
+								<div class="image round fit">
+									<a href="generic.html" class="link"><img src="static/img/pic01.jpg" alt="" /></a>
+								</div>
+							</div>
+							<div class="col col2">
+								<h3>Why Style Transfer</h3>
+								<p>
+						
+									How can the never-ceased pursuit of artistry and beauty survive the era of computer? 
+								</p>
+								<p>
+									How can the innumerable masterpieces of artwork born in history gain their new life in this century?
+								</p>
+								<p>
+									How can people with zero knowledge of art realize the image from their minds with a click of their mouse?
+								</p>
+								<p>
+									Now, with the development of deep learning, Neural Style Transfer (NST) makes it possible 
+									for everyone to generate their unique artworks like a master artist on their computer!
+								</p>
+								<a href="#" class="button">Learn More</a>
+							</div>
+						</div>
+				</div>
+			</section>
+
+		<!-- Section -->
+			<section class="wrapper style2">
+				<div class="inner">
+					<div class="flex flex-2">
+						<div class="col col2">
+							<h3>What you can do</h3>
+							<p>On this website, you can explore the magic of Neural Style Transfer, view and generate your own artworks</p>
+							<p>You can either transfer your images with some pre-defined artistic styles such as the style of Van Gogh, Monet, Japanese ukiyoe, or transfer your images to arbitrary styles of your choice!</p>
+							<p>Before you try it yourself, take a look at our gallery to get some inspirations! For detailed instructions, please click the button below!</p>
+							<a href="#" class="button">Learn More</a>
+						</div>
+						<div class="col col1 first">
+							<div class="image round fit">
+								<a href="generic.html" class="link"><img src="static/img/pic02.jpg" alt="" /></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Section -->
+			<section class="wrapper style1">
+				<div class="inner">
+					<header class="align-center">
+						<h2>Explore multiple features</h2>
+						<p>Try the following features to customize your style transfer</p>
+					</header>
+					<div class="flex flex-3">
+						<div class="col align-center">
+							<div class="image round fit">
+								<img src="static/img/pic03.png" alt="" />
+							</div>
+							<p>Users can either choose to use our provided styles of famous artists or upload their own styles images</p>
+							<a href="#" class="button">Learn More</a>
+						</div>
+						<div class="col align-center">
+							<div class="image round fit">
+								<img src="static/img/pic05.jpg" alt="" />
+							</div>
+							<p>Users can customize the extent to which they want to transfer to a specific style by dragging to adjust the track-bar </p>
+							<a href="#" class="button">Learn More</a>
+						</div>
+						<div class="col align-center">
+							<div class="image round fit">
+								<img src="static/img/pic04.jpg" alt="" />
+							</div>
+							<p>Color preservation is enabled, by which users can decide whether or not to preserve the color of the content image.   </p>
+							<a href="#" class="button">Learn More</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+	</div>
+	
+
+		
 			
-			</script>
+	
 
 	</body>
 </html>
