@@ -9,11 +9,11 @@
 		<link href="{{url_for('static', filename ='css/homepage.css')}}" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="{{url_for('static', filename ='css/main.css')}}" />
 		<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
-	
-		
+
+
 		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
 		<!-- <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" /> -->
-		
+
 		<!-- <link href="{{url_for('static', filename ='css/frame.css')}}" media="screen" rel="stylesheet" type="text/css" /> -->
 		<!-- <link href="{{url_for('static', filename ='css/controls.css')}}" media="screen" rel="stylesheet" type="text/css" /> -->
 		<link href="{{url_for('static', filename ='css/frame_home.css')}}" media="screen" rel="stylesheet" type="text/css" />
@@ -24,16 +24,16 @@
 		<!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
 
 		<link href = "{{url_for('static', filename = 'css/bootstrap.css')}}" media="screen" rel="stylesheet" type="text/css" />
-			
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="{{url_for('static', filename = 'js/bootstrap.js')}}"></script>
-		
+
 		<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		
-	
-		
-		
+
+
+
+
 	</head>
 
 	<body>
@@ -62,13 +62,13 @@
 				</p>
 				<!-- <a href="{{url_for('gallery')}}" class="btn">Explore</a> -->
 				<div class="box">
-					<a href="{{url_for('intro')}}" class="btn btn-white btn-animation-1">Learn More</a> 
+					<a href="{{url_for('intro')}}" class="btn btn-white btn-animation-1">Learn More</a>
 				</div>
 			</div>
 		</header>
-	
+
 	<div>
-		
+
 	</div>
 
 	<!-- Main -->
@@ -87,8 +87,8 @@
 							<div class="col col2">
 								<h3>Why Style Transfer</h3>
 								<p>
-						
-									How can the never-ceased pursuit of artistry and beauty survive the era of computer? 
+
+									How can the never-ceased pursuit of artistry and beauty survive the era of computer?
 								</p>
 								<p>
 									How can the innumerable masterpieces of artwork born in history gain their new life in this century?
@@ -97,10 +97,10 @@
 									How can people with zero knowledge of art realize the image from their minds with a click of their mouse?
 								</p>
 								<p>
-									Now, with the development of deep learning, Neural Style Transfer (NST) makes it possible 
+									Now, with the development of deep learning, Neural Style Transfer (NST) makes it possible
 									for everyone to generate their unique artworks like a master artist on their computer!
 								</p>
-								<a href="#" class="button">Learn More</a>
+								<a href="{{url_for('intro')}}" class="button">Learn More</a>
 							</div>
 						</div>
 				</div>
@@ -115,7 +115,7 @@
 							<p>On this website, you can explore the magic of Neural Style Transfer, view and generate your own artworks</p>
 							<p>You can either transfer your images with some pre-defined artistic styles such as the style of Van Gogh, Monet, Japanese ukiyoe, or transfer your images to arbitrary styles of your choice!</p>
 							<p>Before you try it yourself, take a look at our gallery to get some inspirations! For detailed instructions, please click the button below!</p>
-							<a href="#" class="button">Learn More</a>
+							<a href="{{url_for('gallery')}}" class="button">Learn More</a>
 						</div>
 						<div class="col col1 first">
 							<div class="image round fit">
@@ -139,32 +139,32 @@
 								<img src="static/img/pic03.png" alt="" />
 							</div>
 							<p>Users can either choose to use our provided styles of famous artists or upload their own styles images</p>
-							<a href="#" class="button">Learn More</a>
+							<a href="{{url_for('upload')}}" class="button">Learn More</a>
 						</div>
 						<div class="col align-center">
 							<div class="image round fit">
 								<img src="static/img/pic05.jpg" alt="" />
 							</div>
 							<p>Users can customize the extent to which they want to transfer to a specific style by dragging to adjust the track-bar </p>
-							<a href="#" class="button">Learn More</a>
+							<a href="{{url_for('upload2')}}" class="button">Learn More</a>
 						</div>
 						<div class="col align-center">
 							<div class="image round fit">
 								<img src="static/img/pic04.jpg" alt="" />
 							</div>
 							<p>Color preservation is enabled, by which users can decide whether or not to preserve the color of the content image.   </p>
-							<a href="#" class="button">Learn More</a>
+							<a href="{{url_for('upload2')}}" class="button">Learn More</a>
 						</div>
 					</div>
 				</div>
 			</section>
 
 	</div>
-	
 
-		
-			
-	
+
+
+
+
 
 	</body>
 </html>
