@@ -7,12 +7,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="https://fonts.googleapis.com/css?family=Pacifico|Tajawal" rel="stylesheet">
 		<link href="{{url_for('static', filename ='css/homepage.css')}}" rel="stylesheet" type="text/css" />
-		<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
-	
-		
+
+
 		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" />
-		
+
 		<link href="{{url_for('static', filename ='css/frame.css')}}" media="screen" rel="stylesheet" type="text/css" />
 		<link href="{{url_for('static', filename ='css/controls.css')}}" media="screen" rel="stylesheet" type="text/css" />
 		<link href="{{url_for('static', filename ='css/frame.css')}}" media="screen" rel="stylesheet" type="text/css" />
@@ -23,16 +22,19 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 
 		<link href = "{{url_for('static', filename = 'css/bootstrap.css')}}" media="screen" rel="stylesheet" type="text/css" />
-			
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="{{url_for('static', filename = 'js/bootstrap.js')}}"></script>
-		
+
+		<link href="{{url_for('static', filename ='css/collapsib.css')}}" media="screen" rel="stylesheet" type="text/css" />
+
+
 		<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		
-	
-		
-		
+
+
+
+
 	</head>
 
 	<body>
@@ -44,12 +46,12 @@
 	<div class="content-container">
 		<div class="content">
 			<div class="flex-item flex-column">
-			
-			
+
+
 				<u1>
 					<p>
-						
-						How can the never-ceased pursuit of artistry and beauty survive the era of computer? 
+
+						How can the never-ceased pursuit of artistry and beauty survive the era of computer?
 					</p>
 					<p>
 						How can the innumerable masterpieces of artwork born in history gain their new life in this century?
@@ -58,34 +60,34 @@
 						How can people with zero knowledge of art realize the image from their minds with a click of their mouse?
 					</p>
 					<p>
-						Now, with the development of deep learning, Neural Style Transfer (NST) makes it possible 
+						Now, with the development of deep learning, Neural Style Transfer (NST) makes it possible
 						for everyone to generate their unique artworks like a master artist on their computer!
 					</p>
 				</u1>
 
-				
+
 				<h2 class="add-top-margin">What you can do</h2>
 				<p>
 					On this website, you can explore the magic of Neural Style Transfer, view and generate your own artworks in the following pages:
-				
+
 				</p>
 
 				<ul>
-					
+
 					<li>
 						<h3>Gallery</h3>
-						<p>In page "Gallery", there are two sections of artwork samples. 
-						<p>In section one, you can view some pre-defined artistic styles to which user inputs can be transferred, 
+						<p>In page "Gallery", there are two sections of artwork samples.
+						<p>In section one, you can view some pre-defined artistic styles to which user inputs can be transferred,
 							such the style of Van Gogh, Monet, Japanese ukiyoe, and so on.</p>
-						<p>In section two, there are three kinds of pictures in each row: 
+						<p>In section two, there are three kinds of pictures in each row:
 							the input content, the input style, and the output result. </p>
 						<p> To explore more details about the gallery, nevigate to "Gallery" from menu or click <a href="{{url_for('gallery')}}">here</a>. </p>
-						
+
 					</li>
 					<li>
 						<h3>Create-1</h3>
 						<p> It's easy to transfer your own picture to one of our provided styles. What you need to do
-						is to choose your photo and select one of the style names from the dropdown. 
+						is to choose your photo and select one of the style names from the dropdown.
 						Click the upload button and you can find the result below. </p>
 						<p> To try it yourself, nevigate to "Create1" from menu or click <a href="{{url_for('upload')}}">here</a>.
 						</p>
@@ -94,7 +96,7 @@
 					<li>
 						<h3>Create-2</h3>
 						<p>You can also transfer your picture to arbitrary styles of your choice! </p>
-						By uploading a photo-like content picture and a painting-like style reference picture, 
+						By uploading a photo-like content picture and a painting-like style reference picture,
 						you can get an output picture with the same content painted in the style you uploaded.
 						<p> To try it yourself, nevigate to "Create2" from menu or click <a href="{{url_for('upload2')}}">here</a>.</p>
 					</li>
@@ -103,69 +105,79 @@
 			</div>
 
 			<div class="flex-row">
+
 				<div class="flex-item flex-column">
-					<h2 class="add-top-margin">The principles behind this functionality (for your interest)</h2>
+					<h2 class="add-top-margin">The principles behind the functionalities on this website (for your interest)</h2>
 					<hr>
 
-					<p class="text">
-						This functionality is implemented according to the CycleGAN model, which was proposed by
-						Jun-Yan Zhu and his colleagues [1]. It trains on unpaired images from two source domains.
-						Not like some other inconvenient neural style transfer algorithm, the advantage is that it is
-						very flexible and avoids the requirement of paired images as training data.
-					</p>
-					<img class="image no-top-margin center add-top-margin-small"
-											   src="{{url_for('static', filename ='pics/cnn_sample/cycgan_img.jpg')}}">
-					<p class="text">
-						As illustrated in the above figure [1], X and Y are two domains, with two mapping G: from X to Y
-						and F: from Y to X. Dx and Dy are two adversarial discriminators, where Dx can discriminate
-						image x from translated image F(y) and Dy can do the inverse. Two directions of mapping can be
-						trained at the same time. The final trained model can then be used to generate the style
-						transferred image by passing the original image through the network.
-					</p>
+					<button class="collapsible">The principles behind "Create1"</button>
+					<div class="collapsiblecontent">
 
-					<small class="text">
-						[1] is referenced from https://arxiv.org/abs/1703.10593.
-					</small>
+						<p class="text">
+							The first functionality "Create1" is implemented according to the CycleGAN model, which was proposed by
+							Jun-Yan Zhu and his colleagues [1]. It trains on unpaired images from two source domains.
+							Not like some other inconvenient neural style transfer algorithm, the advantage is that it is
+							very flexible and avoids the requirement of paired images as training data.
+						</p>
+						<img class="image no-top-margin center add-top-margin-small"
+												   src="{{url_for('static', filename ='pics/cnn_sample/cycgan_img.jpg')}}">
+						<p class="text">
+							As illustrated in the above figure [1], X and Y are two domains, with two mapping G: from X to Y
+							and F: from Y to X. Dx and Dy are two adversarial discriminators, where Dx can discriminate
+							image x from translated image F(y) and Dy can do the inverse. Two directions of mapping can be
+							trained at the same time. The final trained model can then be used to generate the style
+							transferred image by passing the original image through the network.
+						</p>
+
+						<small class="text">
+							[1] is referenced from https://arxiv.org/abs/1703.10593.
+						</small>
+
+					</div>
+
+
+
+					<button class="collapsible">The principles behind "Create2"</button>
+					<div class="collapsiblecontent">
+
+						<p class="text">
+							The second functionality "Create2" is implemented according to the CNN-based AdaIN model, which was proposed by
+							Xun Huang and Serge Belongieand [1]. Because it includes manipulations on the VGG-19 convolutional
+							network when transferring styles, it is regarded as a CNN-based algorithm here. As illustrated in
+							the following figure [1], the input content and style images are encoded by the pre-trained VGG network
+							into abstract features. In this process, only up to several ReLU layers in the VGG are used. Then the
+							AdaIN layer transfers the style of the content features by aligning their mean and variance with
+							those of the style features. The decoder, which is an inverted version of the encoder, can be
+							trained to decode the features into the resulting image.
+						</p>
+						<img class="image no-top-margin center add-top-margin-small"
+												   src="{{url_for('static', filename ='pics/cnn_sample/cnn_img.jpg')}}">
+						<p class="text">
+							The advantage of this algorithm is that it enables very fast style transfer of arbitrary content
+							and style image pairs. The computational cost of testing is extremely low, and also, there is no
+							need to train separate models for different styles.
+						</p>
+
+						<small class="text">
+							[1] is referenced from https://arxiv.org/abs/1703.06868.
+						</small>
+
+					</div>
+
 				</div>
 			</div>
-			<div class="flex-row">
-				<div class="flex-item flex-column">
-					<h2 class="add-top-margin">The principles behind this functionality (for your interest)</h2>
-					<hr>
+			
+			<script src="{{url_for('static', filename = 'js/collapsib.js')}}"></script>
 
-					<p class="text">
-						This functionality is implemented according to the CNN-based AdaIN model, which was proposed by
-						Xun Huang and Serge Belongieand [1]. Because it includes manipulations on the VGG-19 convolutional
-						network when transferring styles, it is regarded as a CNN-based algorithm here. As illustrated in
-						the following figure [1], the input content and style images are encoded by the pre-trained VGG network
-						into abstract features. In this process, only up to several ReLU layers in the VGG are used. Then the
-						AdaIN layer transfers the style of the content features by aligning their mean and variance with
-						those of the style features. The decoder, which is an inverted version of the encoder, can be
-						trained to decode the features into the resulting image.
-					</p>
-					<img class="image no-top-margin center add-top-margin-small"
-											   src="{{url_for('static', filename ='pics/cnn_sample/cnn_img.jpg')}}">
-					<p class="text">
-						The advantage of this algorithm is that it enables very fast style transfer of arbitrary content
-						and style image pairs. The computational cost of testing is extremely low, and also, there is no
-						need to train separate models for different styles.
-					</p>
 
-					<small class="text">
-						[1] is referenced from https://arxiv.org/abs/1703.06868.
-					</small>
-				</div>
-			</div>
-	
-		
-		
+
 
 			<hr>
-		
-           
-			
-				
-				
+
+
+
+
+
 					<div id="myCarousel" class="carousel slide" data-ride="carousel">
 						<!-- Indicators -->
 						<ol class="carousel-indicators">
@@ -173,7 +185,7 @@
 						<li data-target="#myCarousel" data-slide-to="1"></li>
 						<li data-target="#myCarousel" data-slide-to="2"></li>
 						</ol>
-					
+
 						<!-- Wrapper for slides -->
 						<div class="carousel-inner" role="listbox">
 						<div class="item active">
@@ -183,7 +195,7 @@
 							<p>The atmosphere in New York is lorem ipsum.</p>
 							</div>
 						</div>
-					
+
 						<div class="item">
 							<img src="{{url_for('static', filename ='pics/cnn_sample/2c.jpg')}}" alt="3s" >
 							<div class="carousel-caption">
@@ -191,18 +203,18 @@
 							<p>Thank you, Chicago - A night we won't forget.</p>
 							</div>
 						</div>
-					
+
 						<div class="item">
 							<img src="{{url_for('static', filename ='pics/cnn_sample/2s.jpg')}}" alt="3c" >
 							<div class="carousel-caption">
 							<h3>LA</h3>
 							<p>Even though the traffic was a mess, we had the best time.</p>
 						</div>
-					
+
 					</div>
-			
-		
-			
+
+
+
 					<!-- Left and right controls -->
 					<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
 					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -213,15 +225,15 @@
 					<span class="sr-only">Next</span>
 					</a>
 				</div>
-			
-		
+
+
 	</div>
 
 			<script>
 				$(document).ready(function(){
 				  // Activate Carousel
 				  $("#myCarousel").carousel();
-					
+
 				  // Enable Carousel Indicators
 				  $(".item1").click(function(){
 					$("#myCarousel").carousel(0);
@@ -235,7 +247,7 @@
 				  $(".item4").click(function(){
 					$("#myCarousel").carousel(3);
 				  });
-					
+
 				  // Enable Carousel Controls
 				  $(".left").click(function(){
 					$("#myCarousel").carousel("prev");
@@ -244,7 +256,7 @@
 					$("#myCarousel").carousel("next");
 				  });
 				});
-			
+
 			</script>
 
 	</body>
