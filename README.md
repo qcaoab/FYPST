@@ -33,7 +33,7 @@ $ python server.py
 - [x] pass pic through nn via flask
 - [x] cycleGan issues
 - [x] interactive web features
-- [ ] video transfer
+- [x] video transfer
 - [ ] additional features realized by nn
 - [ ] tbc...
 
