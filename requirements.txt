@@ -10,3 +10,5 @@ tensorboardX==1.8
 tqdm==4.35.0
 opencv-python==4.4.0.46
 imageio==2.9.0
+Flask==1.1.1
+Werkzeug==0.16.1
