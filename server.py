@@ -75,7 +75,9 @@ def upload():
         "chinese": "chinese_cyclegan",
         "cezanne": "cezanne_cyclegan",
         "edgar": "edgar_cyclegan",
-        "ukiyoe": "ukiyoe_cyclegan"
+        "ukiyoe": "ukiyoe_cyclegan",
+        "abstract": "abstract_cyclegan",
+        "impressionism": "impression_cyclegan"
         # add more later
     }
 
