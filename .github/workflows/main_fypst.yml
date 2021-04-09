@@ -59,4 +59,4 @@ jobs:
         with:
           app-name: 'fypst'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_f49be6d4e7bd4bd797fdeb945ac71dc0 }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_80ba80c4c2fc4a1c90a66cbf8ab4ef61 }}
