@@ -10,8 +10,11 @@ from werkzeug.utils import secure_filename
 
 import Arbitrary_ST_Pytorch
 from Arbitrary_ST_Pytorch.test import arbi_trans
+from Arbitrary_ST_Pytorch.video_st import video_trans
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+ALLOWED_EXTENSIONS_2 = set(['mp4', 'mpg', 'avi'])
+
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 #location = 'C:/Users/qlcql/Documents/GitHub/FYPST'
 
@@ -29,6 +32,9 @@ app.config['SECRET_KEY'] = "FYPST_secret"
 
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+def allowed_file_2(filename):
+	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS_2
 
 def get_last_pics():
     try:
@@ -66,7 +72,7 @@ def style(genre):
 @app.route('/upload', methods=['GET','POST'])
 
 def upload():
-    
+
     gan_style = {
         "monet": "monet_cyclegan",
         "vangogh": "vangogh_cyclegan",
@@ -102,7 +108,7 @@ def upload():
             print('----------------------------allowed')
             filename = secure_filename(file.filename)
             folder = '/' + filename.rsplit('.', 1)[0]
-            
+
             # create a folder with the same name as the uploaded image, and save the image in that folder
             if not os.path.exists(app.config["IMAGE_UPLOADS_G"]+folder):
                 os.makedirs(app.config["IMAGE_UPLOADS_G"]+folder)
@@ -139,29 +145,29 @@ def upload2():
 
     if request.method == 'POST':
         print("start uploading ...")
-    
+
         degree = request.form.get('degree')
         preserve = request.form.get('preserve')
-        
+
         if 'file1' not in request.files or 'file2_styles' not in request.files:
             flash('Attention: No file part', 'danger')
             return redirect(request.url)
-        
+
         file2=[]
         file1 = request.files['file1']
         file2 = request.files.getlist('file2_styles')
-        
+
         if file1.filename == '' or allowed_file(file1.filename)==False:
             flash('Error: Invalid style image selected, allowed image types are -> png, jpg, jpeg, gif', 'danger')
             return redirect(request.url)
-        
-        for file in file2:   
+
+        for file in file2:
             if file.filename == '' or allowed_file(file.filename) ==False:
                 flash('Error: Invalid style image selected, allowed image types are -> png, jpg, jpeg, gif', 'danger')
                 return redirect(request.url)
-        
-        
-      
+
+
+
         filename1 = secure_filename(file1.filename)
         path1 = os.path.join(app.config["IMAGE_UPLOADS_C"], filename1)
         file1.save(path1)
@@ -169,10 +175,10 @@ def upload2():
         filename2 =[]
         path2 = []
         for file in file2:
-            
+
             filename = secure_filename(file.filename)
             path=os.path.join(app.config["IMAGE_UPLOADS_S"], filename)
-   
+
             file.save(path)
             path2.append(path)
             filename2.append(filename)
@@ -180,21 +186,81 @@ def upload2():
         print('transfer starts')
         degree = float(degree)/100
         resultname = arbi_trans(path1, path2,preserve_color= bool(int(preserve)), alpha = float(degree))
-        
+
         #resultpath=os.path.abspath(resultname)
         resultpath = str(resultname).replace('\\','/')
-        
+
         flash('select degree = ' + str(degree), 'info')
         flash('preserve color = ' + str(preserve), 'info')
 
         print(resultpath)
             #result.save(os.path.join(app.config["static/pics/uploads"], 'transfer_result.jpg'))
         return render_template('upload2.html', file1 = file1, file2=file2, resultpath = resultpath)
-       
+
     else:
         return render_template('upload2.html')
 
+@app.route('/upload3', methods=['GET','POST'])
+def upload3():
 
+    if request.method == 'POST':
+        print("start uploading ...")
+
+        degree = request.form.get('degree')
+        preserve = request.form.get('preserve')
+
+        if 'file1' not in request.files or 'file2' not in request.files:
+            flash('Attention: No file part', 'danger')
+            return redirect(request.url)
+
+        file1 = request.files['file1']
+        file2 = request.files['file2']
+
+        if file1.filename == '' or file2.filename == '':
+            flash('Attention: Need to select two files', 'danger')
+            return redirect(request.url)
+
+
+        if allowed_file_2(file1.filename)==False:
+            flash('Error: Allowed video types are -> mp4, mpg, avi', 'danger')
+            return redirect(request.url)
+
+        if allowed_file(file2.filename)==False:
+            flash('Error: Allowed image types are -> png, jpg, jpeg, gif', 'danger')
+            return redirect(request.url)
+
+
+        filename1 = secure_filename(file1.filename)
+        path1 = os.path.join(app.config["IMAGE_UPLOADS_C"], filename1)
+        file1.save(path1)
+        flash('Uploaded content video: ' + filename1, 'info')
+
+
+        filename2 = secure_filename(file2.filename)
+        path2=os.path.join(app.config["IMAGE_UPLOADS_S"], filename2)
+        file2.save(path2)
+        flash('Uploaded style image: ' + filename2, 'info')
+
+        degree = float(degree)/100
+
+        print('----------------------')
+        print(path1)
+        print(path2)
+        print('transfer starts')
+        resultname = video_trans(path1, path2, preserve_color= bool(int(preserve)), alpha = float(degree))
+
+        #resultpath=os.path.abspath(resultname)
+        resultpath = str(resultname).replace('\\','/')
+
+        flash('select degree = ' + str(degree), 'info')
+        flash('preserve color = ' + str(preserve), 'info')
+
+        print(resultpath)
+
+        return render_template('upload3.html', file1 = file1, file2=file2, resultpath = resultpath)
+
+    else:
+        return render_template('upload3.html')
 
 ###################for testing
 
