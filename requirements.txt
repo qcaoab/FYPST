@@ -4,7 +4,6 @@ dominate>=2.4.0
 visdom>=0.1.8.8
 numpy==1.17.2
 Pillow==8.1.1
-pkg-resources==0.0.0
 protobuf==3.9.1
 six==1.12.0
 tensorboardX==1.8
