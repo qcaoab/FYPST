@@ -40,29 +40,27 @@
                         <hr>
 
                         <p class="text">
-                            You can upload your own style image and transfer your photo to that style by
+                            You can upload your own style image and transfer your video to that style by
                             following the instructions below:
                         </p>
 
                         <ul>
                           <li>
                             Click on the first grey “Choose File” button to open your file explorer,
-                            and select your content image whose style is to be transferred from your local disks
+                            and select your content video whose style is to be transferred from your local disks
                           </li>
                           <li>
-                            Click on the second grey “Choose File” button to upload your style images
-                            whose styles will be transferred to your content image (Note that you can
-                            upload more than one style image and the resulting image will try to combine
-                            all these styles together.)
+                            Click on the second grey “Choose File” button to upload your style image
+                            whose style will be transferred to your video
                           </li>
                           <li>
                             Then slide through the slide bar to select the desired extent of stylization
-                            (If the value is closer to 0, the image will be more similar to the original
+                            (If the value is closer to 0, the video will be more similar to the original
                             one and vice versa.)
                           </li>
                           <li>
-                            Next, indicate whether you want to preserve the color of the original content
-                            image during the transfer process
+                            Next, indicate whether you want to preserve the color of the original video
+                            during the transfer process
                           </li>
                           <li>
                             Finally, click the “Submit” button to start the transfer process
@@ -180,20 +178,15 @@
                   <div class="flex-item flex-column">
                       <h2 class="add-top-margin">Result of Transformation</h2>
                       <hr>
-                      <div class="custom-file">
-                          <video src="{{resultpath}}" id= "result" ></video>
-                           <script type="text/javascript">
 
-                              var resultsrc = "{{resultpath}}";
-                              console.log(resultsrc)
-                              if (resultsrc == ""){
-                                  document.getElementById("result").src = "{{url_for('static', filename ='img/dummy.jpg')}}";
-                              }
-                              else{
-                                  document.getElementById("result").src = resultsrc;
-                              }
-                          </script>
+                      <div class="custom-file">
+
+                        <video muted autoplay loop id="result" poster="{{url_for('static', filename ='img/dummy.jpg')}}">
+                          <source src="{{resultpath}}" type="video/mp4">
+                        </video>
+
                       </div>
+
                   </div>
                 </div>
 
