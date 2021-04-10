@@ -191,7 +191,7 @@ body {
     transition: all 0.35s cubic-bezier(0.42, 0, 0.58, 1);
     transform: translate(-50%, -2rem) scale(1, 0.4);
   }
-  .Grid-row:nth-child(1) .Card:nth-child(1).Card--active .Card-shadow:nth-child(3),
+  /* .Grid-row:nth-child(1) .Card:nth-child(1).Card--active .Card-shadow:nth-child(3),
   .Grid-row:nth-child(1) .Card:nth-child(1) .Card--active:hover .Card-shadow:nth-child(3) {
     transition: all 0.2s cubic-bezier(0.7, 0, 0.78, 1);
     transform: scale(1) translate(6%, 113%);
@@ -325,7 +325,7 @@ body {
   .Grid-row:nth-child(3) .Card:nth-child(3) .Card--active:hover .Card-shadow:nth-child(1) {
     transition: all 0.2s cubic-bezier(0.7, 0, 0.78, 1) 0.2s;
     transform: scale(2.1) translate(-29%, -80%);
-  }
+  } */
   .Gallery {
     display: block;
     position: fixed;
