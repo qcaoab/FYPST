@@ -26,9 +26,6 @@ jobs:
       run: |
         python -m venv venv
         source venv/bin/activate
-    - name: set secret key
-      with: # Set Azure credentials secret as an input
-        credentials: ${{ secrets.AZURE_CREDENTIALS }}
     
     - name: Install dependencies
       run: pip install -r requirements.txt
@@ -49,6 +46,8 @@ jobs:
     environment:
       name: 'production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    with: # Set Azure credentials secret as an input
+        credentials: ${{ secrets.AZURE_CREDENTIALS }}
 
     steps:
       - name: Download artifact from build job
