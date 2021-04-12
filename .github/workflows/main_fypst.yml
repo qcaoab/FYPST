@@ -4,7 +4,7 @@
 
 name: Build and deploy Python app to Azure Web App - fypst
 
-on:
+#on:
   push:
     branches:
       - main
@@ -60,3 +60,5 @@ jobs:
           app-name: 'fypst'
           slot-name: 'production'
           publish-profile: ${{ secrets.AzureAppService_PublishProfile_f09846523b924b1d8a0d4ad0315605c7 }}
+      - script: python application.py
+ 
