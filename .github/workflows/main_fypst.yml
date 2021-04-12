@@ -20,7 +20,7 @@ jobs:
     - name: Set up Python version
       uses: actions/setup-python@v1
       with:
-        python-version: '3.7'
+        python-version: '3.8'
 
     - name: Create and start virtual environment
       run: |
@@ -59,4 +59,4 @@ jobs:
         with:
           app-name: 'fypst'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_1a93231fc78840abae249b90122b418c }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_1d2346f681944c8fad5cb1620862fc69 }}
