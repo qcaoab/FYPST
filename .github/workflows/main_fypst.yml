@@ -46,8 +46,7 @@ jobs:
     environment:
       name: 'production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    
-       
+
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
@@ -60,5 +59,4 @@ jobs:
         with:
           app-name: 'fypst'
           slot-name: 'production'
-          credentials: '<publishData><publishProfile profileName="fypst - Web Deploy" publishMethod="MSDeploy" publishUrl="fypst.scm.azurewebsites.net:443" msdeploySite="fypst" userName="$fypst" userPWD="ouo49fB3blDM7yeNgaredzpLz9bpgtYlnvh6nKyQG6NiRahQe8JhG255bwpM" destinationAppUrl="http://fypst.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile><publishProfile profileName="fypst - FTP" publishMethod="FTP" publishUrl="ftp://waws-prod-hk1-031.ftp.azurewebsites.windows.net/site/wwwroot" ftpPassiveMode="True" userName="fypst\$fypst" userPWD="ouo49fB3blDM7yeNgaredzpLz9bpgtYlnvh6nKyQG6NiRahQe8JhG255bwpM" destinationAppUrl="http://fypst.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile><publishProfile profileName="fypst - Zip Deploy" publishMethod="ZipDeploy" publishUrl="fypst.scm.azurewebsites.net:443" userName="$fypst" userPWD="ouo49fB3blDM7yeNgaredzpLz9bpgtYlnvh6nKyQG6NiRahQe8JhG255bwpM" destinationAppUrl="http://fypst.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile><publishProfile profileName="fypst - ReadOnly - FTP" publishMethod="FTP" publishUrl="ftp://waws-prod-hk1-031dr.ftp.azurewebsites.windows.net/site/wwwroot" ftpPassiveMode="True" userName="fypst\$fypst" userPWD="ouo49fB3blDM7yeNgaredzpLz9bpgtYlnvh6nKyQG6NiRahQe8JhG255bwpM" destinationAppUrl="http://fypst.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile></publishData>'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_c7911cc64a73443dadbab2c30456b86b }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_8846cd6695d64b6e8a9929698f1bdfba }}
