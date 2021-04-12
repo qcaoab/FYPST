@@ -20,7 +20,7 @@ jobs:
     - name: Set up Python version
       uses: actions/setup-python@v1
       with:
-        python-version: '3.8'
+        python-version: '3.7'
 
     - name: Create and start virtual environment
       run: |
@@ -46,6 +46,8 @@ jobs:
     environment:
       name: 'production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    with: # Set Azure credentials secret as an input
+        credentials: ${{ secrets.AZURE_CREDENTIALS }}
 
     steps:
       - name: Download artifact from build job
@@ -59,4 +61,4 @@ jobs:
         with:
           app-name: 'fypst'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_1d2346f681944c8fad5cb1620862fc69 }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_c7911cc64a73443dadbab2c30456b86b }}
