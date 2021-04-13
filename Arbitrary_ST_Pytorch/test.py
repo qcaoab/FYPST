@@ -167,7 +167,7 @@ def process_img(path, size, crop):
 
     img_tf = test_transform(size, crop)
     img = Image.open(str(path))
-    if img.mode == 'CMYK':
+    if img.mode != 'RGB':
         img= img.convert('RGB')
     img_tensor = img_tf(img)
     if img_tensor.size()[0] >3:
