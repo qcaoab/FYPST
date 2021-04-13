@@ -9,7 +9,7 @@ from flask import Flask, flash, request, redirect, url_for, render_template,send
 from werkzeug.utils import secure_filename
 
 import Arbitrary_ST_Pytorch
-from Arbitrary_ST_Pytorch.test import arbi_trans
+from Arbitrary_ST_Pytorch.image_st import arbi_trans
 from Arbitrary_ST_Pytorch.video_st import video_trans
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
