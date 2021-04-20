@@ -3,7 +3,7 @@
                batch_size: 1                             
           checkpoints_dir: ./checkpoints                 
                 crop_size: 256                           
-                 dataroot: uploads/hkust                 	[default: None]
+                 dataroot: uploads/news_img_Picture-Perfect-Balance-for-Student-Life_HKUST-Student-Aaron-Gao-5_photo	[default: None]
              dataset_mode: single                        
                 direction: AtoB                          
           display_winsize: 256                           
