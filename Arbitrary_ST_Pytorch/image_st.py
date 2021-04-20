@@ -180,7 +180,7 @@ device = "cpu"
 
 def arbi_trans(content_imgs, style_imgs, preserve_color = False, alpha = 1.0,
                a_vgg= 'Arbitrary_ST_Pytorch/models/vgg_normalised.pth', a_decoder ='Arbitrary_ST_Pytorch/models/decoder.pth',
-               content_size = 512, style_size = 512, crop = False, save_ext = '.jpg', output = 'static/pics/output'):
+               content_size = 0, style_size = 0, crop = False, save_ext = '.jpg', output = 'static/pics/output'):
     do_interpolation = False
     style_length = len(style_imgs)
     if style_length > 1:

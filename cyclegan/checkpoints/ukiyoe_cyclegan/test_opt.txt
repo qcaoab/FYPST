@@ -3,7 +3,7 @@
                batch_size: 1                             
           checkpoints_dir: ./checkpoints                 
                 crop_size: 256                           
-                 dataroot: uploads/2015-02-08_00_20_21   	[default: None]
+                 dataroot: uploads/Image20201114232403   	[default: None]
              dataset_mode: single                        
                 direction: AtoB                          
           display_winsize: 256                           

@@ -60,7 +60,7 @@ def process_img(path, size, crop):
 
 def video_trans(content_p, style_p, vgg_p='Arbitrary_ST_Pytorch/models/vgg_normalised.pth',
                 decoder_p='Arbitrary_ST_Pytorch/models/decoder.pth', preserve_color=False, alpha = 1.0,
-                content_size=512, style_size=512, crop=False, save_ext='.mp4', output_p='static/pics/output'):
+                content_size=0, style_size=0, crop=False, save_ext='.mp4', output_p='static/pics/output'):
 
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu") 
