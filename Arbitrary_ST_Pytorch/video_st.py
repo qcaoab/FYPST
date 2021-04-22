@@ -1,140 +1,154 @@
-import argparse
+# import
 from pathlib import Path
-from tqdm import tqdm
-
-import torch
-import torch.nn as nn
 import numpy as np
 from PIL import Image
-import cv2
-import imageio
+import torch
+import torch.nn as nn
 from torchvision import transforms
 from torchvision.utils import save_image
 
-import Arbitrary_ST_Pytorch.net as net
-from Arbitrary_ST_Pytorch.function import adaptive_instance_normalization, coral
+import cv2
+import imageio
+from tqdm import tqdm
+
+import Arbitrary_ST_Pytorch.NNs as NNs
+from Arbitrary_ST_Pytorch.utilities import adain_layer, color_prev
 
 import warnings
 warnings.filterwarnings("ignore")
 
-def test_transform(size, crop):
-    transform_list = []
-    if size != 0:
-        transform_list.append(transforms.Resize(size))
+# set the device
+#device = "cpu"
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+
+def all_transform(new_size, crop):
+    transformation_seq = []
+    if new_size != 0:
+        transformation_seq.append(transforms.Resize(new_size))
     if crop:
-        transform_list.append(transforms.CenterCrop(size))
-    transform_list.append(transforms.ToTensor())
-    transform = transforms.Compose(transform_list)
-    return transform
+        transformation_seq.append(transforms.CenterCrop(new_size))
 
+    transformation_seq.append(transforms.ToTensor())
+    final_transform = transforms.Compose(transformation_seq)
+    return final_transform
 
-def style_transfer(vgg, decoder, content, style, alpha=1.0,
-                   interpolation_weights=None):
-    assert (0.0 <= alpha <= 1.0)
-    content_f = vgg(content)
-    style_f = vgg(style)
-    if interpolation_weights:
-        _, C, H, W = content_f.size()
-        feat = torch.FloatTensor(1, C, H, W).zero_().to(device)
-        base_feat = adaptive_instance_normalization(content_f, style_f)
-        for i, w in enumerate(interpolation_weights):
-            feat = feat + w * base_feat[i:i + 1]
-        content_f = content_f[0:1]
-    else:
-        feat = adaptive_instance_normalization(content_f, style_f)
-    feat = feat * alpha + content_f * (1 - alpha)
-    return decoder(feat)
+def process_img(path, new_size, crop):
 
-def process_img(path, size, crop):
-
-    img_tf = test_transform(size, crop)
+    img_transf = all_transform(new_size, crop)
     img = Image.open(str(path))
     if img.mode == 'CMYK':
         img= img.convert('RGB')
-    img_tensor = img_tf(img)
+    img_tensor = img_transf(img)
     if img_tensor.size()[0] >3:
         img_tensor = img_tensor[ :3, :, : ]
 
     return img_tensor
 
 
-def video_trans(content_p, style_p, vgg_p='Arbitrary_ST_Pytorch/models/vgg_normalised.pth',
-                decoder_p='Arbitrary_ST_Pytorch/models/decoder.pth', preserve_color=False, alpha = 1.0,
-                content_size=0, style_size=0, crop=False, save_ext='.mp4', output_p='static/pics/output'):
+def StyleTransfer(contentIMG, styleIMG, vgg_m, decoder_m, level=1.0, InterpolateWeights=None):
+
+    style_feat = vgg_m(styleIMG)
+    content_feat = vgg_m(contentIMG)
+    assert (0.0<=level<=1.0)
+
+    if InterpolateWeights is not None:
+        _, a, b, c = content_feat.size()
+        BaseFeat = adain_layer(style_feat, content_feat)
+        features = torch.FloatTensor(1, a, b, c).zero_().to(device)
+        for j, weight in enumerate(InterpolateWeights):
+            features = features + weight*BaseFeat[j:j+1]
+        content_feat = content_feat[0:1]
+    else:
+        features = adain_layer(style_feat, content_feat)
+    features = features*level + content_feat*(1-level)
+    return decoder_m(features)
 
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu") 
+def video_trans(content_p, style_p, ColorPresrv=False, level = 1.0,
+                addr_vgg='Arbitrary_ST_Pytorch/models/vgg_normalised.pth', addr_decoder='Arbitrary_ST_Pytorch/models/decoder.pth',
+                ContentSize=0, StyleSize=0, crop=False, Out_Extension='.mp4', output_p='static/pics/output'):
 
-    output_dir = Path(output_p)
-    output_dir.mkdir(exist_ok = True, parents = True)
 
-    assert (content_p)
-    assert (style_p)
-    content_path = Path(content_p)
-    style_path = Path(style_p)
+    ## models
+    decoder_m = NNs.decoder
+    decoder_m.eval()
+    decoder_m.load_state_dict(torch.load(addr_decoder))
+    vgg_m = NNs.vgg
 
-    decoder = net.decoder
-    vgg = net.vgg
-    decoder.eval()
-    vgg.eval()
+    decoder_m.to(device)
 
-    vgg.load_state_dict(torch.load(vgg_p))
-    vgg = nn.Sequential(*list(vgg.children())[:31])
-    vgg.to(device)
-    decoder.load_state_dict(torch.load(decoder_p))
-    decoder.to(device)
+    vgg_m.eval()
+    vgg_m.load_state_dict(torch.load(addr_vgg))
+    vgg_m = nn.Sequential(*list(vgg_m.children())[:31])
+    vgg_m.to(device)
 
-    content_transform = test_transform(content_size, crop)
-    style_transform = test_transform(style_size, crop)
+    ## input path
+    style_img_pa = Path(style_p)
+    content_vid_pa = Path(content_p)
 
     #video details
-    content_video = cv2.VideoCapture(content_p)
-    fps = int(content_video.get(cv2.CAP_PROP_FPS))
-    content_video_length = int(content_video.get(cv2.CAP_PROP_FRAME_COUNT))
-    output_width = int(content_video.get(cv2.CAP_PROP_FRAME_WIDTH))
-    output_height = int(content_video.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    contentVID = cv2.VideoCapture(content_p)
 
-    assert fps != 0, 'Fps is zero, Please enter proper video path'
+    VID_height = int(contentVID.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    VID_width = int(contentVID.get(cv2.CAP_PROP_FRAME_WIDTH))
+    VID_length = int(contentVID.get(cv2.CAP_PROP_FRAME_COUNT))
+    VID_fps = int(contentVID.get(cv2.CAP_PROP_FPS))
+    assert VID_fps!=0, 'The fps of the video cannot be zero, make sure you uploaded the correct one.'
 
-    pbar = tqdm(total = content_video_length)
+    # prepare output paths
+    output_folder = Path(output_p)
+    output_folder.mkdir(exist_ok = True, parents = True)
 
-    if style_path.suffix in [".jpg", ".png", ".JPG", ".PNG", ".jpeg", ".JPEG"]:
-        output_video_path = output_dir / '{:s}_stylized_{:s}_{:s}_{:s}{:s}'.format(
-                content_path.stem, style_path.stem, str(alpha), str(int(preserve_color)), save_ext)
-        writer = imageio.get_writer(output_video_path, mode='I', fps=fps)
+    # prepare transsformations
+    c_transformation = all_transform(ContentSize, crop)
+    s_transformation = all_transform(StyleSize, crop)
 
-        style_img = Image.open(style_path)
-        if style_img.mode == 'CMYK':
-            style_img= style_img.convert('RGB')
+    iter_tq = tqdm(total = VID_length)
+
+    if style_img_pa.suffix in [".jpeg", ".JPEG", ".jpg", ".JPG", ".png", ".PNG"]:
+
+        # conversion
+        style_temp = Image.open(style_img_pa)
+        if style_temp.mode != 'RGB':
+            style_temp= style_temp.convert('RGB')
+
+        OutputPath = output_folder / '{:s}-{:s}_{:s}_{:s}{:s}'.format(
+                content_vid_pa.stem,style_img_pa.stem, str(level), str(int(ColorPresrv)),Out_Extension)
+
+        io_writer = imageio.get_writer(OutputPath, mode='I', fps=VID_fps)
 
         while(True):
-            ret, content_img = content_video.read()
+            styleIMG = s_transformation(style_temp)
+            if styleIMG.size()[0] >3:
+                styleIMG = styleIMG[ :3, :, : ]
 
-            if not ret:
+            r, content_temp = contentVID.read()
+            if not r:
                 break
 
-            content = content_transform(Image.fromarray(content_img))
-            style = style_transform(style_img)
-            if style.size()[0] >3:
-                style = style[ :3, :, : ]
+            contentIMG = c_transformation(Image.fromarray(content_temp))
 
-            if preserve_color:
-                style = coral(style, content)
+            if ColorPresrv:
+                styleIMG = color_prev(styleIMG, contentIMG)
 
-            style = style.to(device).unsqueeze(0)
-            content = content.to(device).unsqueeze(0)
+            contentIMG = contentIMG.to(device).unsqueeze(0)
+            styleIMG = styleIMG.to(device).unsqueeze(0)
+
             with torch.no_grad():
-                output = style_transfer(vgg, decoder, content, style, alpha)
-            output = output.cpu()
-            output = output.squeeze(0)
-            output = np.array(output)*255
-            output = np.transpose(output, (1,2,0))
-            output = cv2.resize(output, (output_width, output_height), interpolation=cv2.INTER_CUBIC)
+                outputIMG = StyleTransfer(contentIMG, styleIMG, vgg_m, decoder_m, level)
 
-            writer.append_data(np.array(output))
-            pbar.update(1)
+            outputIMG = outputIMG.cpu()
+            outputIMG = outputIMG.squeeze(0)
+            outputIMG = np.array(outputIMG)*255
+            outputIMG = np.transpose(outputIMG, (1,2,0))
 
-        content_video.release()
+            outputIMG = cv2.resize(outputIMG, (VID_width, VID_height), interpolation=cv2.INTER_CUBIC)
+
+            io_writer.append_data(np.array(outputIMG))
+            iter_tq.update(1)
+
+        contentVID.release()
 
 
-    return str(output_video_path)
+    return str(OutputPath)

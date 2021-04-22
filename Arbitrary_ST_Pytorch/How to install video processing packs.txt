@@ -1,4 +1,0 @@
-#  needed: opencv, imageio, imageio-ffmpeg
-conda install -c conda-forge opencv
-conda install -c conda-forge imageio
-pip install imageio-ffmpeg
