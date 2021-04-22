@@ -262,21 +262,6 @@ def upload3():
     else:
         return render_template('upload3.html')
 
-###################for testing
-
-#put the constant directory to the beginning
-
-@app.route('/upload-image', methods=['GET','POST'])
-def upload_image():
-    if request.method == "POST":
-
-        if request.files:
-            image = request.files["image"]
-            image.save(os.path.join(app.config["IMAGE_UPLOADS"], image.filename))
-            print("image saved")
-            return redirect(request.url)
-    return render_template("upload_image.html")
-
 ##########################
 
 if __name__ == "__main__":
