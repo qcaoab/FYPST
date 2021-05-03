@@ -185,7 +185,7 @@ def upload2():
         flash('Uploaded style image: ' + str(filename2), 'info')
         print('transfer starts')
         degree = float(degree)/100
-        resultname = arbi_trans(path1, path2,preserve_color= bool(int(preserve)), alpha = float(degree))
+        resultname = arbi_trans(path1, path2, ColorPresrv= bool(int(preserve)), level = float(degree))
 
         #resultpath=os.path.abspath(resultname)
         resultpath = str(resultname).replace('\\','/')
@@ -247,7 +247,7 @@ def upload3():
         print(path1)
         print(path2)
         print('transfer starts')
-        resultname = video_trans(path1, path2, preserve_color= bool(int(preserve)), alpha = float(degree))
+        resultname = video_trans(path1, path2, ColorPresrv = bool(int(preserve)), level = float(degree))
 
         #resultpath=os.path.abspath(resultname)
         resultpath = str(resultname).replace('\\','/')
@@ -261,21 +261,6 @@ def upload3():
 
     else:
         return render_template('upload3.html')
-
-###################for testing
-
-#put the constant directory to the beginning
-
-@app.route('/upload-image', methods=['GET','POST'])
-def upload_image():
-    if request.method == "POST":
-
-        if request.files:
-            image = request.files["image"]
-            image.save(os.path.join(app.config["IMAGE_UPLOADS"], image.filename))
-            print("image saved")
-            return redirect(request.url)
-    return render_template("upload_image.html")
 
 ##########################
 
