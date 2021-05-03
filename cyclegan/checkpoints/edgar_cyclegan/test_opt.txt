@@ -3,13 +3,13 @@
                batch_size: 1                             
           checkpoints_dir: ./checkpoints                 
                 crop_size: 256                           
-                 dataroot: uploads/hkust                 	[default: None]
+                 dataroot: uploads/11b1Nov               	[default: None]
              dataset_mode: single                        
                 direction: AtoB                          
           display_winsize: 256                           
                     epoch: latest                        
                      eval: False                         
-                  gpu_ids: -1                            	[default: 0]
+                  gpu_ids: 0                             
                 init_gain: 0.02                          
                 init_type: normal                        
                  input_nc: 3                             
@@ -32,7 +32,7 @@
               num_threads: 4                             
                 output_nc: 3                             
                     phase: test                          
-               preprocess: resize_and_crop               
+               preprocess: none                          	[default: resize_and_crop]
               results_dir: ../static/results             	[default: ./results/]
            serial_batches: False                         
                    suffix:                               
