@@ -3,7 +3,7 @@ Project in progress.
 Ça c'est de l'art!
 ## Components
 ### Web part
-- flask (main.py)
+- flask (application.py)
 - html (adapted from https://github.com/yenchiah/project-website-template)
   - overview
   - gallary
@@ -14,7 +14,6 @@ Project in progress.
 - put other images in static/pics, including output, uploads, gallery
 ### ML part
 - AdaIN-Style (adapted from https://github.com/naoto0804/pytorch-AdaIN)  
-  (original implentation and explanation https://github.com/xunhuang1995/AdaIN-style) 
 - CycleGAN ( adapted from https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix)
 ### Dataset
 
@@ -34,8 +33,6 @@ $ python application.py
 - [x] cycleGan issues
 - [x] interactive web features
 - [x] video transfer
-- [ ] additional features realized by nn
-- [ ] tbc...
-
+- [x] additional features realized by nn
 
 
