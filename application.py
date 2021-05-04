@@ -125,7 +125,7 @@ def upload():
             # run test.py
             print(os.getcwd())
             os.chdir(os.getcwd()+"/cyclegan")
-            cmd = "python test.py --dataroot "+test_path+" --name "+gan_style[style]+" --gpu_ids -1 --results_dir ../static/results --model test --no_dropout"
+            cmd = "python test.py --dataroot "+test_path+" --name "+gan_style[style]+" --results_dir ../static/results --model test --preprocess none --no_dropout"
             subprocess.check_call(cmd)
             os.chdir(os.path.split(os.getcwd())[0])
 
