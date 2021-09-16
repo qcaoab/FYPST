@@ -1,5 +1,6 @@
 # Style Transfer
-Project in progress.   
+Our HKUST Final Year Project on Data Science Application  
+A Neural Style Transfer Website for Artworks.  
 Ça c'est de l'art!
 ## Components
 ### Web part
